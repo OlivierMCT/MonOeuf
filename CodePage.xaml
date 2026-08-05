@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:svc="clr-namespace:OeufFrais.Services"
+             x:Class="OeufFrais.CodePage"
+             Title="Code coquille"
+             BackgroundColor="{StaticResource Coquille}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="18,14,18,40" Spacing="16">
+
+            <VerticalStackLayout Spacing="8">
+                <Border Style="{StaticResource Pastille}" BackgroundColor="{StaticResource Sarcelle}" HorizontalOptions="Start">
+                    <Label Text="CODE COQUILLE" FontSize="12" FontAttributes="Bold" CharacterSpacing="1.2" TextColor="{StaticResource Blanc}" />
+                </Border>
+                <Label Text="🔎 Le code sur la coquille" Style="{StaticResource Titre}" />
+            </VerticalStackLayout>
+
+            <Border Style="{StaticResource Carte}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="SAISIR LE CODE" Style="{StaticResource TitreSection}" TextColor="{StaticResource SarcelleFoncee}" />
+                    <Entry x:Name="TxtCode"
+                           Placeholder="Exemple : 3FRABC01"
+                           FontSize="19"
+                           CharacterSpacing="1.5"
+                           MaxLength="16"
+                           Keyboard="Text"
+                           TextColor="{StaticResource Encre}"
+                           Completed="OnDecoder" />
+                    <Button x:Name="BtnScan"
+                            Text="📷  Photographier l'œuf"
+                            Clicked="OnScannerCoquille"
+                            Style="{StaticResource BoutonSecondaire}"
+                            TextColor="{StaticResource SarcelleFoncee}"
+                            BorderColor="{StaticResource Sarcelle}" />
+
+                    <Label x:Name="LblScan" Style="{StaticResource NoteScan}" />
+
+                    <Button Text="Décoder"
+                            Clicked="OnDecoder"
+                            BackgroundColor="{StaticResource Sarcelle}"
+                            TextColor="{StaticResource Blanc}"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            CornerRadius="16"
+                            HeightRequest="54">
+                        <Button.Shadow>
+                            <Shadow Brush="{StaticResource SarcelleFoncee}" Opacity="0.35" Radius="10" Offset="0,5" />
+                        </Button.Shadow>
+                    </Button>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource Carte}"
+                    x:Name="CarteErreur"
+                    IsVisible="False">
+                <Label x:Name="LblErreur" Style="{StaticResource Corps}" TextColor="#C0392B" />
+            </Border>
+
+            <VerticalStackLayout x:Name="Resultat"
+                                 x:DataType="svc:ShellCode"
+                                 IsVisible="False"
+                                 Spacing="16">
+                <Border Style="{StaticResource Carte}">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="{Binding CodeNormalise}"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               CharacterSpacing="2"
+                               TextColor="{StaticResource SarcelleFoncee}" />
+
+                        <BoxView HeightRequest="1" Color="{StaticResource Bordure}" />
+
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="9" ColumnSpacing="10">
+                            <Label Grid.Row="0" Grid.Column="0" Text="Mode d'élevage" Style="{StaticResource Corps}" TextColor="{StaticResource EncreDouce}" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding ModeElevage}" Style="{StaticResource Corps}" FontAttributes="Bold" HorizontalTextAlignment="End" />
+
+                            <Label Grid.Row="1" Grid.Column="0" Text="Pays d'origine" Style="{StaticResource Corps}" TextColor="{StaticResource EncreDouce}" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Pays}" Style="{StaticResource Corps}" FontAttributes="Bold" HorizontalTextAlignment="End" />
+                        </Grid>
+
+                        <Label Text="{Binding ModeElevageDetail}"
+                               FontSize="13.5"
+                               LineHeight="1.3"
+                               TextColor="{StaticResource EncreDouce}" />
+
+                        <Label Text="{Binding IdentifiantElevage, StringFormat='Identifiant de l&apos;élevage : {0}'}"
+                               FontSize="13"
+                               TextColor="{StaticResource EncreDouce}" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+
+            <Border Style="{StaticResource Carte}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="À SAVOIR" Style="{StaticResource TitreSection}" TextColor="{StaticResource SarcelleFoncee}" />
+                    <Label Style="{StaticResource Corps}" FontSize="14"
+                           Text="Le code de la coquille n'indique pas la date de ponte : il identifie seulement le mode d'élevage, le pays et l'exploitation." />
+                    <Label Style="{StaticResource Corps}" FontSize="14"
+                           Text="Pour connaître la fraîcheur, utilisez la date imprimée sur la boîte (la DCR) dans l'onglet Fraîcheur. La ponte remonte à 28 jours avant cette date." />
+                    <Label Style="{StaticResource Corps}" FontSize="14"
+                           Text="Premier chiffre : 0 pour biologique, 1 pour plein air, 2 pour élevage au sol, 3 pour cage aménagée." />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

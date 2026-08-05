@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:OeufFrais"
+       x:Class="OeufFrais.AppShell"
+       Shell.FlyoutBehavior="Disabled"
+       Shell.TabBarBackgroundColor="{StaticResource Blanc}"
+       Shell.TabBarTitleColor="{StaticResource JauneFonce}"
+       Shell.TabBarUnselectedColor="{StaticResource EncreDouce}"
+       Title="Œuf Frais">
+
+    <TabBar>
+        <ShellContent Title="Fraîcheur"
+                      ContentTemplate="{DataTemplate local:MainPage}"
+                      Route="MainPage" />
+        <ShellContent Title="Code coquille"
+                      ContentTemplate="{DataTemplate local:CodePage}"
+                      Route="CodePage" />
+        <ShellContent Title="Conserver"
+                      ContentTemplate="{DataTemplate local:ConseilsPage}"
+                      Route="ConseilsPage" />
+    </TabBar>
+</Shell>

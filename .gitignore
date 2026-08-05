@@ -1,0 +1,86 @@
+## .NET / Visual Studio / .NET MAUI standard .gitignore
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# Build outputs
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# .NET Core / .NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.pidb
+*.svclog
+*.scc
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+
+# MAUI / Xamarin
+*.apk
+*.aab
+*.ap_
+*.aar
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.mdb
+*.mono_crash.*
+[Bb]uild[Ll]og.*
+*.pbxuser
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+*.xcuserstate
+
+# macOS / provisioning
+*.mobileprovision
+*.p12
+
+# Rider / Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment / secrets
+*.env
+appsettings.*.local.json
+secrets.json
