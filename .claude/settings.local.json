@@ -9,7 +9,9 @@
       "Bash(adb devices *)",
       "PowerShell(& \"C:\\\\Program Files \\(x86\\)\\\\Android\\\\android-sdk\\\\platform-tools\\\\adb.exe\" devices -l)",
       "PowerShell(Start-Process -FilePath $emulator -ArgumentList \"-avd\",\"pixel_5_-_api_34\" -WindowStyle Normal)",
-      "PowerShell($emulator = \"C:\\\\Program Files \\(x86\\)\\\\Android\\\\android-sdk\\\\emulator\\\\emulator.exe\")"
+      "PowerShell($emulator = \"C:\\\\Program Files \\(x86\\)\\\\Android\\\\android-sdk\\\\emulator\\\\emulator.exe\")",
+      "Bash(git add *)",
+      "Bash(git commit *)"
     ]
   }
 }
