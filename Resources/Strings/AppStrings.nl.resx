@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="Common_Calculer" xml:space="preserve"><value>Berekenen</value></data>
+  <data name="Common_LectureEnCours" xml:space="preserve"><value>Lezen…</value></data>
+  <data name="Common_ScanImpossible" xml:space="preserve"><value>Scannen mislukt</value></data>
+  <data name="Common_Fermer" xml:space="preserve"><value>Sluiten</value></data>
+  <data name="Common_Annuler" xml:space="preserve"><value>Annuleren</value></data>
+  <data name="Common_Jour_Un" xml:space="preserve"><value>{0} dag</value></data>
+  <data name="Common_Jour_Plusieurs" xml:space="preserve"><value>{0} dagen</value></data>
+  <data name="Common_JourRestant_Un" xml:space="preserve"><value>(nog {0} dag)</value></data>
+  <data name="Common_JourRestant_Plusieurs" xml:space="preserve"><value>(nog {0} dagen)</value></data>
+  <data name="Common_SectionTestVerre" xml:space="preserve"><value>DE WATERGLASTEST</value></data>
+
+  <data name="Shell_Title" xml:space="preserve"><value>Vers Ei</value></data>
+  <data name="Shell_TabFraicheur" xml:space="preserve"><value>Versheid</value></data>
+  <data name="Shell_TabCode" xml:space="preserve"><value>Schaalcode</value></data>
+  <data name="Shell_TabConserver" xml:space="preserve"><value>Bewaren</value></data>
+  <data name="Shell_TabReglages" xml:space="preserve"><value>Instellingen</value></data>
+
+  <data name="Main_Badge" xml:space="preserve"><value>VERSHEID</value></data>
+  <data name="Main_Titre" xml:space="preserve"><value>🥚 Is dit ei nog goed?</value></data>
+  <data name="Main_SectionConnais" xml:space="preserve"><value>IK WEET</value></data>
+  <data name="Main_ChipPonte" xml:space="preserve"><value>Legdatum</value></data>
+  <data name="Main_ChipDcr" xml:space="preserve"><value>Datum op de doos (houdbaarheidsdatum)</value></data>
+  <data name="Main_Aide_Ponte" xml:space="preserve"><value>De legdatum staat soms op de doos. Anders trekt u 28 dagen af van de houdbaarheidsdatum.</value></data>
+  <data name="Main_Aide_Dcr" xml:space="preserve"><value>De op de doos afgedrukte houdbaarheidsdatum is de legdatum plus 28 dagen.</value></data>
+  <data name="Main_BoutonScan" xml:space="preserve"><value>📷  Datum op de doos lezen</value></data>
+  <data name="Main_ScanAucuneDate" xml:space="preserve"><value>Geen leesbare datum op de foto. Kadreer de vermelding "ten minste houdbaar tot", vlak en goed verlicht, of voer de datum handmatig in.</value></data>
+  <data name="Main_ScanQuelleDcr" xml:space="preserve"><value>Wat is de houdbaarheidsdatum?</value></data>
+  <data name="Main_ScanDateLue" xml:space="preserve"><value>Gelezen datum: {0}. Controleer deze voordat u berekent.</value></data>
+  <data name="Main_SectionDates" xml:space="preserve"><value>BELANGRIJKE DATA</value></data>
+  <data name="Main_LabelPonte" xml:space="preserve"><value>Gelegd</value></data>
+  <data name="Main_LabelAge" xml:space="preserve"><value>Leeftijd vandaag</value></data>
+  <data name="Main_LabelFinExtraFrais" xml:space="preserve"><value>Einde "extra vers" (dag 9)</value></data>
+  <data name="Main_LabelDcr" xml:space="preserve"><value>Houdbaarheidsdatum, op de doos (dag 28)</value></data>
+  <data name="Main_LabelPrudence" xml:space="preserve"><value>Voorzichtigheidslimiet (houdbaarheidsdatum + 14)</value></data>
+  <data name="Main_SectionUsages" xml:space="preserve"><value>WAT U ERMEE KUNT DOEN</value></data>
+  <data name="Main_Disclaimer" xml:space="preserve"><value>Richtlijnen op basis van EG-verordening nr. 589/2008 en de aanbevelingen van ANSES. Twijfelt u aan het uiterlijk of de geur van een ei, gooi het dan weg.</value></data>
+
+  <data name="Code_Badge" xml:space="preserve"><value>SCHAALCODE</value></data>
+  <data name="Code_Titre" xml:space="preserve"><value>🔎 De code op de schaal</value></data>
+  <data name="Code_SectionSaisir" xml:space="preserve"><value>CODE INVOEREN</value></data>
+  <data name="Code_Placeholder" xml:space="preserve"><value>Voorbeeld: 3FRABC01</value></data>
+  <data name="Code_BoutonScan" xml:space="preserve"><value>📷  Het ei fotograferen</value></data>
+  <data name="Code_BoutonDecoder" xml:space="preserve"><value>Decoderen</value></data>
+  <data name="Code_LabelMode" xml:space="preserve"><value>Houderijsysteem</value></data>
+  <data name="Code_LabelPays" xml:space="preserve"><value>Land van herkomst</value></data>
+  <data name="Code_LabelIdentifiant" xml:space="preserve"><value>Bedrijfsidentificatie: {0}</value></data>
+  <data name="Code_SectionSavoir" xml:space="preserve"><value>GOED OM TE WETEN</value></data>
+  <data name="Code_Savoir1" xml:space="preserve"><value>De schaalcode geeft niet de legdatum aan: hij identificeert alleen het houderijsysteem, het land en het bedrijf.</value></data>
+  <data name="Code_Savoir2" xml:space="preserve"><value>Gebruik voor de versheid de op de doos afgedrukte datum (de houdbaarheidsdatum) in het tabblad Versheid. De legdatum ligt 28 dagen voor die datum.</value></data>
+  <data name="Code_Savoir3" xml:space="preserve"><value>Eerste cijfer: 0 voor biologisch, 1 voor vrije uitloop, 2 voor scharrel, 3 voor verrijkte kooi.</value></data>
+  <data name="Code_ScanIllisible" xml:space="preserve"><value>Code onleesbaar. Kom dichterbij, richt het ei zo dat de code vlak voor de lens ligt en vermijd schaduwen.</value></data>
+  <data name="Code_ScanRelire" xml:space="preserve"><value>Controleer de code opnieuw voordat u bevestigt: op een schaal worden 0/O, 1/I en 5/S vaak verward.</value></data>
+
+  <data name="Conseils_Badge" xml:space="preserve"><value>BEWAREN</value></data>
+  <data name="Conseils_Titre" xml:space="preserve"><value>🧊 Eieren goed bewaren</value></data>
+  <data name="Conseils_SectionRegles" xml:space="preserve"><value>DE REGELS</value></data>
+  <data name="Conseils_SectionDcrDlc" xml:space="preserve"><value>HOUDBAARHEIDSDATUM IS GEEN VERVALDATUM</value></data>
+  <data name="Conseils_Dcr1" xml:space="preserve"><value>De op de doos afgedrukte datum is een aanbevolen consumptiedatum, vastgesteld op 28 dagen na het leggen. Het is geen uiterste consumptiedatum.</value></data>
+  <data name="Conseils_Dcr2" xml:space="preserve"><value>Na deze datum blijft een ei met een intacte schaal dat gekoeld is bewaard nog enkele weken eetbaar, op voorwaarde dat het volledig wordt gegaard. Bij de minste twijfel — geur, troebel eiwit, gebarsten schaal — gooi het weg.</value></data>
+  <data name="Conseils_Dcr3" xml:space="preserve"><value>De verkoop aan consumenten is echter verboden na 21 dagen na het leggen, dat is een week voor de houdbaarheidsdatum.</value></data>
+  <data name="Conseils_Disclaimer" xml:space="preserve"><value>Bronnen: EG-verordening nr. 589/2008 en aanbevelingen van ANSES. Deze app geeft richtlijnen, ze vervangt niet uw eigen beoordeling.</value></data>
+
+  <data name="Egg_Titre_Future" xml:space="preserve"><value>Datum in de toekomst</value></data>
+  <data name="Egg_Titre_ExtraFrais" xml:space="preserve"><value>Extra vers</value></data>
+  <data name="Egg_Titre_Frais" xml:space="preserve"><value>Vers</value></data>
+  <data name="Egg_Titre_ApresDcr" xml:space="preserve"><value>Houdbaarheidsdatum verstreken</value></data>
+  <data name="Egg_Titre_Douteux" xml:space="preserve"><value>Niet meer consumeren</value></data>
+
+  <data name="Egg_Resume_Future" xml:space="preserve"><value>De ingevoerde datum ligt in de toekomst. Controleer de legdatum of de houdbaarheidsdatum op de doos.</value></data>
+  <data name="Egg_Resume_ExtraFrais" xml:space="preserve"><value>{0} geleden gelegd. Alle toepassingen zijn mogelijk, ook rauw of licht gegaard. Nog {1} dagen tot de houdbaarheidsdatum.</value></data>
+  <data name="Egg_Resume_Frais" xml:space="preserve"><value>{0} dagen geleden gelegd. Nog binnen de aanbevolen consumptieperiode {1}, maar bij voorkeur goed doorbakken eten.</value></data>
+  <data name="Egg_Frais_Aujourdhui" xml:space="preserve"><value>— de houdbaarheidsdatum is vandaag</value></data>
+  <data name="Egg_Resume_ApresDcr" xml:space="preserve"><value>{0} dagen geleden gelegd, dat is {1} na de houdbaarheidsdatum. Houdbaarheidsdatum is geen vervaldatum: als de schaal intact is en het ei gekoeld is gebleven, is het nog eetbaar, maar alleen goed doorbakken. Doe eerst de waterglastest.</value></data>
+  <data name="Egg_Resume_Douteux" xml:space="preserve"><value>{0} dagen geleden gelegd. Te oud: gooi het beter weg, ook al ziet het er normaal uit.</value></data>
+
+  <data name="Egg_Conseil_EF_Cru_Usage" xml:space="preserve"><value>Rauw (mayonaise, tiramisu, chocolademousse)</value></data>
+  <data name="Egg_Conseil_EF_Cru_Detail" xml:space="preserve"><value>Voorbehouden aan extra verse eieren. Bereid op het laatste moment, bewaar gekoeld en eet binnen 24 uur op. Te vermijden voor kinderen, zwangere vrouwen, ouderen of personen met verminderde weerstand.</value></data>
+  <data name="Egg_Conseil_EF_Coque_Usage" xml:space="preserve"><value>Zachtgekookt, medium, gepocheerd</value></data>
+  <data name="Egg_Conseil_EF_Coque_Detail" xml:space="preserve"><value>Dit is het ideale moment: het eiwit is stevig en houdt goed vorm.</value></data>
+  <data name="Egg_Conseil_EF_Plat_Usage" xml:space="preserve"><value>Gebakken ei, roerei, omelet</value></data>
+  <data name="Egg_Conseil_EF_Plat_Detail" xml:space="preserve"><value>Geen beperking.</value></data>
+  <data name="Egg_Conseil_EF_Dur_Usage" xml:space="preserve"><value>Hardgekookt</value></data>
+  <data name="Egg_Conseil_EF_Dur_Detail" xml:space="preserve"><value>Mogelijk, maar een heel vers ei is moeilijk te pellen. Wacht 7 tot 10 dagen voor gemakkelijk pellen.</value></data>
+  <data name="Egg_Conseil_EF_Patisserie_Usage" xml:space="preserve"><value>Gebak, ovenbereiding</value></data>
+  <data name="Egg_Conseil_EF_Patisserie_Detail" xml:space="preserve"><value>Geen beperking.</value></data>
+
+  <data name="Egg_Conseil_F_Cru_Usage" xml:space="preserve"><value>Rauw (mayonaise, tiramisu, chocolademousse)</value></data>
+  <data name="Egg_Conseil_F_Cru_Detail" xml:space="preserve"><value>Niet aanbevolen na 9 dagen na het leggen. Geef de voorkeur aan een extra vers ei.</value></data>
+  <data name="Egg_Conseil_F_Coque_Usage" xml:space="preserve"><value>Zachtgekookt, medium, gepocheerd</value></data>
+  <data name="Egg_Conseil_F_Coque_Detail" xml:space="preserve"><value>Licht gegaard: te vermijden. De eierdooier bereikt geen voldoende temperatuur.</value></data>
+  <data name="Egg_Conseil_F_Plat_Usage" xml:space="preserve"><value>Gebakken ei, roerei, omelet</value></data>
+  <data name="Egg_Conseil_F_Plat_Detail" xml:space="preserve"><value>Ja, als het eiwit en de dooier goed doorbakken zijn.</value></data>
+  <data name="Egg_Conseil_F_Dur_Usage" xml:space="preserve"><value>Hardgekookt</value></data>
+  <data name="Egg_Conseil_F_Dur_Detail" xml:space="preserve"><value>Ideaal gebruik in dit stadium, en het pelt gemakkelijk.</value></data>
+  <data name="Egg_Conseil_F_Patisserie_Usage" xml:space="preserve"><value>Gebak, ovenbereiding</value></data>
+  <data name="Egg_Conseil_F_Patisserie_Detail" xml:space="preserve"><value>Geen beperking.</value></data>
+
+  <data name="Egg_Conseil_AD_Cru_Usage" xml:space="preserve"><value>Rauw of licht gegaard</value></data>
+  <data name="Egg_Conseil_AD_Cru_Detail" xml:space="preserve"><value>Uitgesloten. Geen rauwe, zachtgekookte of gepocheerde bereiding.</value></data>
+  <data name="Egg_Conseil_AD_Dur_Usage" xml:space="preserve"><value>Hardgekookt</value></data>
+  <data name="Egg_Conseil_AD_Dur_Detail" xml:space="preserve"><value>Mogelijk als de waterglastest overtuigend is. 10 min koken vanaf het kookpunt.</value></data>
+  <data name="Egg_Conseil_AD_Cuisson_Usage" xml:space="preserve"><value>Volledig doorbakken (cake, quiche, gratin, goed doorbakken omelet)</value></data>
+  <data name="Egg_Conseil_AD_Cuisson_Detail" xml:space="preserve"><value>Het eiwit en de dooier moeten volledig gestold zijn. Streef naar 70 °C in de kern.</value></data>
+  <data name="Egg_Conseil_AD_Odeur_Usage" xml:space="preserve"><value>Abnormale geur of uiterlijk</value></data>
+  <data name="Egg_Conseil_AD_Odeur_Detail" xml:space="preserve"><value>Breek het ei in een aparte kom: de geringste zwavelgeur of een troebel, waterig eiwit betekent weggooien.</value></data>
+
+  <data name="Egg_Conseil_D_Tous_Usage" xml:space="preserve"><value>Elk gebruik</value></data>
+  <data name="Egg_Conseil_D_Tous_Detail" xml:space="preserve"><value>Na ongeveer zes weken na het leggen is het risico de besparing niet waard. Gooi het ei weg.</value></data>
+  <data name="Egg_Conseil_D_NeCassez_Usage" xml:space="preserve"><value>Breek het niet rechtstreeks boven een gerecht</value></data>
+  <data name="Egg_Conseil_D_NeCassez_Detail" xml:space="preserve"><value>Een bedorven ei kan een hele bereiding besmetten.</value></data>
+
+  <data name="Egg_Conservation_1" xml:space="preserve"><value>Was eieren nooit: dat vernietigt de beschermende cuticula van de schaal.</value></data>
+  <data name="Egg_Conservation_2" xml:space="preserve"><value>Bewaar ze op een constante temperatuur. Een ei dat uit de kou komt en weer opwarmt, beslaat met condens, wat het binnendringen van bacteriën vergemakkelijkt.</value></data>
+  <data name="Egg_Conservation_3" xml:space="preserve"><value>Leg ze in de koelkast op een schap in plaats van in de deur, waar de temperatuur schommelt.</value></data>
+  <data name="Egg_Conservation_4" xml:space="preserve"><value>Bewaar ze met de punt naar onder, uit de buurt van sterk ruikende voedingsmiddelen: de schaal is poreus.</value></data>
+  <data name="Egg_Conservation_5" xml:space="preserve"><value>Eenmaal hardgekookt en gepeld, eet ze binnen 2 tot 3 dagen op.</value></data>
+
+  <data name="Egg_TestVerre_1" xml:space="preserve"><value>Vul een glas met koud water en leg het ei erin.</value></data>
+  <data name="Egg_TestVerre_2" xml:space="preserve"><value>Het blijft plat op de bodem liggen: zeer vers, geen probleem.</value></data>
+  <data name="Egg_TestVerre_3" xml:space="preserve"><value>Het gaat rechtop op de bodem staan: nog eetbaar, maar goed doorbakken.</value></data>
+  <data name="Egg_TestVerre_4" xml:space="preserve"><value>Het drijft: de luchtkamer is te groot, gooi het ongeopend weg.</value></data>
+
+  <data name="ShellCode_Erreur_Vide" xml:space="preserve"><value>Voer de op de schaal afgedrukte code in.</value></data>
+  <data name="ShellCode_Erreur_Format" xml:space="preserve"><value>Code niet herkend. Verwacht formaat: een cijfer (0 tot 3), de landcode van 2 letters, dan de bedrijfsidentificatie. Voorbeeld: 3FRABC01.</value></data>
+  <data name="ShellCode_Mode_Bio" xml:space="preserve"><value>Biologisch</value></data>
+  <data name="ShellCode_Mode_Bio_Detail" xml:space="preserve"><value>Kippen gehouden in vrije uitloop, voeding uit de biologische landbouw, maximaal 6 kippen per m² in het gebouw en 4 m² buitenruimte per kip.</value></data>
+  <data name="ShellCode_Mode_PleinAir" xml:space="preserve"><value>Vrije uitloop</value></data>
+  <data name="ShellCode_Mode_PleinAir_Detail" xml:space="preserve"><value>Kippen met overdag toegang tot een buitenruimte, 4 m² per kip, niet-biologische voeding.</value></data>
+  <data name="ShellCode_Mode_Sol" xml:space="preserve"><value>Scharrel</value></data>
+  <data name="ShellCode_Mode_Sol_Detail" xml:space="preserve"><value>Kippen gehouden in het gebouw, zonder kooi maar zonder toegang naar buiten, tot 9 kippen per m².</value></data>
+  <data name="ShellCode_Mode_Cage" xml:space="preserve"><value>Kooi / verrijkte volière</value></data>
+  <data name="ShellCode_Mode_Cage_Detail" xml:space="preserve"><value>Kippen gehouden in verrijkte kooien, ongeveer 750 cm² per kip, zonder toegang naar buiten.</value></data>
+  <data name="ShellCode_Pays_FR" xml:space="preserve"><value>Frankrijk (FR)</value></data>
+  <data name="ShellCode_Pays_BE" xml:space="preserve"><value>België (BE)</value></data>
+  <data name="ShellCode_Pays_DE" xml:space="preserve"><value>Duitsland (DE)</value></data>
+  <data name="ShellCode_Pays_ES" xml:space="preserve"><value>Spanje (ES)</value></data>
+  <data name="ShellCode_Pays_IT" xml:space="preserve"><value>Italië (IT)</value></data>
+  <data name="ShellCode_Pays_NL" xml:space="preserve"><value>Nederland (NL)</value></data>
+  <data name="ShellCode_Pays_PL" xml:space="preserve"><value>Polen (PL)</value></data>
+  <data name="ShellCode_Pays_PT" xml:space="preserve"><value>Portugal (PT)</value></data>
+  <data name="ShellCode_Pays_LU" xml:space="preserve"><value>Luxemburg (LU)</value></data>
+  <data name="ShellCode_Pays_CH" xml:space="preserve"><value>Zwitserland (CH)</value></data>
+
+  <data name="Scan_PermissionRefusee" xml:space="preserve"><value>Cameratoegang is geweigerd. U kunt dit toestaan in de apparaatinstellingen.</value></data>
+  <data name="Scan_NonSupporte" xml:space="preserve"><value>Noch de camera, noch de afbeeldingskiezer is hier beschikbaar. Voer de waarde handmatig in.</value></data>
+  <data name="Scan_PhotoEchec" xml:space="preserve"><value>De foto kon niet worden verkregen: {0}</value></data>
+  <data name="Scan_LectureEchec" xml:space="preserve"><value>De foto kon niet worden gelezen: {0}</value></data>
+  <data name="Scan_OcrEchec" xml:space="preserve"><value>Tekstherkenning is mislukt: {0}</value></data>
+
+  <data name="Settings_Badge" xml:space="preserve"><value>INSTELLINGEN</value></data>
+  <data name="Settings_Titre" xml:space="preserve"><value>⚙️ Instellingen</value></data>
+  <data name="Settings_SectionLangue" xml:space="preserve"><value>TAAL</value></data>
+  <data name="Settings_LangueSysteme" xml:space="preserve"><value>Systeem</value></data>
+  <data name="Settings_SectionPalette" xml:space="preserve"><value>KLEURENPALET</value></data>
+  <data name="Settings_PaletteMiel" xml:space="preserve"><value>Honing</value></data>
+  <data name="Settings_PaletteLagon" xml:space="preserve"><value>Lagune</value></data>
+  <data name="Settings_PaletteCorail" xml:space="preserve"><value>Koraal</value></data>
+  <data name="Settings_SectionTheme" xml:space="preserve"><value>WEERGAVE</value></data>
+  <data name="Settings_ThemeSysteme" xml:space="preserve"><value>Systeem</value></data>
+  <data name="Settings_ThemeClair" xml:space="preserve"><value>Licht</value></data>
+  <data name="Settings_ThemeSombre" xml:space="preserve"><value>Donker</value></data>
+</root>

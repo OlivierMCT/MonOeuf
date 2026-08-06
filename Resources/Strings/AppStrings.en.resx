@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="Common_Calculer" xml:space="preserve"><value>Calculate</value></data>
+  <data name="Common_LectureEnCours" xml:space="preserve"><value>Reading…</value></data>
+  <data name="Common_ScanImpossible" xml:space="preserve"><value>Scan failed</value></data>
+  <data name="Common_Fermer" xml:space="preserve"><value>Close</value></data>
+  <data name="Common_Annuler" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Common_Jour_Un" xml:space="preserve"><value>{0} day</value></data>
+  <data name="Common_Jour_Plusieurs" xml:space="preserve"><value>{0} days</value></data>
+  <data name="Common_JourRestant_Un" xml:space="preserve"><value>({0} day left)</value></data>
+  <data name="Common_JourRestant_Plusieurs" xml:space="preserve"><value>({0} days left)</value></data>
+  <data name="Common_SectionTestVerre" xml:space="preserve"><value>THE WATER GLASS TEST</value></data>
+
+  <data name="Shell_Title" xml:space="preserve"><value>Fresh Egg</value></data>
+  <data name="Shell_TabFraicheur" xml:space="preserve"><value>Freshness</value></data>
+  <data name="Shell_TabCode" xml:space="preserve"><value>Shell code</value></data>
+  <data name="Shell_TabConserver" xml:space="preserve"><value>Storage</value></data>
+  <data name="Shell_TabReglages" xml:space="preserve"><value>Settings</value></data>
+
+  <data name="Main_Badge" xml:space="preserve"><value>FRESHNESS</value></data>
+  <data name="Main_Titre" xml:space="preserve"><value>🥚 Is this egg still good?</value></data>
+  <data name="Main_SectionConnais" xml:space="preserve"><value>I KNOW</value></data>
+  <data name="Main_ChipPonte" xml:space="preserve"><value>Laying date</value></data>
+  <data name="Main_ChipDcr" xml:space="preserve"><value>Date on the box (best-before)</value></data>
+  <data name="Main_Aide_Ponte" xml:space="preserve"><value>The laying date is sometimes printed on the box. Otherwise, subtract 28 days from the best-before date.</value></data>
+  <data name="Main_Aide_Dcr" xml:space="preserve"><value>The best-before date printed on the box equals the laying date plus 28 days.</value></data>
+  <data name="Main_BoutonScan" xml:space="preserve"><value>📷  Read the date on the box</value></data>
+  <data name="Main_ScanAucuneDate" xml:space="preserve"><value>No readable date on the photo. Frame the "best before" wording, flat and well lit — or enter the date by hand.</value></data>
+  <data name="Main_ScanQuelleDcr" xml:space="preserve"><value>Which date is the best-before date?</value></data>
+  <data name="Main_ScanDateLue" xml:space="preserve"><value>Date read: {0}. Double-check it before calculating.</value></data>
+  <data name="Main_SectionDates" xml:space="preserve"><value>KEY DATES</value></data>
+  <data name="Main_LabelPonte" xml:space="preserve"><value>Laid</value></data>
+  <data name="Main_LabelAge" xml:space="preserve"><value>Age today</value></data>
+  <data name="Main_LabelFinExtraFrais" xml:space="preserve"><value>End of extra-fresh (day 9)</value></data>
+  <data name="Main_LabelDcr" xml:space="preserve"><value>Best-before, on the box (day 28)</value></data>
+  <data name="Main_LabelPrudence" xml:space="preserve"><value>Caution limit (best-before + 14)</value></data>
+  <data name="Main_SectionUsages" xml:space="preserve"><value>WHAT YOU CAN DO WITH IT</value></data>
+  <data name="Main_Disclaimer" xml:space="preserve"><value>Guidelines based on EC Regulation No 589/2008 and ANSES recommendations. If in doubt about the look or smell of an egg, throw it away.</value></data>
+
+  <data name="Code_Badge" xml:space="preserve"><value>SHELL CODE</value></data>
+  <data name="Code_Titre" xml:space="preserve"><value>🔎 The code on the shell</value></data>
+  <data name="Code_SectionSaisir" xml:space="preserve"><value>ENTER THE CODE</value></data>
+  <data name="Code_Placeholder" xml:space="preserve"><value>Example: 3FRABC01</value></data>
+  <data name="Code_BoutonScan" xml:space="preserve"><value>📷  Photograph the egg</value></data>
+  <data name="Code_BoutonDecoder" xml:space="preserve"><value>Decode</value></data>
+  <data name="Code_LabelMode" xml:space="preserve"><value>Farming method</value></data>
+  <data name="Code_LabelPays" xml:space="preserve"><value>Country of origin</value></data>
+  <data name="Code_LabelIdentifiant" xml:space="preserve"><value>Farm identifier: {0}</value></data>
+  <data name="Code_SectionSavoir" xml:space="preserve"><value>GOOD TO KNOW</value></data>
+  <data name="Code_Savoir1" xml:space="preserve"><value>The shell code does not indicate the laying date: it only identifies the farming method, country and farm.</value></data>
+  <data name="Code_Savoir2" xml:space="preserve"><value>To check freshness, use the date printed on the box (the best-before date) in the Freshness tab. The laying date is 28 days before that date.</value></data>
+  <data name="Code_Savoir3" xml:space="preserve"><value>First digit: 0 for organic, 1 for free range, 2 for barn-raised, 3 for caged.</value></data>
+  <data name="Code_ScanIllisible" xml:space="preserve"><value>Code unreadable. Move closer, position the egg flat and facing the camera, and avoid cast shadows.</value></data>
+  <data name="Code_ScanRelire" xml:space="preserve"><value>Double-check the code before validating: on a shell, 0/O, 1/I and 5/S are easily confused.</value></data>
+
+  <data name="Conseils_Badge" xml:space="preserve"><value>STORAGE</value></data>
+  <data name="Conseils_Titre" xml:space="preserve"><value>🧊 Storing eggs properly</value></data>
+  <data name="Conseils_SectionRegles" xml:space="preserve"><value>THE RULES</value></data>
+  <data name="Conseils_SectionDcrDlc" xml:space="preserve"><value>BEST-BEFORE IS NOT USE-BY</value></data>
+  <data name="Conseils_Dcr1" xml:space="preserve"><value>The date printed on the box is a recommended-consumption date, set at 28 days after laying. It is not a use-by date.</value></data>
+  <data name="Conseils_Dcr2" xml:space="preserve"><value>Past this date, an egg with an intact shell kept refrigerated remains edible for a few more weeks, provided it is cooked thoroughly. At the slightest doubt — smell, cloudy white, cracked shell — throw it away.</value></data>
+  <data name="Conseils_Dcr3" xml:space="preserve"><value>Sale to consumers, however, is banned beyond 21 days after laying, i.e. one week before the best-before date.</value></data>
+  <data name="Conseils_Disclaimer" xml:space="preserve"><value>Sources: EC Regulation No 589/2008 and ANSES recommendations. This app provides guidelines, it does not replace your own judgement.</value></data>
+
+  <data name="Egg_Titre_Future" xml:space="preserve"><value>Date in the future</value></data>
+  <data name="Egg_Titre_ExtraFrais" xml:space="preserve"><value>Extra fresh</value></data>
+  <data name="Egg_Titre_Frais" xml:space="preserve"><value>Fresh</value></data>
+  <data name="Egg_Titre_ApresDcr" xml:space="preserve"><value>Best-before passed</value></data>
+  <data name="Egg_Titre_Douteux" xml:space="preserve"><value>Do not consume</value></data>
+
+  <data name="Egg_Resume_Future" xml:space="preserve"><value>The date you entered is in the future. Check the laying date or the best-before date on the box.</value></data>
+  <data name="Egg_Resume_ExtraFrais" xml:space="preserve"><value>Laid {0} ago. Every use is possible, including raw or lightly cooked. {1} days left before the best-before date.</value></data>
+  <data name="Egg_Resume_Frais" xml:space="preserve"><value>Laid {0} days ago. Still within its recommended consumption period {1}, but preferably eaten well cooked.</value></data>
+  <data name="Egg_Frais_Aujourdhui" xml:space="preserve"><value>— the best-before date is today</value></data>
+  <data name="Egg_Resume_ApresDcr" xml:space="preserve"><value>Laid {0} days ago, {1} past the best-before date. Best-before is not a use-by date: if the shell is intact and the egg was kept refrigerated, it is still edible, but only cooked thoroughly. Do the water glass test first.</value></data>
+  <data name="Egg_Resume_Douteux" xml:space="preserve"><value>Laid {0} days ago. Too old: better to throw it away, even if it looks normal.</value></data>
+
+  <data name="Egg_Conseil_EF_Cru_Usage" xml:space="preserve"><value>Raw (mayonnaise, tiramisu, chocolate mousse)</value></data>
+  <data name="Egg_Conseil_EF_Cru_Detail" xml:space="preserve"><value>Reserved for extra-fresh eggs. Prepare at the last moment, keep refrigerated and eat within 24 hours. Avoid for children, pregnant women, the elderly or immunocompromised people.</value></data>
+  <data name="Egg_Conseil_EF_Coque_Usage" xml:space="preserve"><value>Soft-boiled, medium-boiled, poached</value></data>
+  <data name="Egg_Conseil_EF_Coque_Detail" xml:space="preserve"><value>This is the ideal moment: the white is firm and holds together well.</value></data>
+  <data name="Egg_Conseil_EF_Plat_Usage" xml:space="preserve"><value>Fried, scrambled, omelette</value></data>
+  <data name="Egg_Conseil_EF_Plat_Detail" xml:space="preserve"><value>No restrictions.</value></data>
+  <data name="Egg_Conseil_EF_Dur_Usage" xml:space="preserve"><value>Hard-boiled</value></data>
+  <data name="Egg_Conseil_EF_Dur_Detail" xml:space="preserve"><value>Possible, but a very fresh egg peels poorly. Wait 7 to 10 days for easy peeling.</value></data>
+  <data name="Egg_Conseil_EF_Patisserie_Usage" xml:space="preserve"><value>Baking, oven cooking</value></data>
+  <data name="Egg_Conseil_EF_Patisserie_Detail" xml:space="preserve"><value>No restrictions.</value></data>
+
+  <data name="Egg_Conseil_F_Cru_Usage" xml:space="preserve"><value>Raw (mayonnaise, tiramisu, chocolate mousse)</value></data>
+  <data name="Egg_Conseil_F_Cru_Detail" xml:space="preserve"><value>Not recommended beyond 9 days after laying. Prefer an extra-fresh egg.</value></data>
+  <data name="Egg_Conseil_F_Coque_Usage" xml:space="preserve"><value>Soft-boiled, medium-boiled, poached</value></data>
+  <data name="Egg_Conseil_F_Coque_Detail" xml:space="preserve"><value>Lightly cooked: to avoid. The yolk does not reach a sufficient temperature.</value></data>
+  <data name="Egg_Conseil_F_Plat_Usage" xml:space="preserve"><value>Fried, scrambled, omelette</value></data>
+  <data name="Egg_Conseil_F_Plat_Detail" xml:space="preserve"><value>Yes, cooking the white and yolk thoroughly.</value></data>
+  <data name="Egg_Conseil_F_Dur_Usage" xml:space="preserve"><value>Hard-boiled</value></data>
+  <data name="Egg_Conseil_F_Dur_Detail" xml:space="preserve"><value>Ideal use at this stage, and it peels easily.</value></data>
+  <data name="Egg_Conseil_F_Patisserie_Usage" xml:space="preserve"><value>Baking, oven cooking</value></data>
+  <data name="Egg_Conseil_F_Patisserie_Detail" xml:space="preserve"><value>No restrictions.</value></data>
+
+  <data name="Egg_Conseil_AD_Cru_Usage" xml:space="preserve"><value>Raw or lightly cooked</value></data>
+  <data name="Egg_Conseil_AD_Cru_Detail" xml:space="preserve"><value>Excluded. No raw, soft-boiled, medium-boiled or poached preparation.</value></data>
+  <data name="Egg_Conseil_AD_Dur_Usage" xml:space="preserve"><value>Hard-boiled</value></data>
+  <data name="Egg_Conseil_AD_Dur_Detail" xml:space="preserve"><value>Possible if the water glass test is conclusive. Cook 10 min from boiling point.</value></data>
+  <data name="Egg_Conseil_AD_Cuisson_Usage" xml:space="preserve"><value>Cooked through (cake, quiche, gratin, well-cooked omelette)</value></data>
+  <data name="Egg_Conseil_AD_Cuisson_Detail" xml:space="preserve"><value>The white and yolk must be fully set. Aim for 70 °C (158 °F) at the core.</value></data>
+  <data name="Egg_Conseil_AD_Odeur_Usage" xml:space="preserve"><value>Abnormal smell or appearance</value></data>
+  <data name="Egg_Conseil_AD_Odeur_Detail" xml:space="preserve"><value>Crack the egg into a separate bowl: the slightest sulphurous smell or a cloudy, runny white means throw it away.</value></data>
+
+  <data name="Egg_Conseil_D_Tous_Usage" xml:space="preserve"><value>Any use</value></data>
+  <data name="Egg_Conseil_D_Tous_Detail" xml:space="preserve"><value>Beyond about six weeks after laying, the risk isn't worth the saving. Throw the egg away.</value></data>
+  <data name="Egg_Conseil_D_NeCassez_Usage" xml:space="preserve"><value>Don't crack it over a dish</value></data>
+  <data name="Egg_Conseil_D_NeCassez_Detail" xml:space="preserve"><value>A spoiled egg can contaminate an entire dish.</value></data>
+
+  <data name="Egg_Conservation_1" xml:space="preserve"><value>Never wash eggs: it destroys the shell's protective cuticle.</value></data>
+  <data name="Egg_Conservation_2" xml:space="preserve"><value>Keep them at a constant temperature. An egg taken from the cold then warmed up gets covered in condensation, which helps bacteria get through.</value></data>
+  <data name="Egg_Conservation_3" xml:space="preserve"><value>In the fridge, place them on a shelf rather than in the door, where the temperature fluctuates.</value></data>
+  <data name="Egg_Conservation_4" xml:space="preserve"><value>Store them pointed end down, away from strong-smelling food: the shell is porous.</value></data>
+  <data name="Egg_Conservation_5" xml:space="preserve"><value>Once hard-boiled and peeled, eat them within 2 to 3 days.</value></data>
+
+  <data name="Egg_TestVerre_1" xml:space="preserve"><value>Fill a glass with cold water and drop the egg in.</value></data>
+  <data name="Egg_TestVerre_2" xml:space="preserve"><value>It stays lying on the bottom: very fresh, no concern.</value></data>
+  <data name="Egg_TestVerre_3" xml:space="preserve"><value>It stands upright on the bottom: still edible, but cook it well.</value></data>
+  <data name="Egg_TestVerre_4" xml:space="preserve"><value>It floats: the air pocket is too big, throw it away without opening it.</value></data>
+
+  <data name="ShellCode_Erreur_Vide" xml:space="preserve"><value>Enter the code printed on the shell.</value></data>
+  <data name="ShellCode_Erreur_Format" xml:space="preserve"><value>Code not recognised. Expected format: a digit (0 to 3), the 2-letter country code, then the farm identifier. Example: 3FRABC01.</value></data>
+  <data name="ShellCode_Mode_Bio" xml:space="preserve"><value>Organic</value></data>
+  <data name="ShellCode_Mode_Bio_Detail" xml:space="preserve"><value>Hens raised free range, fed with organic feed, maximum 6 hens per m² indoors and 4 m² of outdoor range per hen.</value></data>
+  <data name="ShellCode_Mode_PleinAir" xml:space="preserve"><value>Free range</value></data>
+  <data name="ShellCode_Mode_PleinAir_Detail" xml:space="preserve"><value>Hens with daytime access to an outdoor range, 4 m² per hen, non-organic feed.</value></data>
+  <data name="ShellCode_Mode_Sol" xml:space="preserve"><value>Barn-raised</value></data>
+  <data name="ShellCode_Mode_Sol_Detail" xml:space="preserve"><value>Hens raised indoors, cage-free but with no outdoor access, up to 9 hens per m².</value></data>
+  <data name="ShellCode_Mode_Cage" xml:space="preserve"><value>Enriched cage / aviary</value></data>
+  <data name="ShellCode_Mode_Cage_Detail" xml:space="preserve"><value>Hens raised in enriched cages, about 750 cm² per hen, with no outdoor access.</value></data>
+  <data name="ShellCode_Pays_FR" xml:space="preserve"><value>France (FR)</value></data>
+  <data name="ShellCode_Pays_BE" xml:space="preserve"><value>Belgium (BE)</value></data>
+  <data name="ShellCode_Pays_DE" xml:space="preserve"><value>Germany (DE)</value></data>
+  <data name="ShellCode_Pays_ES" xml:space="preserve"><value>Spain (ES)</value></data>
+  <data name="ShellCode_Pays_IT" xml:space="preserve"><value>Italy (IT)</value></data>
+  <data name="ShellCode_Pays_NL" xml:space="preserve"><value>Netherlands (NL)</value></data>
+  <data name="ShellCode_Pays_PL" xml:space="preserve"><value>Poland (PL)</value></data>
+  <data name="ShellCode_Pays_PT" xml:space="preserve"><value>Portugal (PT)</value></data>
+  <data name="ShellCode_Pays_LU" xml:space="preserve"><value>Luxembourg (LU)</value></data>
+  <data name="ShellCode_Pays_CH" xml:space="preserve"><value>Switzerland (CH)</value></data>
+
+  <data name="Scan_PermissionRefusee" xml:space="preserve"><value>Camera access was denied. You can allow it in the device settings.</value></data>
+  <data name="Scan_NonSupporte" xml:space="preserve"><value>Neither the camera nor the image picker is available here. Enter the value by hand.</value></data>
+  <data name="Scan_PhotoEchec" xml:space="preserve"><value>The photo could not be obtained: {0}</value></data>
+  <data name="Scan_LectureEchec" xml:space="preserve"><value>The photo could not be read: {0}</value></data>
+  <data name="Scan_OcrEchec" xml:space="preserve"><value>Text recognition failed: {0}</value></data>
+
+  <data name="Settings_Badge" xml:space="preserve"><value>SETTINGS</value></data>
+  <data name="Settings_Titre" xml:space="preserve"><value>⚙️ Settings</value></data>
+  <data name="Settings_SectionLangue" xml:space="preserve"><value>LANGUAGE</value></data>
+  <data name="Settings_LangueSysteme" xml:space="preserve"><value>System</value></data>
+  <data name="Settings_SectionPalette" xml:space="preserve"><value>COLOUR PALETTE</value></data>
+  <data name="Settings_PaletteMiel" xml:space="preserve"><value>Honey</value></data>
+  <data name="Settings_PaletteLagon" xml:space="preserve"><value>Lagoon</value></data>
+  <data name="Settings_PaletteCorail" xml:space="preserve"><value>Coral</value></data>
+  <data name="Settings_SectionTheme" xml:space="preserve"><value>APPEARANCE</value></data>
+  <data name="Settings_ThemeSysteme" xml:space="preserve"><value>System</value></data>
+  <data name="Settings_ThemeClair" xml:space="preserve"><value>Light</value></data>
+  <data name="Settings_ThemeSombre" xml:space="preserve"><value>Dark</value></data>
+</root>

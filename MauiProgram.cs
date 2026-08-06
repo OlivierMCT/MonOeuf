@@ -1,4 +1,3 @@
-using System.Globalization;
 using Microsoft.Extensions.Logging;
 using Plugin.Maui.OCR;
 
@@ -8,11 +7,6 @@ public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
-        // Les dates sont affichées en français quelle que soit la langue du téléphone.
-        var fr = new CultureInfo("fr-FR");
-        CultureInfo.DefaultThreadCurrentCulture = fr;
-        CultureInfo.DefaultThreadCurrentUICulture = fr;
-
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()

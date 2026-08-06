@@ -4,26 +4,26 @@
              xmlns:svc="clr-namespace:OeufFrais.Services"
              x:Class="OeufFrais.ConseilsPage"
              Title="Conserver"
-             BackgroundColor="{StaticResource Coquille}">
+             BackgroundColor="{DynamicResource CouleurFond}">
 
     <ScrollView>
         <VerticalStackLayout Padding="18,14,18,40" Spacing="16">
 
             <VerticalStackLayout Spacing="8">
-                <Border Style="{StaticResource Pastille}" BackgroundColor="{StaticResource Corail}" HorizontalOptions="Start">
-                    <Label Text="CONSERVER" FontSize="12" FontAttributes="Bold" CharacterSpacing="1.2" TextColor="{StaticResource Blanc}" />
+                <Border Style="{StaticResource Pastille}" BackgroundColor="{DynamicResource CouleurAccent}" HorizontalOptions="Start">
+                    <Label Text="{svc:Translate Key=Conseils_Badge}" FontSize="12" FontAttributes="Bold" CharacterSpacing="1.2" TextColor="{DynamicResource CouleurTexte}" />
                 </Border>
-                <Label Text="🧊 Bien conserver ses œufs" Style="{StaticResource Titre}" />
+                <Label Text="{svc:Translate Key=Conseils_Titre}" Style="{StaticResource Titre}" />
             </VerticalStackLayout>
 
             <Border Style="{StaticResource Carte}">
                 <VerticalStackLayout Spacing="12">
-                    <Label Text="LES RÈGLES" Style="{StaticResource TitreSection}" TextColor="{StaticResource CorailFonce}" />
-                    <VerticalStackLayout BindableLayout.ItemsSource="{x:Static svc:EggCalculator.Conservation}" Spacing="10">
+                    <Label Text="{svc:Translate Key=Conseils_SectionRegles}" Style="{StaticResource TitreSection}" TextColor="{DynamicResource CouleurAccentFonce}" />
+                    <VerticalStackLayout x:Name="ListeRegles" Spacing="10">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="x:String">
                                 <Grid ColumnDefinitions="16,*" ColumnSpacing="8">
-                                    <Label Text="•" TextColor="{StaticResource Corail}" FontSize="16" />
+                                    <Label Text="•" TextColor="{DynamicResource CouleurAccent}" FontSize="16" />
                                     <Label Grid.Column="1" Text="{Binding .}" Style="{StaticResource Corps}" FontSize="14" />
                                 </Grid>
                             </DataTemplate>
@@ -34,12 +34,12 @@
 
             <Border Style="{StaticResource Carte}">
                 <VerticalStackLayout Spacing="12">
-                    <Label Text="LE TEST DU VERRE D'EAU" Style="{StaticResource TitreSection}" TextColor="{StaticResource CorailFonce}" />
-                    <VerticalStackLayout BindableLayout.ItemsSource="{x:Static svc:EggCalculator.TestVerreDEau}" Spacing="10">
+                    <Label Text="{svc:Translate Key=Common_SectionTestVerre}" Style="{StaticResource TitreSection}" TextColor="{DynamicResource CouleurAccentFonce}" />
+                    <VerticalStackLayout x:Name="ListeTestVerre" Spacing="10">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="x:String">
                                 <Grid ColumnDefinitions="16,*" ColumnSpacing="8">
-                                    <Label Text="•" TextColor="{StaticResource Corail}" FontSize="16" />
+                                    <Label Text="•" TextColor="{DynamicResource CouleurAccent}" FontSize="16" />
                                     <Label Grid.Column="1" Text="{Binding .}" Style="{StaticResource Corps}" FontSize="14" />
                                 </Grid>
                             </DataTemplate>
@@ -50,18 +50,18 @@
 
             <Border Style="{StaticResource Carte}">
                 <VerticalStackLayout Spacing="10">
-                    <Label Text="DCR N'EST PAS DLC" Style="{StaticResource TitreSection}" TextColor="{StaticResource CorailFonce}" />
+                    <Label Text="{svc:Translate Key=Conseils_SectionDcrDlc}" Style="{StaticResource TitreSection}" TextColor="{DynamicResource CouleurAccentFonce}" />
                     <Label Style="{StaticResource Corps}" FontSize="14"
-                           Text="La date imprimée sur la boîte est une date de consommation recommandée, fixée à 28 jours après la ponte. Ce n'est pas une date limite de consommation." />
+                           Text="{svc:Translate Key=Conseils_Dcr1}" />
                     <Label Style="{StaticResource Corps}" FontSize="14"
-                           Text="Passée cette date, un œuf à la coquille intacte et conservé au frais reste consommable quelques semaines, à condition d'être cuit à cœur. Au moindre doute — odeur, blanc trouble, coquille fêlée — jetez-le." />
+                           Text="{svc:Translate Key=Conseils_Dcr2}" />
                     <Label Style="{StaticResource Corps}" FontSize="14"
-                           Text="La vente au consommateur, elle, est interdite au-delà de 21 jours après la ponte, soit une semaine avant la DCR." />
+                           Text="{svc:Translate Key=Conseils_Dcr3}" />
                 </VerticalStackLayout>
             </Border>
 
-            <Label FontSize="12" LineHeight="1.35" TextColor="{StaticResource EncreDouce}"
-                   Text="Sources : règlement (CE) n° 589/2008 et recommandations de l'ANSES. Cette application donne des repères, elle ne remplace pas votre jugement." />
+            <Label FontSize="12" LineHeight="1.35" TextColor="{DynamicResource CouleurTexteDouce}"
+                   Text="{svc:Translate Key=Conseils_Disclaimer}" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

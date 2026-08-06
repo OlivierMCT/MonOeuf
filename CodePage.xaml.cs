@@ -4,6 +4,8 @@ namespace OeufFrais;
 
 public partial class CodePage : ContentPage
 {
+    private static LocalizationResourceManager Loc => LocalizationResourceManager.Instance;
+
     public CodePage()
     {
         InitializeComponent();
@@ -35,9 +37,8 @@ public partial class CodePage : ContentPage
 
     private async void OnScannerCoquille(object sender, EventArgs e)
     {
-        var libelle = BtnScan.Text;
         BtnScan.IsEnabled = false;
-        BtnScan.Text = "Lecture en cours…";
+        RebinderTexte(BtnScan, "Common_LectureEnCours");
 
         try
         {
@@ -47,7 +48,7 @@ public partial class CodePage : ContentPage
             if (!scan.Succes)
             {
                 if (scan.Message is not null)
-                    await DisplayAlertAsync("Scan impossible", scan.Message, "Fermer");
+                    await DisplayAlertAsync(Loc.GetString("Common_ScanImpossible"), scan.Message, Loc.GetString("Common_Fermer"));
                 return;
             }
 
@@ -55,20 +56,23 @@ public partial class CodePage : ContentPage
 
             if (code is null)
             {
-                Message("Code illisible. Approchez-vous, orientez l'œuf pour que le code soit bien à plat face à l'objectif et évitez les ombres portées.");
+                Message(Loc.GetString("Code_ScanIllisible"));
                 return;
             }
 
             TxtCode.Text = code;
-            Message("Relisez le code avant de valider : sur une coquille, les confusions 0/O, 1/I et 5/S sont fréquentes.");
+            Message(Loc.GetString("Code_ScanRelire"));
             OnDecoder(this, EventArgs.Empty);
         }
         finally
         {
-            BtnScan.Text = libelle;
+            RebinderTexte(BtnScan, "Code_BoutonScan");
             BtnScan.IsEnabled = true;
         }
     }
+
+    private static void RebinderTexte(Button bouton, string cle)
+        => bouton.SetBinding(Button.TextProperty, new Binding($"[{cle}]", source: Loc));
 
     private void Message(string texte)
     {

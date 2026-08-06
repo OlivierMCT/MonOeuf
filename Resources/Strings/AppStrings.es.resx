@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="Common_Calculer" xml:space="preserve"><value>Calcular</value></data>
+  <data name="Common_LectureEnCours" xml:space="preserve"><value>Leyendo…</value></data>
+  <data name="Common_ScanImpossible" xml:space="preserve"><value>Escaneo fallido</value></data>
+  <data name="Common_Fermer" xml:space="preserve"><value>Cerrar</value></data>
+  <data name="Common_Annuler" xml:space="preserve"><value>Cancelar</value></data>
+  <data name="Common_Jour_Un" xml:space="preserve"><value>{0} día</value></data>
+  <data name="Common_Jour_Plusieurs" xml:space="preserve"><value>{0} días</value></data>
+  <data name="Common_JourRestant_Un" xml:space="preserve"><value>(queda {0} día)</value></data>
+  <data name="Common_JourRestant_Plusieurs" xml:space="preserve"><value>(quedan {0} días)</value></data>
+  <data name="Common_SectionTestVerre" xml:space="preserve"><value>LA PRUEBA DEL VASO DE AGUA</value></data>
+
+  <data name="Shell_Title" xml:space="preserve"><value>Huevo Fresco</value></data>
+  <data name="Shell_TabFraicheur" xml:space="preserve"><value>Frescura</value></data>
+  <data name="Shell_TabCode" xml:space="preserve"><value>Código de la cáscara</value></data>
+  <data name="Shell_TabConserver" xml:space="preserve"><value>Conservación</value></data>
+  <data name="Shell_TabReglages" xml:space="preserve"><value>Ajustes</value></data>
+
+  <data name="Main_Badge" xml:space="preserve"><value>FRESCURA</value></data>
+  <data name="Main_Titre" xml:space="preserve"><value>🥚 ¿Este huevo sigue siendo bueno?</value></data>
+  <data name="Main_SectionConnais" xml:space="preserve"><value>CONOZCO</value></data>
+  <data name="Main_ChipPonte" xml:space="preserve"><value>Fecha de puesta</value></data>
+  <data name="Main_ChipDcr" xml:space="preserve"><value>Fecha en la caja (fecha de duración)</value></data>
+  <data name="Main_Aide_Ponte" xml:space="preserve"><value>La fecha de puesta a veces aparece en la caja. Si no, reste 28 días a la fecha de duración.</value></data>
+  <data name="Main_Aide_Dcr" xml:space="preserve"><value>La fecha "consumir preferentemente antes de" impresa en la caja equivale a la puesta más 28 días.</value></data>
+  <data name="Main_BoutonScan" xml:space="preserve"><value>📷  Leer la fecha en la caja</value></data>
+  <data name="Main_ScanAucuneDate" xml:space="preserve"><value>No se ha leído ninguna fecha en la foto. Encuadre la mención "consumir preferentemente antes de", en plano y bien iluminada, o introduzca la fecha manualmente.</value></data>
+  <data name="Main_ScanQuelleDcr" xml:space="preserve"><value>¿Cuál es la fecha de duración?</value></data>
+  <data name="Main_ScanDateLue" xml:space="preserve"><value>Fecha leída: {0}. Compruébela antes de calcular.</value></data>
+  <data name="Main_SectionDates" xml:space="preserve"><value>FECHAS CLAVE</value></data>
+  <data name="Main_LabelPonte" xml:space="preserve"><value>Puesta</value></data>
+  <data name="Main_LabelAge" xml:space="preserve"><value>Edad hoy</value></data>
+  <data name="Main_LabelFinExtraFrais" xml:space="preserve"><value>Fin de extra fresco (día 9)</value></data>
+  <data name="Main_LabelDcr" xml:space="preserve"><value>Fecha de duración, en la caja (día 28)</value></data>
+  <data name="Main_LabelPrudence" xml:space="preserve"><value>Límite de prudencia (fecha de duración + 14)</value></data>
+  <data name="Main_SectionUsages" xml:space="preserve"><value>QUÉ PUEDE HACER CON ÉL</value></data>
+  <data name="Main_Disclaimer" xml:space="preserve"><value>Referencias basadas en el Reglamento (CE) n.º 589/2008 y las recomendaciones de la ANSES. Ante cualquier duda sobre el aspecto o el olor de un huevo, deséchelo.</value></data>
+
+  <data name="Code_Badge" xml:space="preserve"><value>CÓDIGO DE LA CÁSCARA</value></data>
+  <data name="Code_Titre" xml:space="preserve"><value>🔎 El código de la cáscara</value></data>
+  <data name="Code_SectionSaisir" xml:space="preserve"><value>INTRODUCIR EL CÓDIGO</value></data>
+  <data name="Code_Placeholder" xml:space="preserve"><value>Ejemplo: 3FRABC01</value></data>
+  <data name="Code_BoutonScan" xml:space="preserve"><value>📷  Fotografiar el huevo</value></data>
+  <data name="Code_BoutonDecoder" xml:space="preserve"><value>Descodificar</value></data>
+  <data name="Code_LabelMode" xml:space="preserve"><value>Modo de cría</value></data>
+  <data name="Code_LabelPays" xml:space="preserve"><value>País de origen</value></data>
+  <data name="Code_LabelIdentifiant" xml:space="preserve"><value>Identificador de la granja: {0}</value></data>
+  <data name="Code_SectionSavoir" xml:space="preserve"><value>A TENER EN CUENTA</value></data>
+  <data name="Code_Savoir1" xml:space="preserve"><value>El código de la cáscara no indica la fecha de puesta: solo identifica el modo de cría, el país y la explotación.</value></data>
+  <data name="Code_Savoir2" xml:space="preserve"><value>Para conocer la frescura, use la fecha impresa en la caja (la fecha de duración) en la pestaña Frescura. La puesta se remonta a 28 días antes de esa fecha.</value></data>
+  <data name="Code_Savoir3" xml:space="preserve"><value>Primer dígito: 0 para ecológico, 1 para al aire libre, 2 para suelo, 3 para jaula acondicionada.</value></data>
+  <data name="Code_ScanIllisible" xml:space="preserve"><value>Código ilegible. Acérquese, oriente el huevo para que el código quede plano frente al objetivo y evite las sombras.</value></data>
+  <data name="Code_ScanRelire" xml:space="preserve"><value>Vuelva a comprobar el código antes de validarlo: en una cáscara, las confusiones 0/O, 1/I y 5/S son frecuentes.</value></data>
+
+  <data name="Conseils_Badge" xml:space="preserve"><value>CONSERVACIÓN</value></data>
+  <data name="Conseils_Titre" xml:space="preserve"><value>🧊 Conservar bien los huevos</value></data>
+  <data name="Conseils_SectionRegles" xml:space="preserve"><value>LAS REGLAS</value></data>
+  <data name="Conseils_SectionDcrDlc" xml:space="preserve"><value>LA FECHA DE DURACIÓN NO ES UNA FECHA DE CADUCIDAD</value></data>
+  <data name="Conseils_Dcr1" xml:space="preserve"><value>La fecha impresa en la caja es una fecha de consumo recomendado, fijada en 28 días tras la puesta. No es una fecha límite de consumo.</value></data>
+  <data name="Conseils_Dcr2" xml:space="preserve"><value>Pasada esta fecha, un huevo con la cáscara intacta y conservado en frío sigue siendo consumible durante algunas semanas, siempre que se cocine completamente. Ante la menor duda —olor, clara turbia, cáscara agrietada— deséchelo.</value></data>
+  <data name="Conseils_Dcr3" xml:space="preserve"><value>La venta al consumidor, en cambio, está prohibida más allá de 21 días tras la puesta, es decir, una semana antes de la fecha de duración.</value></data>
+  <data name="Conseils_Disclaimer" xml:space="preserve"><value>Fuentes: Reglamento (CE) n.º 589/2008 y recomendaciones de la ANSES. Esta aplicación ofrece referencias, no sustituye su propio criterio.</value></data>
+
+  <data name="Egg_Titre_Future" xml:space="preserve"><value>Fecha futura</value></data>
+  <data name="Egg_Titre_ExtraFrais" xml:space="preserve"><value>Extra fresco</value></data>
+  <data name="Egg_Titre_Frais" xml:space="preserve"><value>Fresco</value></data>
+  <data name="Egg_Titre_ApresDcr" xml:space="preserve"><value>Fecha de duración superada</value></data>
+  <data name="Egg_Titre_Douteux" xml:space="preserve"><value>No consumir</value></data>
+
+  <data name="Egg_Resume_Future" xml:space="preserve"><value>La fecha introducida está en el futuro. Compruebe la fecha de puesta o la fecha de duración indicada en la caja.</value></data>
+  <data name="Egg_Resume_ExtraFrais" xml:space="preserve"><value>Puesto hace {0}. Todos los usos son posibles, incluido crudo o poco cocido. Quedan {1} días antes de la fecha de duración.</value></data>
+  <data name="Egg_Resume_Frais" xml:space="preserve"><value>Puesto hace {0} días. Sigue dentro de su periodo de consumo recomendado {1}, pero conviene consumirlo bien cocido.</value></data>
+  <data name="Egg_Frais_Aujourdhui" xml:space="preserve"><value>— la fecha de duración es hoy mismo</value></data>
+  <data name="Egg_Resume_ApresDcr" xml:space="preserve"><value>Puesto hace {0} días, es decir {1} después de la fecha de duración. La fecha de duración no es una fecha de caducidad: si la cáscara está intacta y el huevo se ha mantenido en frío, sigue siendo consumible, pero solo bien cocido. Haga primero la prueba del vaso de agua.</value></data>
+  <data name="Egg_Resume_Douteux" xml:space="preserve"><value>Puesto hace {0} días. Demasiado viejo: mejor desecharlo, aunque parezca normal.</value></data>
+
+  <data name="Egg_Conseil_EF_Cru_Usage" xml:space="preserve"><value>Crudo (mayonesa, tiramisú, mousse de chocolate)</value></data>
+  <data name="Egg_Conseil_EF_Cru_Detail" xml:space="preserve"><value>Reservado a huevos extra frescos. Prepare en el último momento, mantenga en el refrigerador y consuma en 24 h. Evitar en niños, embarazadas, personas mayores o inmunodeprimidas.</value></data>
+  <data name="Egg_Conseil_EF_Coque_Usage" xml:space="preserve"><value>Pasado por agua, mollet, escalfado</value></data>
+  <data name="Egg_Conseil_EF_Coque_Detail" xml:space="preserve"><value>Es el momento ideal: la clara está firme y se mantiene bien.</value></data>
+  <data name="Egg_Conseil_EF_Plat_Usage" xml:space="preserve"><value>Frito, revuelto, tortilla</value></data>
+  <data name="Egg_Conseil_EF_Plat_Detail" xml:space="preserve"><value>Sin restricciones.</value></data>
+  <data name="Egg_Conseil_EF_Dur_Usage" xml:space="preserve"><value>Huevo duro</value></data>
+  <data name="Egg_Conseil_EF_Dur_Detail" xml:space="preserve"><value>Posible, pero un huevo muy fresco se pela mal. Espere de 7 a 10 días para pelarlo fácilmente.</value></data>
+  <data name="Egg_Conseil_EF_Patisserie_Usage" xml:space="preserve"><value>Repostería, cocción al horno</value></data>
+  <data name="Egg_Conseil_EF_Patisserie_Detail" xml:space="preserve"><value>Sin restricciones.</value></data>
+
+  <data name="Egg_Conseil_F_Cru_Usage" xml:space="preserve"><value>Crudo (mayonesa, tiramisú, mousse de chocolate)</value></data>
+  <data name="Egg_Conseil_F_Cru_Detail" xml:space="preserve"><value>No recomendado más allá de 9 días tras la puesta. Prefiera un huevo extra fresco.</value></data>
+  <data name="Egg_Conseil_F_Coque_Usage" xml:space="preserve"><value>Pasado por agua, mollet, escalfado</value></data>
+  <data name="Egg_Conseil_F_Coque_Detail" xml:space="preserve"><value>Poco cocido: a evitar. La yema no alcanza una temperatura suficiente.</value></data>
+  <data name="Egg_Conseil_F_Plat_Usage" xml:space="preserve"><value>Frito, revuelto, tortilla</value></data>
+  <data name="Egg_Conseil_F_Plat_Detail" xml:space="preserve"><value>Sí, cociendo bien la clara y la yema.</value></data>
+  <data name="Egg_Conseil_F_Dur_Usage" xml:space="preserve"><value>Huevo duro</value></data>
+  <data name="Egg_Conseil_F_Dur_Detail" xml:space="preserve"><value>Uso ideal en esta etapa, y se pela fácilmente.</value></data>
+  <data name="Egg_Conseil_F_Patisserie_Usage" xml:space="preserve"><value>Repostería, cocción al horno</value></data>
+  <data name="Egg_Conseil_F_Patisserie_Detail" xml:space="preserve"><value>Sin restricciones.</value></data>
+
+  <data name="Egg_Conseil_AD_Cru_Usage" xml:space="preserve"><value>Crudo o poco cocido</value></data>
+  <data name="Egg_Conseil_AD_Cru_Detail" xml:space="preserve"><value>Excluido. Ninguna preparación cruda, pasada por agua, mollet o escalfada.</value></data>
+  <data name="Egg_Conseil_AD_Dur_Usage" xml:space="preserve"><value>Huevo duro</value></data>
+  <data name="Egg_Conseil_AD_Dur_Detail" xml:space="preserve"><value>Posible si la prueba del vaso de agua es concluyente. Cocción de 10 min desde el hervor.</value></data>
+  <data name="Egg_Conseil_AD_Cuisson_Usage" xml:space="preserve"><value>Bien cocido por dentro (bizcocho, quiche, gratinado, tortilla bien cuajada)</value></data>
+  <data name="Egg_Conseil_AD_Cuisson_Detail" xml:space="preserve"><value>La clara y la yema deben estar totalmente cuajadas. Apunte a 70 °C en el centro.</value></data>
+  <data name="Egg_Conseil_AD_Odeur_Usage" xml:space="preserve"><value>Olor o aspecto anormal</value></data>
+  <data name="Egg_Conseil_AD_Odeur_Detail" xml:space="preserve"><value>Rompa el huevo en un bol aparte: el menor olor a azufre o una clara turbia y líquida significa desecharlo.</value></data>
+
+  <data name="Egg_Conseil_D_Tous_Usage" xml:space="preserve"><value>Cualquier uso</value></data>
+  <data name="Egg_Conseil_D_Tous_Detail" xml:space="preserve"><value>Más allá de unas seis semanas tras la puesta, el riesgo no compensa el ahorro. Deseche el huevo.</value></data>
+  <data name="Egg_Conseil_D_NeCassez_Usage" xml:space="preserve"><value>No lo rompa directamente sobre un plato</value></data>
+  <data name="Egg_Conseil_D_NeCassez_Detail" xml:space="preserve"><value>Un huevo en mal estado puede contaminar toda una preparación.</value></data>
+
+  <data name="Egg_Conservation_1" xml:space="preserve"><value>Nunca lave los huevos: destruye la cutícula protectora de la cáscara.</value></data>
+  <data name="Egg_Conservation_2" xml:space="preserve"><value>Manténgalos a temperatura constante. Un huevo sacado del frío y recalentado se cubre de condensación, lo que facilita el paso de bacterias.</value></data>
+  <data name="Egg_Conservation_3" xml:space="preserve"><value>En el refrigerador, colóquelos en una balda en lugar de en la puerta, donde la temperatura varía.</value></data>
+  <data name="Egg_Conservation_4" xml:space="preserve"><value>Guárdelos con la punta hacia abajo, lejos de alimentos olorosos: la cáscara es porosa.</value></data>
+  <data name="Egg_Conservation_5" xml:space="preserve"><value>Una vez cocidos y pelados, consúmalos en un plazo de 2 a 3 días.</value></data>
+
+  <data name="Egg_TestVerre_1" xml:space="preserve"><value>Llene un vaso con agua fría y sumerja el huevo.</value></data>
+  <data name="Egg_TestVerre_2" xml:space="preserve"><value>Permanece tumbado en el fondo: muy fresco, sin problema.</value></data>
+  <data name="Egg_TestVerre_3" xml:space="preserve"><value>Se pone en vertical en el fondo: aún consumible, pero bien cocido.</value></data>
+  <data name="Egg_TestVerre_4" xml:space="preserve"><value>Flota: la cámara de aire es demasiado grande, deséchelo sin abrirlo.</value></data>
+
+  <data name="ShellCode_Erreur_Vide" xml:space="preserve"><value>Introduzca el código impreso en la cáscara.</value></data>
+  <data name="ShellCode_Erreur_Format" xml:space="preserve"><value>Código no reconocido. Formato esperado: un dígito (0 a 3), el código de país de 2 letras y el identificador de la granja. Ejemplo: 3FRABC01.</value></data>
+  <data name="ShellCode_Mode_Bio" xml:space="preserve"><value>Ecológico</value></data>
+  <data name="ShellCode_Mode_Bio_Detail" xml:space="preserve"><value>Gallinas criadas al aire libre, alimentación procedente de la agricultura ecológica, máximo 6 gallinas por m² en el gallinero y 4 m² de espacio exterior por gallina.</value></data>
+  <data name="ShellCode_Mode_PleinAir" xml:space="preserve"><value>Al aire libre</value></data>
+  <data name="ShellCode_Mode_PleinAir_Detail" xml:space="preserve"><value>Gallinas con acceso diurno a un espacio exterior, 4 m² por gallina, alimentación no ecológica.</value></data>
+  <data name="ShellCode_Mode_Sol" xml:space="preserve"><value>En el suelo</value></data>
+  <data name="ShellCode_Mode_Sol_Detail" xml:space="preserve"><value>Gallinas criadas en el gallinero, sin jaula pero sin acceso al exterior, hasta 9 gallinas por m².</value></data>
+  <data name="ShellCode_Mode_Cage" xml:space="preserve"><value>Jaula / pajarera acondicionada</value></data>
+  <data name="ShellCode_Mode_Cage_Detail" xml:space="preserve"><value>Gallinas criadas en jaulas acondicionadas, unos 750 cm² por gallina, sin acceso al exterior.</value></data>
+  <data name="ShellCode_Pays_FR" xml:space="preserve"><value>Francia (FR)</value></data>
+  <data name="ShellCode_Pays_BE" xml:space="preserve"><value>Bélgica (BE)</value></data>
+  <data name="ShellCode_Pays_DE" xml:space="preserve"><value>Alemania (DE)</value></data>
+  <data name="ShellCode_Pays_ES" xml:space="preserve"><value>España (ES)</value></data>
+  <data name="ShellCode_Pays_IT" xml:space="preserve"><value>Italia (IT)</value></data>
+  <data name="ShellCode_Pays_NL" xml:space="preserve"><value>Países Bajos (NL)</value></data>
+  <data name="ShellCode_Pays_PL" xml:space="preserve"><value>Polonia (PL)</value></data>
+  <data name="ShellCode_Pays_PT" xml:space="preserve"><value>Portugal (PT)</value></data>
+  <data name="ShellCode_Pays_LU" xml:space="preserve"><value>Luxemburgo (LU)</value></data>
+  <data name="ShellCode_Pays_CH" xml:space="preserve"><value>Suiza (CH)</value></data>
+
+  <data name="Scan_PermissionRefusee" xml:space="preserve"><value>Se ha denegado el acceso a la cámara. Puede autorizarlo en los ajustes del dispositivo.</value></data>
+  <data name="Scan_NonSupporte" xml:space="preserve"><value>Ni la cámara ni el selector de imágenes están disponibles aquí. Introduzca el valor manualmente.</value></data>
+  <data name="Scan_PhotoEchec" xml:space="preserve"><value>No se ha podido obtener la foto: {0}</value></data>
+  <data name="Scan_LectureEchec" xml:space="preserve"><value>No se ha podido leer la foto: {0}</value></data>
+  <data name="Scan_OcrEchec" xml:space="preserve"><value>El reconocimiento de texto ha fallado: {0}</value></data>
+
+  <data name="Settings_Badge" xml:space="preserve"><value>AJUSTES</value></data>
+  <data name="Settings_Titre" xml:space="preserve"><value>⚙️ Ajustes</value></data>
+  <data name="Settings_SectionLangue" xml:space="preserve"><value>IDIOMA</value></data>
+  <data name="Settings_LangueSysteme" xml:space="preserve"><value>Sistema</value></data>
+  <data name="Settings_SectionPalette" xml:space="preserve"><value>PALETA DE COLORES</value></data>
+  <data name="Settings_PaletteMiel" xml:space="preserve"><value>Miel</value></data>
+  <data name="Settings_PaletteLagon" xml:space="preserve"><value>Laguna</value></data>
+  <data name="Settings_PaletteCorail" xml:space="preserve"><value>Coral</value></data>
+  <data name="Settings_SectionTheme" xml:space="preserve"><value>APARIENCIA</value></data>
+  <data name="Settings_ThemeSysteme" xml:space="preserve"><value>Sistema</value></data>
+  <data name="Settings_ThemeClair" xml:space="preserve"><value>Claro</value></data>
+  <data name="Settings_ThemeSombre" xml:space="preserve"><value>Oscuro</value></data>
+</root>

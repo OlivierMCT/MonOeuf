@@ -18,6 +18,8 @@ public enum Freshness
 /// </summary>
 public sealed class EggAssessment
 {
+    private static LocalizationResourceManager Loc => LocalizationResourceManager.Instance;
+
     public DateTime DatePonte { get; init; }
     public DateTime FinExtraFrais { get; init; }   // ponte + 9 j
     public DateTime LimiteVente { get; init; }     // ponte + 21 j
@@ -41,12 +43,12 @@ public sealed class EggAssessment
     // Propriétés d'affichage, utilisées directement par les bindings XAML.
     public Color CouleurStatut => Color.FromArgb(CouleurHex);
     public Color CouleurStatutClaire => CouleurStatut.WithAlpha(0.16f);
-    public string PonteTexte => DatePonte.ToString("dddd d MMMM yyyy");
-    public string ExtraFraisTexte => FinExtraFrais.ToString("d MMMM yyyy");
-    public string VenteTexte => LimiteVente.ToString("d MMMM yyyy");
-    public string DcrTexte => Dcr.ToString("d MMMM yyyy");
-    public string PrudenceTexte => LimitePrudence.ToString("d MMMM yyyy");
-    public string AgeTexte => AgeJours < 0 ? "—" : $"{AgeJours} jour{(AgeJours > 1 ? "s" : "")}";
+    public string PonteTexte => DatePonte.ToString("dddd d MMMM yyyy", Loc.Culture);
+    public string ExtraFraisTexte => FinExtraFrais.ToString("d MMMM yyyy", Loc.Culture);
+    public string VenteTexte => LimiteVente.ToString("d MMMM yyyy", Loc.Culture);
+    public string DcrTexte => Dcr.ToString("d MMMM yyyy", Loc.Culture);
+    public string PrudenceTexte => LimitePrudence.ToString("d MMMM yyyy", Loc.Culture);
+    public string AgeTexte => AgeJours < 0 ? "—" : Loc.Plural("Common_Jour_Un", "Common_Jour_Plusieurs", AgeJours);
 }
 
 public sealed record UsageConseil(string Usage, bool Autorise, string Detail)
@@ -67,6 +69,8 @@ public sealed record UsageConseil(string Usage, bool Autorise, string Detail)
 /// </summary>
 public static class EggCalculator
 {
+    private static LocalizationResourceManager Loc => LocalizationResourceManager.Instance;
+
     public const int JoursExtraFrais = 9;
     public const int JoursLimiteVente = 21;
     public const int JoursDcr = 28;
@@ -84,6 +88,7 @@ public static class EggCalculator
     {
         var age = (int)(today - ponte).TotalDays;
         var dcr = ponte.AddDays(JoursDcr);
+        var joursAvantDcr = (int)(dcr - today).TotalDays;
 
         var statut = age switch
         {
@@ -102,10 +107,10 @@ public static class EggCalculator
             Dcr = dcr,
             LimitePrudence = dcr.AddDays(JoursApresDcr),
             AgeJours = age,
-            JoursAvantDcr = (int)(dcr - today).TotalDays,
+            JoursAvantDcr = joursAvantDcr,
             Statut = statut,
             Titre = Titre(statut),
-            Resume = Resume(statut, age, (int)(dcr - today).TotalDays),
+            Resume = Resume(statut, age, joursAvantDcr),
             CouleurHex = Couleur(statut),
             Conseils = Conseils(statut),
             TestVerreDEauRecommande = statut is Freshness.ApresDcr or Freshness.Douteux
@@ -114,11 +119,11 @@ public static class EggCalculator
 
     private static string Titre(Freshness s) => s switch
     {
-        Freshness.Future => "Date à venir",
-        Freshness.ExtraFrais => "Extra frais",
-        Freshness.Frais => "Frais",
-        Freshness.ApresDcr => "DCR dépassée",
-        _ => "À ne plus consommer"
+        Freshness.Future => Loc.GetString("Egg_Titre_Future"),
+        Freshness.ExtraFrais => Loc.GetString("Egg_Titre_ExtraFrais"),
+        Freshness.Frais => Loc.GetString("Egg_Titre_Frais"),
+        Freshness.ApresDcr => Loc.GetString("Egg_Titre_ApresDcr"),
+        _ => Loc.GetString("Egg_Titre_Douteux")
     };
 
     private static string Couleur(Freshness s) => s switch
@@ -132,23 +137,21 @@ public static class EggCalculator
 
     private static string Resume(Freshness s, int age, int joursAvantDcr) => s switch
     {
-        Freshness.Future =>
-            "La date saisie est dans le futur. Vérifiez la date de ponte ou la DCR indiquée sur la boîte.",
-        Freshness.ExtraFrais =>
-            $"Pondu il y a {age} jour{(age > 1 ? "s" : "")}. Tous les usages sont possibles, y compris cru " +
-            $"ou peu cuit. Encore {joursAvantDcr} jours avant la DCR.",
-        Freshness.Frais =>
-            $"Pondu il y a {age} jours. Toujours dans sa période de consommation recommandée " +
-            (joursAvantDcr == 0
-                ? "— la DCR tombe aujourd'hui même"
-                : $"({joursAvantDcr} jour{(joursAvantDcr > 1 ? "s" : "")} restant{(joursAvantDcr > 1 ? "s" : "")})") +
-            ", mais à consommer bien cuit de préférence.",
-        Freshness.ApresDcr =>
-            $"Pondu il y a {age} jours, soit {-joursAvantDcr} jour{(-joursAvantDcr > 1 ? "s" : "")} après la DCR. " +
-            "La DCR n'est pas une DLC : si la coquille est intacte et l'œuf resté au frais, il est encore " +
-            "consommable, mais uniquement cuit à cœur. Faites le test du verre d'eau avant.",
-        _ =>
-            $"Pondu il y a {age} jours. Trop ancien : il vaut mieux le jeter, même s'il paraît normal."
+        Freshness.Future => Loc.GetString("Egg_Resume_Future"),
+
+        Freshness.ExtraFrais => Loc.GetString("Egg_Resume_ExtraFrais",
+            Loc.Plural("Common_Jour_Un", "Common_Jour_Plusieurs", age),
+            joursAvantDcr),
+
+        Freshness.Frais => Loc.GetString("Egg_Resume_Frais", age,
+            joursAvantDcr == 0
+                ? Loc.GetString("Egg_Frais_Aujourdhui")
+                : Loc.Plural("Common_JourRestant_Un", "Common_JourRestant_Plusieurs", joursAvantDcr)),
+
+        Freshness.ApresDcr => Loc.GetString("Egg_Resume_ApresDcr", age,
+            Loc.Plural("Common_Jour_Un", "Common_Jour_Plusieurs", -joursAvantDcr)),
+
+        _ => Loc.GetString("Egg_Resume_Douteux", age)
     };
 
     private static IReadOnlyList<UsageConseil> Conseils(Freshness s) => s switch
@@ -157,64 +160,53 @@ public static class EggCalculator
 
         Freshness.ExtraFrais => new[]
         {
-            new UsageConseil("Cru (mayonnaise, tiramisu, mousse au chocolat)", true,
-                "Réservé aux œufs extra frais. Préparez au dernier moment, gardez au réfrigérateur et consommez dans les 24 h. À éviter pour les enfants, femmes enceintes, personnes âgées ou immunodéprimées."),
-            new UsageConseil("Œuf à la coque, mollet, poché", true,
-                "C'est le moment idéal : le blanc est ferme et se tient bien."),
-            new UsageConseil("Au plat, brouillé, omelette", true, "Aucune restriction."),
-            new UsageConseil("Œuf dur", true,
-                "Possible, mais un œuf très frais s'écale mal. Attendez 7 à 10 jours pour un épluchage facile."),
-            new UsageConseil("Pâtisserie, cuisson au four", true, "Aucune restriction.")
+            new UsageConseil(Loc.GetString("Egg_Conseil_EF_Cru_Usage"), true, Loc.GetString("Egg_Conseil_EF_Cru_Detail")),
+            new UsageConseil(Loc.GetString("Egg_Conseil_EF_Coque_Usage"), true, Loc.GetString("Egg_Conseil_EF_Coque_Detail")),
+            new UsageConseil(Loc.GetString("Egg_Conseil_EF_Plat_Usage"), true, Loc.GetString("Egg_Conseil_EF_Plat_Detail")),
+            new UsageConseil(Loc.GetString("Egg_Conseil_EF_Dur_Usage"), true, Loc.GetString("Egg_Conseil_EF_Dur_Detail")),
+            new UsageConseil(Loc.GetString("Egg_Conseil_EF_Patisserie_Usage"), true, Loc.GetString("Egg_Conseil_EF_Patisserie_Detail"))
         },
 
         Freshness.Frais => new[]
         {
-            new UsageConseil("Cru (mayonnaise, tiramisu, mousse au chocolat)", false,
-                "Déconseillé au-delà de 9 jours après la ponte. Préférez un œuf extra frais."),
-            new UsageConseil("Œuf à la coque, mollet, poché", false,
-                "Peu cuit : à éviter. Le jaune n'atteint pas une température suffisante."),
-            new UsageConseil("Au plat, brouillé, omelette", true,
-                "Oui, en cuisant bien le blanc et le jaune."),
-            new UsageConseil("Œuf dur", true, "Usage idéal à ce stade, et il s'écale facilement."),
-            new UsageConseil("Pâtisserie, cuisson au four", true, "Aucune restriction.")
+            new UsageConseil(Loc.GetString("Egg_Conseil_F_Cru_Usage"), false, Loc.GetString("Egg_Conseil_F_Cru_Detail")),
+            new UsageConseil(Loc.GetString("Egg_Conseil_F_Coque_Usage"), false, Loc.GetString("Egg_Conseil_F_Coque_Detail")),
+            new UsageConseil(Loc.GetString("Egg_Conseil_F_Plat_Usage"), true, Loc.GetString("Egg_Conseil_F_Plat_Detail")),
+            new UsageConseil(Loc.GetString("Egg_Conseil_F_Dur_Usage"), true, Loc.GetString("Egg_Conseil_F_Dur_Detail")),
+            new UsageConseil(Loc.GetString("Egg_Conseil_F_Patisserie_Usage"), true, Loc.GetString("Egg_Conseil_F_Patisserie_Detail"))
         },
 
         Freshness.ApresDcr => new[]
         {
-            new UsageConseil("Cru ou peu cuit", false, "Exclu. Aucune préparation crue, à la coque, molle ou pochée."),
-            new UsageConseil("Œuf dur", true,
-                "Possible si le test du verre d'eau est concluant. Cuisson 10 min à partir de l'ébullition."),
-            new UsageConseil("Cuisson à cœur (cake, quiche, gratin, omelette bien cuite)", true,
-                "Le blanc et le jaune doivent être entièrement pris. Visez 70 °C à cœur."),
-            new UsageConseil("Odeur ou aspect anormal", false,
-                "Cassez l'œuf dans un bol à part : la moindre odeur soufrée ou un blanc trouble et liquide = poubelle.")
+            new UsageConseil(Loc.GetString("Egg_Conseil_AD_Cru_Usage"), false, Loc.GetString("Egg_Conseil_AD_Cru_Detail")),
+            new UsageConseil(Loc.GetString("Egg_Conseil_AD_Dur_Usage"), true, Loc.GetString("Egg_Conseil_AD_Dur_Detail")),
+            new UsageConseil(Loc.GetString("Egg_Conseil_AD_Cuisson_Usage"), true, Loc.GetString("Egg_Conseil_AD_Cuisson_Detail")),
+            new UsageConseil(Loc.GetString("Egg_Conseil_AD_Odeur_Usage"), false, Loc.GetString("Egg_Conseil_AD_Odeur_Detail"))
         },
 
         _ => new[]
         {
-            new UsageConseil("Tous usages", false,
-                "Au-delà d'environ six semaines après la ponte, le risque ne vaut pas l'économie. Jetez l'œuf."),
-            new UsageConseil("Ne le cassez pas au-dessus d'un plat", false,
-                "Un œuf gâté peut contaminer toute une préparation.")
+            new UsageConseil(Loc.GetString("Egg_Conseil_D_Tous_Usage"), false, Loc.GetString("Egg_Conseil_D_Tous_Detail")),
+            new UsageConseil(Loc.GetString("Egg_Conseil_D_NeCassez_Usage"), false, Loc.GetString("Egg_Conseil_D_NeCassez_Detail"))
         }
     };
 
     /// <summary>Conseils de conservation, valables quel que soit l'âge.</summary>
-    public static readonly string[] Conservation =
+    public static string[] Conservation => new[]
     {
-        "Ne lavez jamais les œufs : cela détruit la cuticule protectrice de la coquille.",
-        "Gardez-les à température constante. Un œuf sorti du froid puis remis au chaud se couvre de condensation, qui facilite le passage des bactéries.",
-        "Au réfrigérateur, placez-les sur une clayette plutôt que dans la porte, où la température varie.",
-        "Rangez-les pointe vers le bas, à l'écart des aliments odorants : la coquille est poreuse.",
-        "Une fois cuits durs et écalés, consommez-les dans les 2 à 3 jours."
+        Loc.GetString("Egg_Conservation_1"),
+        Loc.GetString("Egg_Conservation_2"),
+        Loc.GetString("Egg_Conservation_3"),
+        Loc.GetString("Egg_Conservation_4"),
+        Loc.GetString("Egg_Conservation_5")
     };
 
     /// <summary>Le test du verre d'eau, décrit étape par étape.</summary>
-    public static readonly string[] TestVerreDEau =
+    public static string[] TestVerreDEau => new[]
     {
-        "Remplissez un verre d'eau froide et plongez-y l'œuf.",
-        "Il reste couché au fond : très frais, aucun souci.",
-        "Il se redresse à la verticale au fond : encore consommable, mais bien cuit.",
-        "Il flotte : la poche d'air est trop grande, jetez-le sans l'ouvrir."
+        Loc.GetString("Egg_TestVerre_1"),
+        Loc.GetString("Egg_TestVerre_2"),
+        Loc.GetString("Egg_TestVerre_3"),
+        Loc.GetString("Egg_TestVerre_4")
     };
 }

@@ -21,6 +21,8 @@ public sealed record ScanResultat(bool Succes, string Texte, string? Message)
 /// </summary>
 public static class ScanService
 {
+    private static LocalizationResourceManager Loc => LocalizationResourceManager.Instance;
+
     private static bool _initialise;
     private static readonly SemaphoreSlim Verrou = new(1, 1);
 
@@ -43,15 +45,15 @@ public static class ScanService
         }
         catch (PermissionException)
         {
-            return ScanResultat.Echec("L'accès à l'appareil photo a été refusé. Vous pouvez l'autoriser dans les réglages de l'appareil.");
+            return ScanResultat.Echec(Loc.GetString("Scan_PermissionRefusee"));
         }
         catch (FeatureNotSupportedException)
         {
-            return ScanResultat.Echec("Ni l'appareil photo ni l'ouverture d'images ne sont disponibles ici. Saisissez la valeur à la main.");
+            return ScanResultat.Echec(Loc.GetString("Scan_NonSupporte"));
         }
         catch (Exception ex)
         {
-            return ScanResultat.Echec($"La photo n'a pas pu être obtenue : {ex.Message}");
+            return ScanResultat.Echec(Loc.GetString("Scan_PhotoEchec", ex.Message));
         }
 
         if (photo is null) return ScanResultat.Annule;   // l'utilisateur a fermé l'appareil photo
@@ -66,7 +68,7 @@ public static class ScanService
         }
         catch (Exception ex)
         {
-            return ScanResultat.Echec($"La photo n'a pas pu être lue : {ex.Message}");
+            return ScanResultat.Echec(Loc.GetString("Scan_LectureEchec", ex.Message));
         }
 
         try
@@ -94,7 +96,7 @@ public static class ScanService
         }
         catch (Exception ex)
         {
-            return ScanResultat.Echec($"La reconnaissance de texte a échoué : {ex.Message}");
+            return ScanResultat.Echec(Loc.GetString("Scan_OcrEchec", ex.Message));
         }
     }
 

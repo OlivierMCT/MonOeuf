@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="Common_Calculer" xml:space="preserve"><value>Berechnen</value></data>
+  <data name="Common_LectureEnCours" xml:space="preserve"><value>Wird gelesen…</value></data>
+  <data name="Common_ScanImpossible" xml:space="preserve"><value>Scan nicht möglich</value></data>
+  <data name="Common_Fermer" xml:space="preserve"><value>Schließen</value></data>
+  <data name="Common_Annuler" xml:space="preserve"><value>Abbrechen</value></data>
+  <data name="Common_Jour_Un" xml:space="preserve"><value>{0} Tag</value></data>
+  <data name="Common_Jour_Plusieurs" xml:space="preserve"><value>{0} Tage</value></data>
+  <data name="Common_JourRestant_Un" xml:space="preserve"><value>(noch {0} Tag)</value></data>
+  <data name="Common_JourRestant_Plusieurs" xml:space="preserve"><value>(noch {0} Tage)</value></data>
+  <data name="Common_SectionTestVerre" xml:space="preserve"><value>DER WASSERGLASTEST</value></data>
+
+  <data name="Shell_Title" xml:space="preserve"><value>Frisches Ei</value></data>
+  <data name="Shell_TabFraicheur" xml:space="preserve"><value>Frische</value></data>
+  <data name="Shell_TabCode" xml:space="preserve"><value>Schalencode</value></data>
+  <data name="Shell_TabConserver" xml:space="preserve"><value>Lagerung</value></data>
+  <data name="Shell_TabReglages" xml:space="preserve"><value>Einstellungen</value></data>
+
+  <data name="Main_Badge" xml:space="preserve"><value>FRISCHE</value></data>
+  <data name="Main_Titre" xml:space="preserve"><value>🥚 Ist dieses Ei noch gut?</value></data>
+  <data name="Main_SectionConnais" xml:space="preserve"><value>ICH KENNE</value></data>
+  <data name="Main_ChipPonte" xml:space="preserve"><value>Legedatum</value></data>
+  <data name="Main_ChipDcr" xml:space="preserve"><value>Datum auf der Verpackung (Mindesthaltbarkeit)</value></data>
+  <data name="Main_Aide_Ponte" xml:space="preserve"><value>Das Legedatum steht manchmal auf der Verpackung. Andernfalls ziehen Sie 28 Tage vom Mindesthaltbarkeitsdatum ab.</value></data>
+  <data name="Main_Aide_Dcr" xml:space="preserve"><value>Das auf der Verpackung aufgedruckte Mindesthaltbarkeitsdatum entspricht dem Legedatum plus 28 Tage.</value></data>
+  <data name="Main_BoutonScan" xml:space="preserve"><value>📷  Datum auf der Verpackung lesen</value></data>
+  <data name="Main_ScanAucuneDate" xml:space="preserve"><value>Kein lesbares Datum auf dem Foto. Rahmen Sie den Hinweis „mindestens haltbar bis“ flach und gut beleuchtet ein — oder geben Sie das Datum manuell ein.</value></data>
+  <data name="Main_ScanQuelleDcr" xml:space="preserve"><value>Welches Datum ist das Mindesthaltbarkeitsdatum?</value></data>
+  <data name="Main_ScanDateLue" xml:space="preserve"><value>Gelesenes Datum: {0}. Bitte vor dem Berechnen überprüfen.</value></data>
+  <data name="Main_SectionDates" xml:space="preserve"><value>WICHTIGE DATEN</value></data>
+  <data name="Main_LabelPonte" xml:space="preserve"><value>Gelegt</value></data>
+  <data name="Main_LabelAge" xml:space="preserve"><value>Alter heute</value></data>
+  <data name="Main_LabelFinExtraFrais" xml:space="preserve"><value>Ende „extra frisch“ (Tag 9)</value></data>
+  <data name="Main_LabelDcr" xml:space="preserve"><value>Mindesthaltbarkeit, auf der Verpackung (Tag 28)</value></data>
+  <data name="Main_LabelPrudence" xml:space="preserve"><value>Vorsichtsgrenze (Mindesthaltbarkeit + 14)</value></data>
+  <data name="Main_SectionUsages" xml:space="preserve"><value>WAS SIE DAMIT MACHEN KÖNNEN</value></data>
+  <data name="Main_Disclaimer" xml:space="preserve"><value>Richtwerte nach EG-Verordnung Nr. 589/2008 und Empfehlungen der ANSES. Bei Zweifeln am Aussehen oder Geruch eines Eis entsorgen Sie es.</value></data>
+
+  <data name="Code_Badge" xml:space="preserve"><value>SCHALENCODE</value></data>
+  <data name="Code_Titre" xml:space="preserve"><value>🔎 Der Code auf der Schale</value></data>
+  <data name="Code_SectionSaisir" xml:space="preserve"><value>CODE EINGEBEN</value></data>
+  <data name="Code_Placeholder" xml:space="preserve"><value>Beispiel: 3FRABC01</value></data>
+  <data name="Code_BoutonScan" xml:space="preserve"><value>📷  Ei fotografieren</value></data>
+  <data name="Code_BoutonDecoder" xml:space="preserve"><value>Entschlüsseln</value></data>
+  <data name="Code_LabelMode" xml:space="preserve"><value>Haltungsform</value></data>
+  <data name="Code_LabelPays" xml:space="preserve"><value>Herkunftsland</value></data>
+  <data name="Code_LabelIdentifiant" xml:space="preserve"><value>Betriebskennung: {0}</value></data>
+  <data name="Code_SectionSavoir" xml:space="preserve"><value>GUT ZU WISSEN</value></data>
+  <data name="Code_Savoir1" xml:space="preserve"><value>Der Schalencode gibt nicht das Legedatum an: Er kennzeichnet nur die Haltungsform, das Land und den Betrieb.</value></data>
+  <data name="Code_Savoir2" xml:space="preserve"><value>Für die Frische nutzen Sie das auf der Verpackung aufgedruckte Datum (Mindesthaltbarkeit) im Tab „Frische“. Das Legedatum liegt 28 Tage davor.</value></data>
+  <data name="Code_Savoir3" xml:space="preserve"><value>Erste Ziffer: 0 für Bio, 1 für Freilandhaltung, 2 für Bodenhaltung, 3 für Käfighaltung.</value></data>
+  <data name="Code_ScanIllisible" xml:space="preserve"><value>Code unleserlich. Gehen Sie näher heran, richten Sie das Ei flach zur Kamera aus und vermeiden Sie Schattenwurf.</value></data>
+  <data name="Code_ScanRelire" xml:space="preserve"><value>Überprüfen Sie den Code vor dem Bestätigen: Auf einer Schale werden 0/O, 1/I und 5/S leicht verwechselt.</value></data>
+
+  <data name="Conseils_Badge" xml:space="preserve"><value>LAGERUNG</value></data>
+  <data name="Conseils_Titre" xml:space="preserve"><value>🧊 Eier richtig lagern</value></data>
+  <data name="Conseils_SectionRegles" xml:space="preserve"><value>DIE REGELN</value></data>
+  <data name="Conseils_SectionDcrDlc" xml:space="preserve"><value>MINDESTHALTBARKEIT IST KEIN VERBRAUCHSDATUM</value></data>
+  <data name="Conseils_Dcr1" xml:space="preserve"><value>Das auf der Verpackung aufgedruckte Datum ist ein empfohlenes Verzehrsdatum, festgelegt auf 28 Tage nach dem Legen. Es ist kein Verbrauchsdatum.</value></data>
+  <data name="Conseils_Dcr2" xml:space="preserve"><value>Nach diesem Datum bleibt ein Ei mit intakter Schale, das kühl gelagert wurde, noch einige Wochen genießbar, sofern es vollständig durchgegart wird. Bei geringstem Zweifel — Geruch, trübes Eiweiß, gesprungene Schale — entsorgen Sie es.</value></data>
+  <data name="Conseils_Dcr3" xml:space="preserve"><value>Der Verkauf an Verbraucher ist jedoch über 21 Tage nach dem Legen hinaus verboten, also eine Woche vor dem Mindesthaltbarkeitsdatum.</value></data>
+  <data name="Conseils_Disclaimer" xml:space="preserve"><value>Quellen: EG-Verordnung Nr. 589/2008 und Empfehlungen der ANSES. Diese App liefert Richtwerte, sie ersetzt nicht Ihr eigenes Urteil.</value></data>
+
+  <data name="Egg_Titre_Future" xml:space="preserve"><value>Datum liegt in der Zukunft</value></data>
+  <data name="Egg_Titre_ExtraFrais" xml:space="preserve"><value>Extra frisch</value></data>
+  <data name="Egg_Titre_Frais" xml:space="preserve"><value>Frisch</value></data>
+  <data name="Egg_Titre_ApresDcr" xml:space="preserve"><value>Mindesthaltbarkeit überschritten</value></data>
+  <data name="Egg_Titre_Douteux" xml:space="preserve"><value>Nicht mehr verzehren</value></data>
+
+  <data name="Egg_Resume_Future" xml:space="preserve"><value>Das eingegebene Datum liegt in der Zukunft. Überprüfen Sie das Legedatum oder das Mindesthaltbarkeitsdatum auf der Verpackung.</value></data>
+  <data name="Egg_Resume_ExtraFrais" xml:space="preserve"><value>Vor {0} gelegt. Alle Verwendungen sind möglich, auch roh oder leicht gegart. Noch {1} Tage bis zur Mindesthaltbarkeit.</value></data>
+  <data name="Egg_Resume_Frais" xml:space="preserve"><value>Vor {0} Tagen gelegt. Noch innerhalb der empfohlenen Verzehrsperiode {1}, aber vorzugsweise gut durchgegart verzehren.</value></data>
+  <data name="Egg_Frais_Aujourdhui" xml:space="preserve"><value>— die Mindesthaltbarkeit endet heute</value></data>
+  <data name="Egg_Resume_ApresDcr" xml:space="preserve"><value>Vor {0} Tagen gelegt, also {1} nach der Mindesthaltbarkeit. Mindesthaltbarkeit ist kein Verbrauchsdatum: Ist die Schale intakt und wurde das Ei kühl gelagert, ist es noch genießbar, aber nur vollständig durchgegart. Machen Sie vorher den Wasserglastest.</value></data>
+  <data name="Egg_Resume_Douteux" xml:space="preserve"><value>Vor {0} Tagen gelegt. Zu alt: Werfen Sie es besser weg, auch wenn es normal aussieht.</value></data>
+
+  <data name="Egg_Conseil_EF_Cru_Usage" xml:space="preserve"><value>Roh (Mayonnaise, Tiramisu, Schokoladenmousse)</value></data>
+  <data name="Egg_Conseil_EF_Cru_Detail" xml:space="preserve"><value>Nur für extra frische Eier. Erst kurz vor dem Servieren zubereiten, kühl aufbewahren und innerhalb von 24 Stunden verzehren. Zu vermeiden für Kinder, Schwangere, ältere oder immungeschwächte Personen.</value></data>
+  <data name="Egg_Conseil_EF_Coque_Usage" xml:space="preserve"><value>Weich, wachsweich, pochiert</value></data>
+  <data name="Egg_Conseil_EF_Coque_Detail" xml:space="preserve"><value>Der ideale Zeitpunkt: Das Eiweiß ist fest und hält gut zusammen.</value></data>
+  <data name="Egg_Conseil_EF_Plat_Usage" xml:space="preserve"><value>Spiegelei, Rührei, Omelett</value></data>
+  <data name="Egg_Conseil_EF_Plat_Detail" xml:space="preserve"><value>Keine Einschränkung.</value></data>
+  <data name="Egg_Conseil_EF_Dur_Usage" xml:space="preserve"><value>Hartgekocht</value></data>
+  <data name="Egg_Conseil_EF_Dur_Detail" xml:space="preserve"><value>Möglich, aber ein sehr frisches Ei lässt sich schwer schälen. Warten Sie 7 bis 10 Tage für leichtes Schälen.</value></data>
+  <data name="Egg_Conseil_EF_Patisserie_Usage" xml:space="preserve"><value>Backen, Ofengaren</value></data>
+  <data name="Egg_Conseil_EF_Patisserie_Detail" xml:space="preserve"><value>Keine Einschränkung.</value></data>
+
+  <data name="Egg_Conseil_F_Cru_Usage" xml:space="preserve"><value>Roh (Mayonnaise, Tiramisu, Schokoladenmousse)</value></data>
+  <data name="Egg_Conseil_F_Cru_Detail" xml:space="preserve"><value>Nicht empfohlen ab dem 9. Tag nach dem Legen. Bevorzugen Sie ein extra frisches Ei.</value></data>
+  <data name="Egg_Conseil_F_Coque_Usage" xml:space="preserve"><value>Weich, wachsweich, pochiert</value></data>
+  <data name="Egg_Conseil_F_Coque_Detail" xml:space="preserve"><value>Leicht gegart: zu vermeiden. Das Eigelb erreicht keine ausreichende Temperatur.</value></data>
+  <data name="Egg_Conseil_F_Plat_Usage" xml:space="preserve"><value>Spiegelei, Rührei, Omelett</value></data>
+  <data name="Egg_Conseil_F_Plat_Detail" xml:space="preserve"><value>Ja, wenn Eiweiß und Eigelb gut durchgegart sind.</value></data>
+  <data name="Egg_Conseil_F_Dur_Usage" xml:space="preserve"><value>Hartgekocht</value></data>
+  <data name="Egg_Conseil_F_Dur_Detail" xml:space="preserve"><value>Ideal in diesem Stadium, und es lässt sich leicht schälen.</value></data>
+  <data name="Egg_Conseil_F_Patisserie_Usage" xml:space="preserve"><value>Backen, Ofengaren</value></data>
+  <data name="Egg_Conseil_F_Patisserie_Detail" xml:space="preserve"><value>Keine Einschränkung.</value></data>
+
+  <data name="Egg_Conseil_AD_Cru_Usage" xml:space="preserve"><value>Roh oder leicht gegart</value></data>
+  <data name="Egg_Conseil_AD_Cru_Detail" xml:space="preserve"><value>Ausgeschlossen. Keine rohe, weiche, wachsweiche oder pochierte Zubereitung.</value></data>
+  <data name="Egg_Conseil_AD_Dur_Usage" xml:space="preserve"><value>Hartgekocht</value></data>
+  <data name="Egg_Conseil_AD_Dur_Detail" xml:space="preserve"><value>Möglich, wenn der Wasserglastest positiv ausfällt. 10 Min. ab dem Kochpunkt garen.</value></data>
+  <data name="Egg_Conseil_AD_Cuisson_Usage" xml:space="preserve"><value>Durchgegart (Kuchen, Quiche, Gratin, gut durchgegartes Omelett)</value></data>
+  <data name="Egg_Conseil_AD_Cuisson_Detail" xml:space="preserve"><value>Eiweiß und Eigelb müssen vollständig fest sein. Zielen Sie auf 70 °C im Kern.</value></data>
+  <data name="Egg_Conseil_AD_Odeur_Usage" xml:space="preserve"><value>Ungewöhnlicher Geruch oder Aussehen</value></data>
+  <data name="Egg_Conseil_AD_Odeur_Detail" xml:space="preserve"><value>Schlagen Sie das Ei in eine separate Schüssel auf: der geringste schwefelige Geruch oder ein trübes, flüssiges Eiweiß bedeutet: entsorgen.</value></data>
+
+  <data name="Egg_Conseil_D_Tous_Usage" xml:space="preserve"><value>Jede Verwendung</value></data>
+  <data name="Egg_Conseil_D_Tous_Detail" xml:space="preserve"><value>Nach etwa sechs Wochen nach dem Legen lohnt sich das Risiko nicht mehr. Entsorgen Sie das Ei.</value></data>
+  <data name="Egg_Conseil_D_NeCassez_Usage" xml:space="preserve"><value>Nicht direkt über einem Gericht aufschlagen</value></data>
+  <data name="Egg_Conseil_D_NeCassez_Detail" xml:space="preserve"><value>Ein verdorbenes Ei kann eine ganze Zubereitung verunreinigen.</value></data>
+
+  <data name="Egg_Conservation_1" xml:space="preserve"><value>Waschen Sie Eier niemals: Das zerstört die schützende Schutzschicht der Schale.</value></data>
+  <data name="Egg_Conservation_2" xml:space="preserve"><value>Bewahren Sie sie bei konstanter Temperatur auf. Ein Ei, das aus der Kälte kommt und wieder erwärmt wird, beschlägt sich mit Kondenswasser, was das Eindringen von Bakterien begünstigt.</value></data>
+  <data name="Egg_Conservation_3" xml:space="preserve"><value>Legen Sie sie im Kühlschrank auf ein Fach statt in die Tür, wo die Temperatur schwankt.</value></data>
+  <data name="Egg_Conservation_4" xml:space="preserve"><value>Lagern Sie sie mit der Spitze nach unten, entfernt von stark riechenden Lebensmitteln: Die Schale ist porös.</value></data>
+  <data name="Egg_Conservation_5" xml:space="preserve"><value>Einmal hartgekocht und geschält, innerhalb von 2 bis 3 Tagen verzehren.</value></data>
+
+  <data name="Egg_TestVerre_1" xml:space="preserve"><value>Füllen Sie ein Glas mit kaltem Wasser und legen Sie das Ei hinein.</value></data>
+  <data name="Egg_TestVerre_2" xml:space="preserve"><value>Es liegt flach am Boden: sehr frisch, kein Problem.</value></data>
+  <data name="Egg_TestVerre_3" xml:space="preserve"><value>Es stellt sich am Boden senkrecht auf: noch genießbar, aber gut durchgaren.</value></data>
+  <data name="Egg_TestVerre_4" xml:space="preserve"><value>Es schwimmt: die Luftkammer ist zu groß, entsorgen Sie es ungeöffnet.</value></data>
+
+  <data name="ShellCode_Erreur_Vide" xml:space="preserve"><value>Geben Sie den auf der Schale aufgedruckten Code ein.</value></data>
+  <data name="ShellCode_Erreur_Format" xml:space="preserve"><value>Code nicht erkannt. Erwartetes Format: eine Ziffer (0 bis 3), der zweibuchstabige Ländercode, dann die Betriebskennung. Beispiel: 3FRABC01.</value></data>
+  <data name="ShellCode_Mode_Bio" xml:space="preserve"><value>Bio</value></data>
+  <data name="ShellCode_Mode_Bio_Detail" xml:space="preserve"><value>Hennen in Freilandhaltung, Futter aus ökologischer Landwirtschaft, maximal 6 Hennen pro m² im Stall und 4 m² Auslauf pro Henne.</value></data>
+  <data name="ShellCode_Mode_PleinAir" xml:space="preserve"><value>Freilandhaltung</value></data>
+  <data name="ShellCode_Mode_PleinAir_Detail" xml:space="preserve"><value>Hennen mit tagsüber Zugang zu einem Auslauf, 4 m² pro Henne, nicht-ökologisches Futter.</value></data>
+  <data name="ShellCode_Mode_Sol" xml:space="preserve"><value>Bodenhaltung</value></data>
+  <data name="ShellCode_Mode_Sol_Detail" xml:space="preserve"><value>Hennen im Stall gehalten, käfigfrei, aber ohne Zugang nach außen, bis zu 9 Hennen pro m².</value></data>
+  <data name="ShellCode_Mode_Cage" xml:space="preserve"><value>Käfig- / ausgestaltete Volierenhaltung</value></data>
+  <data name="ShellCode_Mode_Cage_Detail" xml:space="preserve"><value>Hennen in ausgestalteten Käfigen, etwa 750 cm² pro Henne, ohne Zugang nach außen.</value></data>
+  <data name="ShellCode_Pays_FR" xml:space="preserve"><value>Frankreich (FR)</value></data>
+  <data name="ShellCode_Pays_BE" xml:space="preserve"><value>Belgien (BE)</value></data>
+  <data name="ShellCode_Pays_DE" xml:space="preserve"><value>Deutschland (DE)</value></data>
+  <data name="ShellCode_Pays_ES" xml:space="preserve"><value>Spanien (ES)</value></data>
+  <data name="ShellCode_Pays_IT" xml:space="preserve"><value>Italien (IT)</value></data>
+  <data name="ShellCode_Pays_NL" xml:space="preserve"><value>Niederlande (NL)</value></data>
+  <data name="ShellCode_Pays_PL" xml:space="preserve"><value>Polen (PL)</value></data>
+  <data name="ShellCode_Pays_PT" xml:space="preserve"><value>Portugal (PT)</value></data>
+  <data name="ShellCode_Pays_LU" xml:space="preserve"><value>Luxemburg (LU)</value></data>
+  <data name="ShellCode_Pays_CH" xml:space="preserve"><value>Schweiz (CH)</value></data>
+
+  <data name="Scan_PermissionRefusee" xml:space="preserve"><value>Der Kamerazugriff wurde verweigert. Sie können ihn in den Geräteeinstellungen erlauben.</value></data>
+  <data name="Scan_NonSupporte" xml:space="preserve"><value>Weder die Kamera noch die Bildauswahl sind hier verfügbar. Geben Sie den Wert manuell ein.</value></data>
+  <data name="Scan_PhotoEchec" xml:space="preserve"><value>Das Foto konnte nicht aufgenommen werden: {0}</value></data>
+  <data name="Scan_LectureEchec" xml:space="preserve"><value>Das Foto konnte nicht gelesen werden: {0}</value></data>
+  <data name="Scan_OcrEchec" xml:space="preserve"><value>Die Texterkennung ist fehlgeschlagen: {0}</value></data>
+
+  <data name="Settings_Badge" xml:space="preserve"><value>EINSTELLUNGEN</value></data>
+  <data name="Settings_Titre" xml:space="preserve"><value>⚙️ Einstellungen</value></data>
+  <data name="Settings_SectionLangue" xml:space="preserve"><value>SPRACHE</value></data>
+  <data name="Settings_LangueSysteme" xml:space="preserve"><value>System</value></data>
+  <data name="Settings_SectionPalette" xml:space="preserve"><value>FARBPALETTE</value></data>
+  <data name="Settings_PaletteMiel" xml:space="preserve"><value>Honig</value></data>
+  <data name="Settings_PaletteLagon" xml:space="preserve"><value>Lagune</value></data>
+  <data name="Settings_PaletteCorail" xml:space="preserve"><value>Koralle</value></data>
+  <data name="Settings_SectionTheme" xml:space="preserve"><value>ERSCHEINUNGSBILD</value></data>
+  <data name="Settings_ThemeSysteme" xml:space="preserve"><value>System</value></data>
+  <data name="Settings_ThemeClair" xml:space="preserve"><value>Hell</value></data>
+  <data name="Settings_ThemeSombre" xml:space="preserve"><value>Dunkel</value></data>
+</root>

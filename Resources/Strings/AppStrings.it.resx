@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="Common_Calculer" xml:space="preserve"><value>Calcola</value></data>
+  <data name="Common_LectureEnCours" xml:space="preserve"><value>Lettura in corso…</value></data>
+  <data name="Common_ScanImpossible" xml:space="preserve"><value>Scansione non riuscita</value></data>
+  <data name="Common_Fermer" xml:space="preserve"><value>Chiudi</value></data>
+  <data name="Common_Annuler" xml:space="preserve"><value>Annulla</value></data>
+  <data name="Common_Jour_Un" xml:space="preserve"><value>{0} giorno</value></data>
+  <data name="Common_Jour_Plusieurs" xml:space="preserve"><value>{0} giorni</value></data>
+  <data name="Common_JourRestant_Un" xml:space="preserve"><value>({0} giorno rimanente)</value></data>
+  <data name="Common_JourRestant_Plusieurs" xml:space="preserve"><value>({0} giorni rimanenti)</value></data>
+  <data name="Common_SectionTestVerre" xml:space="preserve"><value>LA PROVA DEL BICCHIERE D'ACQUA</value></data>
+
+  <data name="Shell_Title" xml:space="preserve"><value>Uovo Fresco</value></data>
+  <data name="Shell_TabFraicheur" xml:space="preserve"><value>Freschezza</value></data>
+  <data name="Shell_TabCode" xml:space="preserve"><value>Codice del guscio</value></data>
+  <data name="Shell_TabConserver" xml:space="preserve"><value>Conservazione</value></data>
+  <data name="Shell_TabReglages" xml:space="preserve"><value>Impostazioni</value></data>
+
+  <data name="Main_Badge" xml:space="preserve"><value>FRESCHEZZA</value></data>
+  <data name="Main_Titre" xml:space="preserve"><value>🥚 Questo uovo è ancora buono?</value></data>
+  <data name="Main_SectionConnais" xml:space="preserve"><value>CONOSCO</value></data>
+  <data name="Main_ChipPonte" xml:space="preserve"><value>Data di deposizione</value></data>
+  <data name="Main_ChipDcr" xml:space="preserve"><value>Data sulla scatola (termine minimo di conservazione)</value></data>
+  <data name="Main_Aide_Ponte" xml:space="preserve"><value>La data di deposizione a volte è indicata sulla scatola. Altrimenti, sottraete 28 giorni al termine minimo di conservazione.</value></data>
+  <data name="Main_Aide_Dcr" xml:space="preserve"><value>Il termine minimo di conservazione stampato sulla scatola corrisponde alla deposizione più 28 giorni.</value></data>
+  <data name="Main_BoutonScan" xml:space="preserve"><value>📷  Leggi la data sulla scatola</value></data>
+  <data name="Main_ScanAucuneDate" xml:space="preserve"><value>Nessuna data leggibile nella foto. Inquadrate la dicitura "da consumarsi preferibilmente entro", in piano e ben illuminata, oppure inserite la data manualmente.</value></data>
+  <data name="Main_ScanQuelleDcr" xml:space="preserve"><value>Qual è il termine minimo di conservazione?</value></data>
+  <data name="Main_ScanDateLue" xml:space="preserve"><value>Data letta: {0}. Verificatela prima di calcolare.</value></data>
+  <data name="Main_SectionDates" xml:space="preserve"><value>DATE CHIAVE</value></data>
+  <data name="Main_LabelPonte" xml:space="preserve"><value>Deposizione</value></data>
+  <data name="Main_LabelAge" xml:space="preserve"><value>Età oggi</value></data>
+  <data name="Main_LabelFinExtraFrais" xml:space="preserve"><value>Fine "extra fresco" (giorno 9)</value></data>
+  <data name="Main_LabelDcr" xml:space="preserve"><value>Termine minimo, sulla scatola (giorno 28)</value></data>
+  <data name="Main_LabelPrudence" xml:space="preserve"><value>Limite di prudenza (termine minimo + 14)</value></data>
+  <data name="Main_SectionUsages" xml:space="preserve"><value>COSA POTETE FARNE</value></data>
+  <data name="Main_Disclaimer" xml:space="preserve"><value>Indicazioni basate sul regolamento (CE) n. 589/2008 e sulle raccomandazioni dell'ANSES. In caso di dubbio sull'aspetto o sull'odore di un uovo, gettatelo.</value></data>
+
+  <data name="Code_Badge" xml:space="preserve"><value>CODICE DEL GUSCIO</value></data>
+  <data name="Code_Titre" xml:space="preserve"><value>🔎 Il codice sul guscio</value></data>
+  <data name="Code_SectionSaisir" xml:space="preserve"><value>INSERIRE IL CODICE</value></data>
+  <data name="Code_Placeholder" xml:space="preserve"><value>Esempio: 3FRABC01</value></data>
+  <data name="Code_BoutonScan" xml:space="preserve"><value>📷  Fotografare l'uovo</value></data>
+  <data name="Code_BoutonDecoder" xml:space="preserve"><value>Decodifica</value></data>
+  <data name="Code_LabelMode" xml:space="preserve"><value>Metodo di allevamento</value></data>
+  <data name="Code_LabelPays" xml:space="preserve"><value>Paese di origine</value></data>
+  <data name="Code_LabelIdentifiant" xml:space="preserve"><value>Identificativo dell'allevamento: {0}</value></data>
+  <data name="Code_SectionSavoir" xml:space="preserve"><value>DA SAPERE</value></data>
+  <data name="Code_Savoir1" xml:space="preserve"><value>Il codice del guscio non indica la data di deposizione: identifica solo il metodo di allevamento, il paese e l'azienda.</value></data>
+  <data name="Code_Savoir2" xml:space="preserve"><value>Per conoscere la freschezza, usate la data stampata sulla scatola (il termine minimo di conservazione) nella scheda Freschezza. La deposizione risale a 28 giorni prima di quella data.</value></data>
+  <data name="Code_Savoir3" xml:space="preserve"><value>Prima cifra: 0 per biologico, 1 per all'aperto, 2 per allevamento a terra, 3 per gabbia arricchita.</value></data>
+  <data name="Code_ScanIllisible" xml:space="preserve"><value>Codice illeggibile. Avvicinatevi, orientate l'uovo in modo che il codice sia piano davanti all'obiettivo ed evitate le ombre.</value></data>
+  <data name="Code_ScanRelire" xml:space="preserve"><value>Rileggete il codice prima di confermare: su un guscio, le confusioni 0/O, 1/I e 5/S sono frequenti.</value></data>
+
+  <data name="Conseils_Badge" xml:space="preserve"><value>CONSERVAZIONE</value></data>
+  <data name="Conseils_Titre" xml:space="preserve"><value>🧊 Conservare bene le uova</value></data>
+  <data name="Conseils_SectionRegles" xml:space="preserve"><value>LE REGOLE</value></data>
+  <data name="Conseils_SectionDcrDlc" xml:space="preserve"><value>IL TERMINE MINIMO NON È UNA DATA DI SCADENZA</value></data>
+  <data name="Conseils_Dcr1" xml:space="preserve"><value>La data stampata sulla scatola è una data di consumo raccomandata, fissata a 28 giorni dopo la deposizione. Non è una data limite di consumo.</value></data>
+  <data name="Conseils_Dcr2" xml:space="preserve"><value>Superata questa data, un uovo con guscio intatto e conservato al fresco resta consumabile per alcune settimane, a condizione di essere cotto completamente. Al minimo dubbio — odore, albume torbido, guscio incrinato — gettatelo.</value></data>
+  <data name="Conseils_Dcr3" xml:space="preserve"><value>La vendita al consumatore, invece, è vietata oltre 21 giorni dopo la deposizione, cioè una settimana prima del termine minimo.</value></data>
+  <data name="Conseils_Disclaimer" xml:space="preserve"><value>Fonti: regolamento (CE) n. 589/2008 e raccomandazioni dell'ANSES. Questa app fornisce indicazioni, non sostituisce il vostro giudizio.</value></data>
+
+  <data name="Egg_Titre_Future" xml:space="preserve"><value>Data futura</value></data>
+  <data name="Egg_Titre_ExtraFrais" xml:space="preserve"><value>Extra fresco</value></data>
+  <data name="Egg_Titre_Frais" xml:space="preserve"><value>Fresco</value></data>
+  <data name="Egg_Titre_ApresDcr" xml:space="preserve"><value>Termine minimo superato</value></data>
+  <data name="Egg_Titre_Douteux" xml:space="preserve"><value>Da non consumare</value></data>
+
+  <data name="Egg_Resume_Future" xml:space="preserve"><value>La data inserita è nel futuro. Verificate la data di deposizione o il termine minimo indicato sulla scatola.</value></data>
+  <data name="Egg_Resume_ExtraFrais" xml:space="preserve"><value>Deposto {0} fa. Tutti gli usi sono possibili, anche crudo o poco cotto. Ancora {1} giorni prima del termine minimo.</value></data>
+  <data name="Egg_Resume_Frais" xml:space="preserve"><value>Deposto {0} giorni fa. Ancora nel periodo di consumo raccomandato {1}, ma da consumare preferibilmente ben cotto.</value></data>
+  <data name="Egg_Frais_Aujourdhui" xml:space="preserve"><value>— il termine minimo scade proprio oggi</value></data>
+  <data name="Egg_Resume_ApresDcr" xml:space="preserve"><value>Deposto {0} giorni fa, cioè {1} dopo il termine minimo. Il termine minimo non è una data di scadenza: se il guscio è intatto e l'uovo è stato conservato al fresco, è ancora consumabile, ma solo se cotto completamente. Fate prima la prova del bicchiere d'acqua.</value></data>
+  <data name="Egg_Resume_Douteux" xml:space="preserve"><value>Deposto {0} giorni fa. Troppo vecchio: meglio gettarlo, anche se sembra normale.</value></data>
+
+  <data name="Egg_Conseil_EF_Cru_Usage" xml:space="preserve"><value>Crudo (maionese, tiramisù, mousse al cioccolato)</value></data>
+  <data name="Egg_Conseil_EF_Cru_Detail" xml:space="preserve"><value>Riservato alle uova extra fresche. Preparate all'ultimo momento, conservate in frigorifero e consumate entro 24 ore. Da evitare per bambini, donne in gravidanza, anziani o persone immunodepresse.</value></data>
+  <data name="Egg_Conseil_EF_Coque_Usage" xml:space="preserve"><value>Alla coque, all'occhio di bue morbido, in camicia</value></data>
+  <data name="Egg_Conseil_EF_Coque_Detail" xml:space="preserve"><value>È il momento ideale: l'albume è sodo e si mantiene bene.</value></data>
+  <data name="Egg_Conseil_EF_Plat_Usage" xml:space="preserve"><value>Al tegamino, strapazzato, omelette</value></data>
+  <data name="Egg_Conseil_EF_Plat_Detail" xml:space="preserve"><value>Nessuna restrizione.</value></data>
+  <data name="Egg_Conseil_EF_Dur_Usage" xml:space="preserve"><value>Sodo</value></data>
+  <data name="Egg_Conseil_EF_Dur_Detail" xml:space="preserve"><value>Possibile, ma un uovo molto fresco si sguscia male. Aspettate 7-10 giorni per una sgusciatura facile.</value></data>
+  <data name="Egg_Conseil_EF_Patisserie_Usage" xml:space="preserve"><value>Pasticceria, cottura al forno</value></data>
+  <data name="Egg_Conseil_EF_Patisserie_Detail" xml:space="preserve"><value>Nessuna restrizione.</value></data>
+
+  <data name="Egg_Conseil_F_Cru_Usage" xml:space="preserve"><value>Crudo (maionese, tiramisù, mousse al cioccolato)</value></data>
+  <data name="Egg_Conseil_F_Cru_Detail" xml:space="preserve"><value>Non consigliato oltre 9 giorni dopo la deposizione. Preferite un uovo extra fresco.</value></data>
+  <data name="Egg_Conseil_F_Coque_Usage" xml:space="preserve"><value>Alla coque, all'occhio di bue morbido, in camicia</value></data>
+  <data name="Egg_Conseil_F_Coque_Detail" xml:space="preserve"><value>Poco cotto: da evitare. Il tuorlo non raggiunge una temperatura sufficiente.</value></data>
+  <data name="Egg_Conseil_F_Plat_Usage" xml:space="preserve"><value>Al tegamino, strapazzato, omelette</value></data>
+  <data name="Egg_Conseil_F_Plat_Detail" xml:space="preserve"><value>Sì, cuocendo bene l'albume e il tuorlo.</value></data>
+  <data name="Egg_Conseil_F_Dur_Usage" xml:space="preserve"><value>Sodo</value></data>
+  <data name="Egg_Conseil_F_Dur_Detail" xml:space="preserve"><value>Uso ideale in questa fase, e si sguscia facilmente.</value></data>
+  <data name="Egg_Conseil_F_Patisserie_Usage" xml:space="preserve"><value>Pasticceria, cottura al forno</value></data>
+  <data name="Egg_Conseil_F_Patisserie_Detail" xml:space="preserve"><value>Nessuna restrizione.</value></data>
+
+  <data name="Egg_Conseil_AD_Cru_Usage" xml:space="preserve"><value>Crudo o poco cotto</value></data>
+  <data name="Egg_Conseil_AD_Cru_Detail" xml:space="preserve"><value>Escluso. Nessuna preparazione cruda, alla coque, morbida o in camicia.</value></data>
+  <data name="Egg_Conseil_AD_Dur_Usage" xml:space="preserve"><value>Sodo</value></data>
+  <data name="Egg_Conseil_AD_Dur_Detail" xml:space="preserve"><value>Possibile se la prova del bicchiere d'acqua è concludente. Cottura di 10 min dall'ebollizione.</value></data>
+  <data name="Egg_Conseil_AD_Cuisson_Usage" xml:space="preserve"><value>Cottura completa (torta salata, quiche, gratin, omelette ben cotta)</value></data>
+  <data name="Egg_Conseil_AD_Cuisson_Detail" xml:space="preserve"><value>L'albume e il tuorlo devono essere completamente rassodati. Puntate a 70 °C al cuore.</value></data>
+  <data name="Egg_Conseil_AD_Odeur_Usage" xml:space="preserve"><value>Odore o aspetto anomalo</value></data>
+  <data name="Egg_Conseil_AD_Odeur_Detail" xml:space="preserve"><value>Rompete l'uovo in una ciotola separata: il minimo odore di zolfo o un albume torbido e liquido significa gettarlo.</value></data>
+
+  <data name="Egg_Conseil_D_Tous_Usage" xml:space="preserve"><value>Qualsiasi uso</value></data>
+  <data name="Egg_Conseil_D_Tous_Detail" xml:space="preserve"><value>Oltre le circa sei settimane dopo la deposizione, il rischio non vale il risparmio. Gettate l'uovo.</value></data>
+  <data name="Egg_Conseil_D_NeCassez_Usage" xml:space="preserve"><value>Non romperlo direttamente su un piatto</value></data>
+  <data name="Egg_Conseil_D_NeCassez_Detail" xml:space="preserve"><value>Un uovo andato a male può contaminare un'intera preparazione.</value></data>
+
+  <data name="Egg_Conservation_1" xml:space="preserve"><value>Non lavate mai le uova: si distrugge la cuticola protettiva del guscio.</value></data>
+  <data name="Egg_Conservation_2" xml:space="preserve"><value>Conservatele a temperatura costante. Un uovo tolto dal freddo e poi riscaldato si copre di condensa, che facilita il passaggio dei batteri.</value></data>
+  <data name="Egg_Conservation_3" xml:space="preserve"><value>In frigorifero, mettetele su un ripiano piuttosto che nello sportello, dove la temperatura varia.</value></data>
+  <data name="Egg_Conservation_4" xml:space="preserve"><value>Conservatele con la punta verso il basso, lontano da alimenti odorosi: il guscio è poroso.</value></data>
+  <data name="Egg_Conservation_5" xml:space="preserve"><value>Una volta sode e sgusciate, consumatele entro 2-3 giorni.</value></data>
+
+  <data name="Egg_TestVerre_1" xml:space="preserve"><value>Riempite un bicchiere con acqua fredda e immergetevi l'uovo.</value></data>
+  <data name="Egg_TestVerre_2" xml:space="preserve"><value>Resta coricato sul fondo: molto fresco, nessun problema.</value></data>
+  <data name="Egg_TestVerre_3" xml:space="preserve"><value>Si raddrizza in verticale sul fondo: ancora consumabile, ma ben cotto.</value></data>
+  <data name="Egg_TestVerre_4" xml:space="preserve"><value>Galleggia: la camera d'aria è troppo grande, gettatelo senza aprirlo.</value></data>
+
+  <data name="ShellCode_Erreur_Vide" xml:space="preserve"><value>Inserite il codice stampato sul guscio.</value></data>
+  <data name="ShellCode_Erreur_Format" xml:space="preserve"><value>Codice non riconosciuto. Formato previsto: una cifra (0-3), il codice paese di 2 lettere, poi l'identificativo dell'allevamento. Esempio: 3FRABC01.</value></data>
+  <data name="ShellCode_Mode_Bio" xml:space="preserve"><value>Biologico</value></data>
+  <data name="ShellCode_Mode_Bio_Detail" xml:space="preserve"><value>Galline allevate all'aperto, alimentazione da agricoltura biologica, massimo 6 galline per m² in ricovero e 4 m² di spazio esterno per gallina.</value></data>
+  <data name="ShellCode_Mode_PleinAir" xml:space="preserve"><value>All'aperto</value></data>
+  <data name="ShellCode_Mode_PleinAir_Detail" xml:space="preserve"><value>Galline con accesso diurno a uno spazio esterno, 4 m² per gallina, alimentazione non biologica.</value></data>
+  <data name="ShellCode_Mode_Sol" xml:space="preserve"><value>A terra</value></data>
+  <data name="ShellCode_Mode_Sol_Detail" xml:space="preserve"><value>Galline allevate in ricovero, senza gabbia ma senza accesso all'esterno, fino a 9 galline per m².</value></data>
+  <data name="ShellCode_Mode_Cage" xml:space="preserve"><value>Gabbia / voliera arricchita</value></data>
+  <data name="ShellCode_Mode_Cage_Detail" xml:space="preserve"><value>Galline allevate in gabbie arricchite, circa 750 cm² per gallina, senza accesso all'esterno.</value></data>
+  <data name="ShellCode_Pays_FR" xml:space="preserve"><value>Francia (FR)</value></data>
+  <data name="ShellCode_Pays_BE" xml:space="preserve"><value>Belgio (BE)</value></data>
+  <data name="ShellCode_Pays_DE" xml:space="preserve"><value>Germania (DE)</value></data>
+  <data name="ShellCode_Pays_ES" xml:space="preserve"><value>Spagna (ES)</value></data>
+  <data name="ShellCode_Pays_IT" xml:space="preserve"><value>Italia (IT)</value></data>
+  <data name="ShellCode_Pays_NL" xml:space="preserve"><value>Paesi Bassi (NL)</value></data>
+  <data name="ShellCode_Pays_PL" xml:space="preserve"><value>Polonia (PL)</value></data>
+  <data name="ShellCode_Pays_PT" xml:space="preserve"><value>Portogallo (PT)</value></data>
+  <data name="ShellCode_Pays_LU" xml:space="preserve"><value>Lussemburgo (LU)</value></data>
+  <data name="ShellCode_Pays_CH" xml:space="preserve"><value>Svizzera (CH)</value></data>
+
+  <data name="Scan_PermissionRefusee" xml:space="preserve"><value>L'accesso alla fotocamera è stato negato. Potete autorizzarlo nelle impostazioni del dispositivo.</value></data>
+  <data name="Scan_NonSupporte" xml:space="preserve"><value>Né la fotocamera né la selezione di immagini sono disponibili qui. Inserite il valore manualmente.</value></data>
+  <data name="Scan_PhotoEchec" xml:space="preserve"><value>Non è stato possibile ottenere la foto: {0}</value></data>
+  <data name="Scan_LectureEchec" xml:space="preserve"><value>Non è stato possibile leggere la foto: {0}</value></data>
+  <data name="Scan_OcrEchec" xml:space="preserve"><value>Il riconoscimento del testo non è riuscito: {0}</value></data>
+
+  <data name="Settings_Badge" xml:space="preserve"><value>IMPOSTAZIONI</value></data>
+  <data name="Settings_Titre" xml:space="preserve"><value>⚙️ Impostazioni</value></data>
+  <data name="Settings_SectionLangue" xml:space="preserve"><value>LINGUA</value></data>
+  <data name="Settings_LangueSysteme" xml:space="preserve"><value>Sistema</value></data>
+  <data name="Settings_SectionPalette" xml:space="preserve"><value>TAVOLOZZA COLORI</value></data>
+  <data name="Settings_PaletteMiel" xml:space="preserve"><value>Miele</value></data>
+  <data name="Settings_PaletteLagon" xml:space="preserve"><value>Laguna</value></data>
+  <data name="Settings_PaletteCorail" xml:space="preserve"><value>Corallo</value></data>
+  <data name="Settings_SectionTheme" xml:space="preserve"><value>ASPETTO</value></data>
+  <data name="Settings_ThemeSysteme" xml:space="preserve"><value>Sistema</value></data>
+  <data name="Settings_ThemeClair" xml:space="preserve"><value>Chiaro</value></data>
+  <data name="Settings_ThemeSombre" xml:space="preserve"><value>Scuro</value></data>
+</root>

@@ -9,6 +9,8 @@ namespace OeufFrais.Services;
 
 public sealed class ShellCode
 {
+    private static LocalizationResourceManager Loc => LocalizationResourceManager.Instance;
+
     public bool Valide { get; init; }
     public string Erreur { get; init; } = "";
     public string CodeNormalise { get; init; } = "";
@@ -16,6 +18,8 @@ public sealed class ShellCode
     public string ModeElevageDetail { get; init; } = "";
     public string Pays { get; init; } = "";
     public string IdentifiantElevage { get; init; } = "";
+
+    public string IdentifiantElevageTexte => Loc.GetString("Code_LabelIdentifiant", IdentifiantElevage);
 }
 
 /// <summary>
@@ -28,36 +32,30 @@ public sealed class ShellCode
 /// </summary>
 public static class ShellCodeParser
 {
+    private static LocalizationResourceManager Loc => LocalizationResourceManager.Instance;
+
     private static readonly Regex Format =
         new(@"^([0-3])\s*([A-Z]{2})\s*([A-Z0-9]{2,12})$", RegexOptions.Compiled);
 
     public static ShellCode Parse(string? saisie)
     {
         if (string.IsNullOrWhiteSpace(saisie))
-            return new ShellCode { Erreur = "Saisissez le code imprimé sur la coquille." };
+            return new ShellCode { Erreur = Loc.GetString("ShellCode_Erreur_Vide") };
 
         var code = saisie.Trim().ToUpperInvariant().Replace(" ", "").Replace("-", "");
         var m = Format.Match(code);
 
         if (!m.Success)
-            return new ShellCode
-            {
-                Erreur = "Code non reconnu. Format attendu : un chiffre (0 à 3), " +
-                         "le code pays sur 2 lettres, puis l'identifiant de l'élevage. Exemple : 3FRABC01."
-            };
+            return new ShellCode { Erreur = Loc.GetString("ShellCode_Erreur_Format") };
 
         var chiffre = m.Groups[1].Value[0];
 
         var (mode, detail) = chiffre switch
         {
-            '0' => ("Biologique",
-                    "Poules élevées en plein air, alimentation issue de l'agriculture biologique, 6 poules par m² maximum en bâtiment et 4 m² de parcours extérieur par poule."),
-            '1' => ("Plein air",
-                    "Poules ayant accès à un parcours extérieur en journée, 4 m² par poule, alimentation non biologique."),
-            '2' => ("Au sol",
-                    "Poules élevées en bâtiment, sans cage mais sans accès à l'extérieur, jusqu'à 9 poules par m²."),
-            _ => ("Cage / volière aménagée",
-                    "Poules élevées en cage aménagée, environ 750 cm² par poule, sans accès à l'extérieur.")
+            '0' => (Loc.GetString("ShellCode_Mode_Bio"), Loc.GetString("ShellCode_Mode_Bio_Detail")),
+            '1' => (Loc.GetString("ShellCode_Mode_PleinAir"), Loc.GetString("ShellCode_Mode_PleinAir_Detail")),
+            '2' => (Loc.GetString("ShellCode_Mode_Sol"), Loc.GetString("ShellCode_Mode_Sol_Detail")),
+            _ => (Loc.GetString("ShellCode_Mode_Cage"), Loc.GetString("ShellCode_Mode_Cage_Detail"))
         };
 
         return new ShellCode
@@ -158,16 +156,16 @@ public static class ShellCodeParser
 
     private static string NomPays(string iso) => iso switch
     {
-        "FR" => "France (FR)",
-        "BE" => "Belgique (BE)",
-        "DE" => "Allemagne (DE)",
-        "ES" => "Espagne (ES)",
-        "IT" => "Italie (IT)",
-        "NL" => "Pays-Bas (NL)",
-        "PL" => "Pologne (PL)",
-        "PT" => "Portugal (PT)",
-        "LU" => "Luxembourg (LU)",
-        "CH" => "Suisse (CH)",
+        "FR" => Loc.GetString("ShellCode_Pays_FR"),
+        "BE" => Loc.GetString("ShellCode_Pays_BE"),
+        "DE" => Loc.GetString("ShellCode_Pays_DE"),
+        "ES" => Loc.GetString("ShellCode_Pays_ES"),
+        "IT" => Loc.GetString("ShellCode_Pays_IT"),
+        "NL" => Loc.GetString("ShellCode_Pays_NL"),
+        "PL" => Loc.GetString("ShellCode_Pays_PL"),
+        "PT" => Loc.GetString("ShellCode_Pays_PT"),
+        "LU" => Loc.GetString("ShellCode_Pays_LU"),
+        "CH" => Loc.GetString("ShellCode_Pays_CH"),
         _ => iso
     };
 }

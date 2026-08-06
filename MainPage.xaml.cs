@@ -5,11 +5,17 @@ namespace OeufFrais;
 
 public partial class MainPage : ContentPage
 {
+    private static LocalizationResourceManager Loc => LocalizationResourceManager.Instance;
+
     public MainPage()
     {
         InitializeComponent();
         MettreAJourChips();
         AppliquerMode();
+
+        // LblAide n'est pas lié par {svc:Translate} (son contenu dépend de ModePonte) :
+        // sans ça, il resterait figé dans l'ancienne langue après un changement en direct.
+        Loc.PropertyChanged += (_, _) => AppliquerMode();
     }
 
     private bool ModePonte { get; set; } = true;
@@ -31,19 +37,19 @@ public partial class MainPage : ContentPage
     private void MettreAJourChips()
     {
         var appResources = Application.Current!.Resources;
-        var jaune = (Color)appResources["Jaune"];
-        var encre = (Color)appResources["Encre"];
-        var encreDouce = (Color)appResources["EncreDouce"];
-        var blanc = (Color)appResources["Blanc"];
-        var bordure = (Color)appResources["Bordure"];
+        var accent = (Color)appResources["CouleurAccent"];
+        var texte = (Color)appResources["CouleurTexte"];
+        var texteDouce = (Color)appResources["CouleurTexteDouce"];
+        var carte = (Color)appResources["CouleurCarte"];
+        var bordure = (Color)appResources["CouleurBordure"];
 
-        ChipPonte.BackgroundColor = ModePonte ? jaune : blanc;
-        ChipPonte.Stroke = ModePonte ? jaune : bordure;
-        LblChipPonte.TextColor = ModePonte ? encre : encreDouce;
+        ChipPonte.BackgroundColor = ModePonte ? accent : carte;
+        ChipPonte.Stroke = ModePonte ? accent : bordure;
+        LblChipPonte.TextColor = ModePonte ? texte : texteDouce;
 
-        ChipDcr.BackgroundColor = !ModePonte ? jaune : blanc;
-        ChipDcr.Stroke = !ModePonte ? jaune : bordure;
-        LblChipDcr.TextColor = !ModePonte ? encre : encreDouce;
+        ChipDcr.BackgroundColor = !ModePonte ? accent : carte;
+        ChipDcr.Stroke = !ModePonte ? accent : bordure;
+        LblChipDcr.TextColor = !ModePonte ? texte : texteDouce;
     }
 
     private void AppliquerMode()
@@ -52,14 +58,14 @@ public partial class MainPage : ContentPage
 
         if (ModePonte)
         {
-            LblAide.Text = "La date de ponte figure parfois sur la boîte. Sinon, retirez 28 jours à la DCR.";
+            LblAide.Text = Loc.GetString("Main_Aide_Ponte");
             DpDate.MinimumDate = today.AddDays(-120);
             DpDate.MaximumDate = today;
             DpDate.Date = today;
         }
         else
         {
-            LblAide.Text = "La DCR est la date « à consommer de préférence avant » imprimée sur la boîte. Elle vaut ponte + 28 jours.";
+            LblAide.Text = Loc.GetString("Main_Aide_Dcr");
             DpDate.MinimumDate = today.AddDays(-120);
             DpDate.MaximumDate = today.AddDays(60);
             DpDate.Date = today.AddDays(14);
@@ -74,15 +80,21 @@ public partial class MainPage : ContentPage
 
         Resultats.BindingContext = assessment;
         Resultats.IsVisible = true;
+
+        // Reconstruit à chaque calcul : garantit un affichage dans la langue actuelle
+        // même si elle a changé depuis la dernière fois que cette carte s'est affichée.
+        BindableLayout.SetItemsSource(ListeTestVerre, EggCalculator.TestVerreDEau);
     }
 
     // ===== Lecture de la DCR sur la boîte =====
 
     private async void OnScannerBoite(object sender, EventArgs e)
     {
-        var libelle = BtnScan.Text;
         BtnScan.IsEnabled = false;
-        BtnScan.Text = "Lecture en cours…";
+        // Rebinder (plutôt que fixer Text en dur) : une simple affectation de Text
+        // supprimerait le binding {svc:Translate} posé en XAML et casserait la
+        // mise à jour en direct si la langue change ensuite.
+        RebinderTexte(BtnScan, "Common_LectureEnCours");
 
         try
         {
@@ -92,7 +104,7 @@ public partial class MainPage : ContentPage
             if (!scan.Succes)
             {
                 if (scan.Message is not null)
-                    await DisplayAlertAsync("Scan impossible", scan.Message, "Fermer");
+                    await DisplayAlertAsync(Loc.GetString("Common_ScanImpossible"), scan.Message, Loc.GetString("Common_Fermer"));
                 return;
             }
 
@@ -100,7 +112,7 @@ public partial class MainPage : ContentPage
 
             if (candidats.Count == 0)
             {
-                Message("Aucune date lisible sur la photo. Cadrez la mention « à consommer de préférence avant le », à plat et bien éclairée — ou saisissez la date à la main.");
+                Message(Loc.GetString("Main_ScanAucuneDate"));
                 return;
             }
 
@@ -112,9 +124,9 @@ public partial class MainPage : ContentPage
             {
                 var options = candidats.Take(4).Select(c => c.Libelle).ToArray();
                 var choix = await DisplayActionSheetAsync(
-                    "Quelle date est la DCR ?", "Annuler", null, options);
+                    Loc.GetString("Main_ScanQuelleDcr"), Loc.GetString("Common_Annuler"), null, options);
 
-                if (string.IsNullOrEmpty(choix) || choix == "Annuler") return;
+                if (string.IsNullOrEmpty(choix) || choix == Loc.GetString("Common_Annuler")) return;
 
                 choisie = candidats.First(c => c.Libelle == choix).Date;
             }
@@ -124,15 +136,18 @@ public partial class MainPage : ContentPage
             ChangerMode(false);
             DpDate.Date = choisie;
 
-            Message($"Date lue : {choisie:d MMMM yyyy}. Vérifiez-la avant de calculer.");
+            Message(Loc.GetString("Main_ScanDateLue", choisie.ToString("d MMMM yyyy", Loc.Culture)));
             OnCalculer(this, EventArgs.Empty);
         }
         finally
         {
-            BtnScan.Text = libelle;
+            RebinderTexte(BtnScan, "Main_BoutonScan");
             BtnScan.IsEnabled = true;
         }
     }
+
+    private static void RebinderTexte(Button bouton, string cle)
+        => bouton.SetBinding(Button.TextProperty, new Binding($"[{cle}]", source: Loc));
 
     private void Message(string texte)
     {

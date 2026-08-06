@@ -4,23 +4,23 @@
              xmlns:svc="clr-namespace:OeufFrais.Services"
              x:Class="OeufFrais.MainPage"
              Title="Fraîcheur"
-             BackgroundColor="{StaticResource Coquille}">
+             BackgroundColor="{DynamicResource CouleurFond}">
 
     <ScrollView>
         <VerticalStackLayout Padding="18,14,18,40" Spacing="16">
 
             <VerticalStackLayout Spacing="8">
-                <Border Style="{StaticResource Pastille}" BackgroundColor="{StaticResource Jaune}" HorizontalOptions="Start">
-                    <Label Text="FRAÎCHEUR" FontSize="12" FontAttributes="Bold" CharacterSpacing="1.2" TextColor="{StaticResource Encre}" />
+                <Border Style="{StaticResource Pastille}" BackgroundColor="{DynamicResource CouleurAccent}" HorizontalOptions="Start">
+                    <Label Text="{svc:Translate Key=Main_Badge}" FontSize="12" FontAttributes="Bold" CharacterSpacing="1.2" TextColor="{DynamicResource CouleurTexte}" />
                 </Border>
-                <Label Text="🥚 Cet œuf est-il encore bon ?" Style="{StaticResource Titre}" />
+                <Label Text="{svc:Translate Key=Main_Titre}" Style="{StaticResource Titre}" />
             </VerticalStackLayout>
 
             <!-- ===== Saisie ===== -->
             <Border Style="{StaticResource Carte}">
                 <VerticalStackLayout Spacing="12">
 
-                    <Label Text="JE CONNAIS" Style="{StaticResource TitreSection}" TextColor="{StaticResource JauneFonce}" />
+                    <Label Text="{svc:Translate Key=Main_SectionConnais}" Style="{StaticResource TitreSection}" TextColor="{DynamicResource CouleurAccentFonce}" />
 
                     <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
                         <Border x:Name="ChipPonte"
@@ -32,7 +32,7 @@
                                 <TapGestureRecognizer Tapped="OnChipPonte" />
                             </Border.GestureRecognizers>
                             <Label x:Name="LblChipPonte"
-                                   Text="Date de ponte"
+                                   Text="{svc:Translate Key=Main_ChipPonte}"
                                    FontSize="14"
                                    FontAttributes="Bold"
                                    HorizontalTextAlignment="Center"
@@ -47,7 +47,7 @@
                                 <TapGestureRecognizer Tapped="OnChipDcr" />
                             </Border.GestureRecognizers>
                             <Label x:Name="LblChipDcr"
-                                   Text="Date sur la boîte (DCR)"
+                                   Text="{svc:Translate Key=Main_ChipDcr}"
                                    FontSize="14"
                                    FontAttributes="Bold"
                                    HorizontalTextAlignment="Center"
@@ -58,21 +58,34 @@
                     <Label x:Name="LblAide"
                            Style="{StaticResource Corps}"
                            FontSize="13"
-                           TextColor="{StaticResource EncreDouce}" />
+                           TextColor="{DynamicResource CouleurTexteDouce}" />
 
-                    <DatePicker x:Name="DpDate"
-                                Format="dddd d MMMM yyyy"
-                                FontSize="17"
-                                TextColor="{StaticResource Encre}" />
+                    <Border Style="{StaticResource ChampSaisie}">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                            <Label Text="📅" FontSize="18" VerticalOptions="Center" />
+                            <DatePicker x:Name="DpDate"
+                                        Grid.Column="1"
+                                        Format="dddd d MMMM yyyy"
+                                        FontSize="16"
+                                        FontAttributes="Bold"
+                                        TextColor="{DynamicResource CouleurTexte}"
+                                        HorizontalOptions="Fill" />
+                            <Label Grid.Column="2"
+                                   Text="▾"
+                                   FontSize="16"
+                                   TextColor="{DynamicResource CouleurAccentFonce}"
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
 
                     <Button x:Name="BtnScan"
-                            Text="📷  Lire la date sur la boîte"
+                            Text="{svc:Translate Key=Main_BoutonScan}"
                             Clicked="OnScannerBoite"
                             Style="{StaticResource BoutonSecondaire}" />
 
                     <Label x:Name="LblScan" Style="{StaticResource NoteScan}" />
 
-                    <Button Text="Calculer"
+                    <Button Text="{svc:Translate Key=Common_Calculer}"
                             Clicked="OnCalculer"
                             Style="{StaticResource BoutonPrincipal}" />
                 </VerticalStackLayout>
@@ -99,28 +112,28 @@
 
                 <Border Style="{StaticResource Carte}">
                     <VerticalStackLayout Spacing="12">
-                        <Label Text="LES DATES CLÉS" Style="{StaticResource TitreSection}" TextColor="{StaticResource JauneFonce}" />
+                        <Label Text="{svc:Translate Key=Main_SectionDates}" Style="{StaticResource TitreSection}" TextColor="{DynamicResource CouleurAccentFonce}" />
 
                         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
                               ColumnDefinitions="*,Auto"
                               RowSpacing="9"
                               ColumnSpacing="10">
 
-                            <Label Grid.Row="0" Grid.Column="0" Text="Ponte" Style="{StaticResource Corps}" TextColor="{StaticResource EncreDouce}" />
+                            <Label Grid.Row="0" Grid.Column="0" Text="{svc:Translate Key=Main_LabelPonte}" Style="{StaticResource Corps}" TextColor="{DynamicResource CouleurTexteDouce}" />
                             <Label Grid.Row="0" Grid.Column="1" Text="{Binding PonteTexte}" Style="{StaticResource Corps}" FontAttributes="Bold" HorizontalTextAlignment="End" />
 
-                            <Label Grid.Row="1" Grid.Column="0" Text="Âge aujourd'hui" Style="{StaticResource Corps}" TextColor="{StaticResource EncreDouce}" />
+                            <Label Grid.Row="1" Grid.Column="0" Text="{svc:Translate Key=Main_LabelAge}" Style="{StaticResource Corps}" TextColor="{DynamicResource CouleurTexteDouce}" />
                             <Label Grid.Row="1" Grid.Column="1" Text="{Binding AgeTexte}" Style="{StaticResource Corps}" FontAttributes="Bold" HorizontalTextAlignment="End" />
 
-                            <BoxView Grid.Row="2" Grid.ColumnSpan="2" HeightRequest="1" Color="{StaticResource Bordure}" />
+                            <BoxView Grid.Row="2" Grid.ColumnSpan="2" HeightRequest="1" Color="{DynamicResource CouleurBordure}" />
 
-                            <Label Grid.Row="3" Grid.Column="0" Text="Fin de l'extra frais (J+9)" Style="{StaticResource Corps}" TextColor="{StaticResource EncreDouce}" />
+                            <Label Grid.Row="3" Grid.Column="0" Text="{svc:Translate Key=Main_LabelFinExtraFrais}" Style="{StaticResource Corps}" TextColor="{DynamicResource CouleurTexteDouce}" />
                             <Label Grid.Row="3" Grid.Column="1" Text="{Binding ExtraFraisTexte}" Style="{StaticResource Corps}" HorizontalTextAlignment="End" />
 
-                            <Label Grid.Row="4" Grid.Column="0" Text="DCR, sur la boîte (J+28)" Style="{StaticResource Corps}" TextColor="{StaticResource EncreDouce}" />
+                            <Label Grid.Row="4" Grid.Column="0" Text="{svc:Translate Key=Main_LabelDcr}" Style="{StaticResource Corps}" TextColor="{DynamicResource CouleurTexteDouce}" />
                             <Label Grid.Row="4" Grid.Column="1" Text="{Binding DcrTexte}" Style="{StaticResource Corps}" FontAttributes="Bold" HorizontalTextAlignment="End" />
 
-                            <Label Grid.Row="5" Grid.Column="0" Text="Limite de prudence (DCR+14)" Style="{StaticResource Corps}" TextColor="{StaticResource EncreDouce}" />
+                            <Label Grid.Row="5" Grid.Column="0" Text="{svc:Translate Key=Main_LabelPrudence}" Style="{StaticResource Corps}" TextColor="{DynamicResource CouleurTexteDouce}" />
                             <Label Grid.Row="5" Grid.Column="1" Text="{Binding PrudenceTexte}" Style="{StaticResource Corps}" HorizontalTextAlignment="End" />
                         </Grid>
                     </VerticalStackLayout>
@@ -128,7 +141,7 @@
 
                 <Border Style="{StaticResource Carte}">
                     <VerticalStackLayout Spacing="14">
-                        <Label Text="CE QUE VOUS POUVEZ EN FAIRE" Style="{StaticResource TitreSection}" TextColor="{StaticResource JauneFonce}" />
+                        <Label Text="{svc:Translate Key=Main_SectionUsages}" Style="{StaticResource TitreSection}" TextColor="{DynamicResource CouleurAccentFonce}" />
 
                         <VerticalStackLayout BindableLayout.ItemsSource="{Binding Conseils}" Spacing="14">
                             <BindableLayout.ItemTemplate>
@@ -154,11 +167,11 @@
                                             <Label Text="{Binding Usage}"
                                                    FontSize="15"
                                                    FontAttributes="Bold"
-                                                   TextColor="{StaticResource Encre}" />
+                                                   TextColor="{DynamicResource CouleurTexte}" />
                                             <Label Text="{Binding Detail}"
                                                    FontSize="13.5"
                                                    LineHeight="1.3"
-                                                   TextColor="{StaticResource EncreDouce}" />
+                                                   TextColor="{DynamicResource CouleurTexteDouce}" />
                                         </VerticalStackLayout>
                                     </Grid>
                                 </DataTemplate>
@@ -169,13 +182,12 @@
 
                 <Border Style="{StaticResource Carte}" IsVisible="{Binding TestVerreDEauRecommande}">
                     <VerticalStackLayout Spacing="10">
-                        <Label Text="LE TEST DU VERRE D'EAU" Style="{StaticResource TitreSection}" TextColor="{StaticResource JauneFonce}" />
-                        <VerticalStackLayout BindableLayout.ItemsSource="{x:Static svc:EggCalculator.TestVerreDEau}"
-                                             Spacing="7">
+                        <Label Text="{svc:Translate Key=Common_SectionTestVerre}" Style="{StaticResource TitreSection}" TextColor="{DynamicResource CouleurAccentFonce}" />
+                        <VerticalStackLayout x:Name="ListeTestVerre" Spacing="7">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate x:DataType="x:String">
                                     <Grid ColumnDefinitions="16,*" ColumnSpacing="8">
-                                        <Label Text="•" TextColor="{StaticResource JauneFonce}" FontSize="16" />
+                                        <Label Text="•" TextColor="{DynamicResource CouleurAccentFonce}" FontSize="16" />
                                         <Label Grid.Column="1" Text="{Binding .}" Style="{StaticResource Corps}" FontSize="14" />
                                     </Grid>
                                 </DataTemplate>
@@ -184,10 +196,10 @@
                     </VerticalStackLayout>
                 </Border>
 
-                <Label Text="Repères issus du règlement (CE) n° 589/2008 et des recommandations de l'ANSES. En cas de doute sur l'aspect ou l'odeur d'un œuf, jetez-le."
+                <Label Text="{svc:Translate Key=Main_Disclaimer}"
                        FontSize="12"
                        LineHeight="1.35"
-                       TextColor="{StaticResource EncreDouce}" />
+                       TextColor="{DynamicResource CouleurTexteDouce}" />
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

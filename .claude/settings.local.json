@@ -4,7 +4,12 @@
       "Bash(dotnet --version)",
       "Bash(dotnet workload *)",
       "Bash(dotnet build *)",
-      "PowerShell(Get-Process *)"
+      "PowerShell(Get-Process *)",
+      "Bash(where adb *)",
+      "Bash(adb devices *)",
+      "PowerShell(& \"C:\\\\Program Files \\(x86\\)\\\\Android\\\\android-sdk\\\\platform-tools\\\\adb.exe\" devices -l)",
+      "PowerShell(Start-Process -FilePath $emulator -ArgumentList \"-avd\",\"pixel_5_-_api_34\" -WindowStyle Normal)",
+      "PowerShell($emulator = \"C:\\\\Program Files \\(x86\\)\\\\Android\\\\android-sdk\\\\emulator\\\\emulator.exe\")"
     ]
   }
 }

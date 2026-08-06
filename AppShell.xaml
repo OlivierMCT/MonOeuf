@@ -2,22 +2,30 @@
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:OeufFrais"
+       xmlns:loc="clr-namespace:OeufFrais.Services"
        x:Class="OeufFrais.AppShell"
        Shell.FlyoutBehavior="Disabled"
-       Shell.TabBarBackgroundColor="{StaticResource Blanc}"
-       Shell.TabBarTitleColor="{StaticResource JauneFonce}"
-       Shell.TabBarUnselectedColor="{StaticResource EncreDouce}"
-       Title="Œuf Frais">
+       Shell.TabBarBackgroundColor="{DynamicResource CouleurCarte}"
+       Shell.TabBarTitleColor="{DynamicResource CouleurAccentFonce}"
+       Shell.TabBarUnselectedColor="{DynamicResource CouleurTexteDouce}"
+       Title="{loc:Translate Key=Shell_Title}">
 
     <TabBar>
-        <ShellContent Title="Fraîcheur"
+        <ShellContent Title="{loc:Translate Key=Shell_TabFraicheur}"
+                      Icon="icon_fraicheur"
                       ContentTemplate="{DataTemplate local:MainPage}"
                       Route="MainPage" />
-        <ShellContent Title="Code coquille"
+        <ShellContent Title="{loc:Translate Key=Shell_TabCode}"
+                      Icon="icon_code"
                       ContentTemplate="{DataTemplate local:CodePage}"
                       Route="CodePage" />
-        <ShellContent Title="Conserver"
+        <ShellContent Title="{loc:Translate Key=Shell_TabConserver}"
+                      Icon="icon_conserver"
                       ContentTemplate="{DataTemplate local:ConseilsPage}"
                       Route="ConseilsPage" />
+        <ShellContent Title="{loc:Translate Key=Shell_TabReglages}"
+                      Icon="icon_settings"
+                      ContentTemplate="{DataTemplate local:SettingsPage}"
+                      Route="SettingsPage" />
     </TabBar>
 </Shell>
