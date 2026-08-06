@@ -91,6 +91,16 @@
                 </VerticalStackLayout>
             </Border>
 
+            <!-- ===== Poule qui traverse l'écran en se dandinant, en boucle ===== -->
+            <!-- Aller-retour continu tant que la page est affichée (voir OnAppearing / OnDisappearing). -->
+            <Grid x:Name="PisteMarche" HeightRequest="50">
+                <Label x:Name="LblPouleMarche"
+                       Text="🐔"
+                       FontSize="34"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center" />
+            </Grid>
+
             <!-- ===== Résultats ===== -->
             <VerticalStackLayout x:Name="Resultats"
                                  x:DataType="svc:EggAssessment"
@@ -169,7 +179,7 @@
                                                    FontAttributes="Bold"
                                                    TextColor="{DynamicResource CouleurTexte}" />
                                             <Label Text="{Binding Detail}"
-                                                   FontSize="13.5"
+                                                   FontSize="13"
                                                    LineHeight="1.3"
                                                    TextColor="{DynamicResource CouleurTexteDouce}" />
                                         </VerticalStackLayout>

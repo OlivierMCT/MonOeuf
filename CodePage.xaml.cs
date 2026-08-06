@@ -11,7 +11,7 @@ public partial class CodePage : ContentPage
         InitializeComponent();
     }
 
-    private void OnDecoder(object sender, EventArgs e)
+    private void OnDecoder(object? sender, EventArgs e)
     {
         var resultat = ShellCodeParser.Parse(TxtCode.Text);
 
@@ -35,7 +35,7 @@ public partial class CodePage : ContentPage
     // impression jet d'encre en petits caractères. On propose donc toujours le
     // résultat en saisie modifiable plutôt que de le valider directement.
 
-    private async void OnScannerCoquille(object sender, EventArgs e)
+    private async void OnScannerCoquille(object? sender, EventArgs e)
     {
         BtnScan.IsEnabled = false;
         RebinderTexte(BtnScan, "Common_LectureEnCours");

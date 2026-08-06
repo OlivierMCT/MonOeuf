@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Plugin.Maui.OCR;
@@ -41,7 +42,7 @@ public static class ScanService
             // existante, ce qui permet de tester toute la chaîne de reconnaissance.
             photo = MediaPicker.Default.IsCaptureSupported
                 ? await MediaPicker.Default.CapturePhotoAsync()
-                : await MediaPicker.Default.PickPhotoAsync();
+                : (await MediaPicker.Default.PickPhotosAsync()).FirstOrDefault();
         }
         catch (PermissionException)
         {

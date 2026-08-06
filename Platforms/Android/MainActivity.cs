@@ -3,7 +3,6 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using AndroidX.Core.View;
-using Java.Util;
 
 namespace OeufFrais;
 
@@ -32,7 +31,20 @@ public class MainActivity : MauiAppCompatActivity
         if (baseContext?.Resources?.Configuration is { } configuration)
         {
             var configurationFr = new Android.Content.Res.Configuration(configuration);
-            configurationFr.SetLocale(new Locale("fr", "FR"));
+
+            // Configuration.SetLocale est obsolète à partir d'Android 36 : le garde-fou doit
+            // utiliser OperatingSystem.IsAndroidVersionAtLeast, seul motif reconnu par
+            // l'analyseur CA1422 pour désactiver l'avertissement sur cet appel.
+            if (!OperatingSystem.IsAndroidVersionAtLeast(36))
+            {
+                configurationFr.SetLocale(new Java.Util.Locale("fr", "FR"));
+            }
+            else
+            {
+                // TODO: sur Android 36+, utiliser l'API recommandée (LocaleList / ICU) pour
+                // fixer la locale de configuration de l'Activity, une fois ce SDK ciblé.
+            }
+
             baseContext = baseContext.CreateConfigurationContext(configurationFr);
         }
 

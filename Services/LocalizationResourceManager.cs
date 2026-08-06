@@ -57,14 +57,16 @@ public sealed class LocalizationResourceManager : INotifyPropertyChanged
             ? new CultureInfo(_preferenceExplicite)
             : CultureInfo.CurrentUICulture;
 
-        SetCulture(culture);
-
         // Pour que le formatage des dates (mois, jours de semaine) suive la même langue,
-        // même si l'utilisateur bascule sans redémarrer l'application.
+        // même si l'utilisateur bascule sans redémarrer l'application. Doit être fait AVANT
+        // SetCulture : son PropertyChanged force certains contrôles natifs (DatePicker) à se
+        // reformater immédiatement, et ils lisent CultureInfo.CurrentCulture au passage.
         CultureInfo.DefaultThreadCurrentCulture = culture;
         CultureInfo.DefaultThreadCurrentUICulture = culture;
         CultureInfo.CurrentCulture = culture;
         CultureInfo.CurrentUICulture = culture;
+
+        SetCulture(culture);
     }
 
     public void SetCulture(CultureInfo culture)

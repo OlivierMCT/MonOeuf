@@ -25,7 +25,10 @@ public static class MauiProgram
         Microsoft.Maui.Handlers.DatePickerHandler.Mapper.AppendToMapping("LocaleFrancaise", (handler, view) =>
         {
 #if IOS || MACCATALYST
-            handler.PlatformView.Locale = new Foundation.NSLocale("fr_FR");
+            // Le contrôle visible est un champ de texte ; le vrai UIDatePicker natif
+            // n'apparaît qu'en InputView quand l'utilisateur le fait apparaître.
+            if (handler.PlatformView.InputView is UIKit.UIDatePicker nativePicker)
+                nativePicker.Locale = new Foundation.NSLocale("fr_FR");
 #elif WINDOWS
             handler.PlatformView.Language = "fr-FR";
 #endif

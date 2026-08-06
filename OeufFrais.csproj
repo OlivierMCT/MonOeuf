@@ -45,6 +45,12 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+
+		<!-- Plugin.Maui.OCR tire deux modules ML Kit qui embarquent la même lib native
+		     (libmlkit_google_ocr_pipeline.so) ; le linker Android garde la première copie
+		     sans conséquence, mais le avertissement est du bruit qu'on ne peut pas corriger
+		     depuis ce projet. -->
+		<NoWarn Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">$(NoWarn);XA4301</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
