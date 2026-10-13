@@ -1,15 +1,33 @@
-# Œuf Frais — application .NET MAUI
+# Œuf Frais
 
 Détermine si un œuf est encore consommable à partir de sa **date de ponte** ou de la
 **DCR** imprimée sur la boîte, et indique ce que l'on peut en faire à ce stade.
 
-Trois onglets :
+Application web installable (PWA) : elle s'installe depuis le navigateur sur iPhone, Android
+ou ordinateur, sans passer par les stores, et **fonctionne entièrement hors ligne** une fois
+ouverte une première fois.
+
+**Adresse : <https://oliviermct.github.io/OeufFrais/>**
 
 | Onglet | Contenu |
 |---|---|
 | **Fraîcheur** | Saisie d'une date (ponte ou DCR), statut, dates clés, usages autorisés ou déconseillés |
 | **Code coquille** | Décodage du code imprimé sur l'œuf : mode d'élevage, pays, identifiant d'élevage |
 | **Conserver** | Règles de conservation, test du verre d'eau, différence DCR / DLC |
+| **Réglages** | Langue (7 langues), palette de couleurs, thème clair / sombre, installation et état hors ligne |
+
+---
+
+## Installer l'application
+
+- **iPhone / iPad** : ouvrir l'adresse dans Safari, toucher **Partager**, puis
+  **Sur l'écran d'accueil**. (Chrome et Edge le proposent aussi depuis iOS 16.4.)
+- **Android** : ouvrir l'adresse dans Chrome, puis toucher **Installer l'application**
+  (bandeau en haut de l'app, onglet Réglages, ou menu ⋮ de Chrome).
+- **Ordinateur** : Chrome ou Edge affichent une icône d'installation dans la barre d'adresse.
+
+L'onglet **Réglages** indique « Prête hors ligne » quand tout est en cache : l'app marche
+alors sans réseau. Quand une nouvelle version est publiée, un bandeau propose de la charger.
 
 ---
 
@@ -28,70 +46,56 @@ La DCR étant toujours ponte + 28 jours, l'app convertit l'une en l'autre sans a
 
 ---
 
-## Mise en place du projet
-
-Les fichiers de ce dossier sont le **code applicatif**. Le squelette de plateforme
-(`Platforms/`, `Resources/`, `.csproj`) est généré par le template officiel :
-
-```bash
-dotnet workload install maui
-dotnet new maui -n OeufFrais
-```
-
-Copiez ensuite le contenu de ce dossier dans le projet généré, en écrasant les fichiers
-existants :
+## Structure du dépôt
 
 ```
-MauiProgram.cs
-App.xaml            App.xaml.cs
-AppShell.xaml       AppShell.xaml.cs
-MainPage.xaml       MainPage.xaml.cs
-CodePage.xaml       CodePage.xaml.cs
-ConseilsPage.xaml   ConseilsPage.xaml.cs
-Services/EggCalculator.cs
-Services/ShellCodeParser.cs
+src/OeufFrais.Core/        règles métier et traductions (.resx), sans interface : C# pur
+src/OeufFrais.Web/         la PWA, Blazor WebAssembly
+src/OeufFrais.Maui/        ancienne app .NET MAUI, retirée une fois la PWA validée sur téléphone
+tests/OeufFrais.Core.Tests tests unitaires des règles et des traductions (xUnit)
+tests/OeufFrais.Web.E2E    tests de bout en bout dans Chromium, dont le hors ligne (Playwright)
+scripts/publier-site.sh    prépare le site tel qu'il est mis en ligne
+docs/MIGRATION_PWA.md      plan et suivi de la migration MAUI → PWA
 ```
-
-Puis, dans `OeufFrais.csproj`, ajustez :
-
-```xml
-<ApplicationTitle>Œuf Frais</ApplicationTitle>
-<ApplicationId>fr.olivierastre.oeuffrais</ApplicationId>
-```
-
-Vérifiez que le fichier est bien enregistré en **UTF-8** (les accents et le « Œ »).
 
 ---
 
-## Tester
+## Développer
 
-**Sur Windows**, le plus rapide pour voir l'interface :
+Prérequis : SDK .NET 10.
 
 ```bash
-dotnet build -t:Run -f net9.0-windows10.0.19041.0
+dotnet watch --project src/OeufFrais.Web        # app en développement, rechargée à chaque modification
+dotnet test tests/OeufFrais.Core.Tests          # tests des règles et des traductions
 ```
 
-**Sur iPhone**, MAUI a besoin d'un Mac quelque part dans la chaîne :
+En développement, le service worker ne met rien en cache : l'indicateur « Prête hors ligne »
+n'y veut rien dire. Pour tester le vrai comportement hors ligne, il faut le site publié :
 
-- *Mac* : `dotnet build -t:Run -f net9.0-ios` après avoir ouvert le projet sur macOS
-- *Windows + Mac sur le réseau* : Visual Studio 2022, appairage Mac (Pair to Mac)
-- *Windows seul* : **Hot Restart** dans Visual Studio 2022 déploie sur un iPhone
-  physique branché en USB sans Mac. Il faut iTunes installé et un compte Apple
-  Developer (99 €/an pour un déploiement durable ; un compte gratuit fonctionne
-  aussi mais l'app expire au bout de 7 jours et doit être réinstallée).
+```bash
+scripts/publier-site.sh /OeufFrais/ artifacts/site              # comme sur GitHub Pages
+dotnet build tests/OeufFrais.Web.E2E
+pwsh tests/OeufFrais.Web.E2E/bin/Debug/net10.0/playwright.ps1 install chromium   # une seule fois
+dotnet test tests/OeufFrais.Web.E2E
+```
 
-Cible minimale : iOS 15.
+Les textes de l'interface sont dans `src/OeufFrais.Core/Resources/Strings/AppStrings*.resx`
+(le fichier sans suffixe est le français). Un test vérifie que chaque clé existe dans les
+7 langues avec les mêmes paramètres `{0}`.
 
 ---
 
-## Pistes d'évolution
+## Mettre en ligne
 
-- **Scan photo du code coquille** : `ZXing.Net.Maui` pour le code-barres de la boîte,
-  ou une reconnaissance de texte (Vision sur iOS) pour lire le code imprimé sur l'œuf.
-  Le parseur `ShellCodeParser` accepte déjà n'importe quelle chaîne, il suffit de lui
-  passer le texte reconnu.
-- **Suivi de plusieurs boîtes** : persister une liste avec `Preferences` ou SQLite.
-- **Notification** quelques jours avant la DCR, via `Plugin.LocalNotification`.
+Le workflow `.github/workflows/pwa.yml` lance les tests à chaque push et publie `main` sur
+GitHub Pages. Réglages à faire une fois :
+
+1. rendre le dépôt public (GitHub Pages est payant pour un dépôt privé) ;
+2. *Settings → Pages → Source* : **GitHub Actions**.
+
+Le site est servi sous `/OeufFrais/` : `scripts/publier-site.sh` écrit ce chemin dans la balise
+`<base>` **avant** la publication. Ne jamais modifier un fichier du site après coup : le service
+worker vérifie l'empreinte de chaque fichier et refuserait de s'installer.
 
 ---
 

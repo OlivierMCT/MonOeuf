@@ -3,6 +3,44 @@
 > Branche de travail : `claude/migration-pwa` · Point de départ : `main` @ `4746061`
 > (application .NET MAUI 10 : Android, iOS, Windows)
 
+## Avancement
+
+**Phases 0 à 4 faites, phase 5 automatisée faite.** La PWA est complète et testée :
+88 tests unitaires et 15 tests de bout en bout dans Chromium, dont un parcours entier réseau
+coupé (rechargement, lien profond, calcul, décodage, changement de langue) et l'arrivée d'une
+nouvelle version.
+
+Reste à faire, de votre côté :
+
+1. Créer le tag `v1-maui` (l'environnement de travail n'a pu pousser que la branche) :
+   `git tag -a v1-maui 4746061 -m "Dernière version MAUI" && git push origin v1-maui`.
+2. Vérifier les adresses e-mail des commits et choisir une licence, puis rendre le dépôt public.
+3. *Settings → Pages → Source : GitHub Actions*, et autoriser la branche `claude/migration-pwa`
+   dans *Settings → Environments → github-pages* pour la tester sur téléphone avant la fusion.
+4. Recette sur iPhone et Android réels (phase 5), mesure du démarrage sur un téléphone modeste.
+5. Ensuite : supprimer `src/OeufFrais.Maui/`, ouvrir la pull request vers `main`.
+
+Écarts par rapport au plan ci-dessous :
+
+- **App MAUI** : modifiée comme prévu (photos retirées, branchée sur `OeufFrais.Core`), mais
+  compilée ici seulement pour son code C# et ses XAML, contre le paquet MAUI en `net10.0` :
+  le SDK Android n'était pas accessible. À compiler une fois sous Windows avant de s'y fier.
+- **Saisie de la date** : mieux que prévu. La date s'affiche dans la langue de l'app (« mardi
+  13 octobre 2026 »), comme sous MAUI ; le champ date natif, transparent, est posé par-dessus
+  et ouvre le calendrier du téléphone. Seul ce calendrier reste dans la langue du téléphone.
+- **Un seul workflow** (`pwa.yml`) au lieu de `ci.yml` + `pages.yml` ; la mise en ligne est
+  sautée tant que le dépôt est privé. Le site est préparé par `scripts/publier-site.sh`,
+  utilisé aussi pour les tests de bout en bout.
+- **Langue « Système »** : corrigée. Revenir sur « Système » après un choix explicite gardait
+  ce choix jusqu'au redémarrage ; et une langue de téléphone non traduite (japonais…) donne
+  désormais des dates en français au lieu de dates japonaises à côté de textes français.
+- **Lisibilité en mode sombre** : le texte posé sur la couleur d'accent (boutons, puces,
+  pastilles) reste foncé, et les erreurs passent en rouge clair ; sous MAUI, texte clair sur
+  jaune vif.
+- **12 nouveaux textes** traduits dans les 7 langues (installation, mise à jour, hors ligne,
+  page introuvable).
+- **Poids mesuré** : 8,5 Mo préchargés (2,5 Mo en brotli ; GitHub Pages compresse en gzip).
+
 ## 1. Objectif et contraintes
 
 - Distribuer l'application **sans compte Apple Developer (99 €/an) ni Google Play Console (25 $)** :
@@ -139,35 +177,35 @@ les tests. Taille indicative : **S** (≤ ½ jour), **M** (~1 jour), **L** (2–
 
 - [ ] Taguer l'état actuel : `git tag v1-maui` sur `main` (point de retour garanti, avec les
       photos encore présentes).
-- [ ] Avant de rendre le dépôt public :
+- [x] Avant de rendre le dépôt public :
   - [x] historique parcouru : aucun secret (clé, jeton, mot de passe) ;
-  - [ ] retirer `.claude/settings.local.json` du suivi et l'ajouter au `.gitignore` (réglages
+  - [x] retirer `.claude/settings.local.json` du suivi et l'ajouter au `.gitignore` (réglages
         locaux de Claude Code, avec des chemins de votre poste) ;
   - [ ] vérifier les adresses e-mail des commits : elles deviennent publiques ;
   - [ ] choisir une licence (sans fichier `LICENSE`, le code est visible mais pas réutilisable).
-- [ ] `git mv` du projet MAUI vers `src/OeufFrais.Maui/`, chemins du `.slnx` mis à jour ;
+- [x] `git mv` du projet MAUI vers `src/OeufFrais.Maui/`, chemins du `.slnx` mis à jour ;
       vérifier qu'il compile (`dotnet build -f net10.0-android`).
-- [ ] Ajouter `global.json`.
+- [x] Ajouter `global.json`.
 
 ### Phase 1 — Retirer les photos, extraire le cœur métier et le tester (M)
 
-- [ ] Retirer tout ce qui touche aux photos (liste du § 4), dans l'app MAUI et dans les 7
+- [x] Retirer tout ce qui touche aux photos (liste du § 4), dans l'app MAUI et dans les 7
       `.resx`.
-- [ ] Créer `OeufFrais.Core` (net10.0) et y déplacer `EggCalculator`, `ShellCodeParser`,
+- [x] Créer `OeufFrais.Core` (net10.0) et y déplacer `EggCalculator`, `ShellCodeParser`,
       `LocalizationResourceManager` et les `.resx`. `TranslateExtension`, `ThemeService` et
       `Palettes` restent côté MAUI (ils dépendent de XAML ou de `Application.Current`).
-- [ ] Retirer les dépendances MAUI du cœur :
+- [x] Retirer les dépendances MAUI du cœur :
   - `EggAssessment.CouleurStatut` / `CouleurStatutClaire` et `UsageConseil.Couleur` /
     `CouleurClaire` (type `Microsoft.Maui.Graphics.Color`) : le cœur expose `Statut`,
     `Autorise` et `CouleurHex` ; les propriétés `Color` passent dans un convertisseur côté MAUI.
   - `Preferences` → `IPreferences { string Get(string cle, string defaut); void Set(string cle, string valeur); }`,
     passée à `LocalizationResourceManager.Initialiser(...)`.
-- [ ] MAUI référence `OeufFrais.Core`. Dans les XAML, `EggAssessment`, `UsageConseil` et
+- [x] MAUI référence `OeufFrais.Core`. Dans les XAML, `EggAssessment`, `UsageConseil` et
       `ShellCode` vivent désormais dans une autre assembly :
       `xmlns:core="clr-namespace:OeufFrais.Services;assembly=OeufFrais.Core"` pour les
       `x:DataType`. L'application doit se comporter exactement comme avant (moins les photos) :
       c'est la preuve que l'extraction n'a rien cassé.
-- [ ] Créer `OeufFrais.Core.Tests` (le dépôt n'a aucun test aujourd'hui) :
+- [x] Créer `OeufFrais.Core.Tests` (le dépôt n'a aucun test aujourd'hui) :
   - bornes de `EggCalculator` : J0, J9/J10, J28/J29, J42/J43, date future, conversion
     DCR ↔ ponte ;
   - `ShellCodeParser.Parse` : chiffres 0 à 3, minuscules, espaces et tirets, code trop court
@@ -180,70 +218,71 @@ les tests. Taille indicative : **S** (≤ ½ jour), **M** (~1 jour), **L** (2–
 La mise en ligne arrive tôt exprès : un service worker n'est actif qu'en HTTPS (ou sur
 `localhost`), donc tester sur un vrai téléphone demande une URL publique dès le début.
 
-- [ ] `dotnet new blazorwasm --pwa -o src/OeufFrais.Web`, référence vers `OeufFrais.Core`.
-- [ ] `.csproj` :
+- [x] `dotnet new blazorwasm --pwa -o src/OeufFrais.Web`, référence vers `OeufFrais.Core`.
+- [x] `.csproj` :
   - `<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>` :
     sans ça, le portugais et le néerlandais n'ont pas leurs noms de jours et de mois (le
     découpage ICU par défaut ne les embarque pas) ;
   - `InvariantGlobalization` et `InvariantTimezone` laissés à `false` : le fuseau du navigateur
     est nécessaire pour que « aujourd'hui » soit juste.
-- [ ] `Program.cs` : créer `PreferencesNavigateur` (`localStorage` via `IJSInProcessRuntime`,
+- [x] `Program.cs` : créer `PreferencesNavigateur` (`localStorage` via `IJSInProcessRuntime`,
       appel synchrone), appeler `LocalizationResourceManager.Instance.Initialiser(...)` **avant**
       `RunAsync`. C'est la culture en place à ce moment-là qui détermine les assemblies
       satellites chargées.
-- [ ] `index.html` :
+- [x] `index.html` :
   - écran de chargement aux couleurs de l'app (l'œuf de `appiconfg.svg`) à la place de
     « Loading… » ;
   - `viewport-fit=cover`, `theme-color`, `apple-touch-icon` 180×180,
     `apple-mobile-web-app-capable`, `apple-mobile-web-app-status-bar-style` ;
   - petit script inline qui pose palette et thème depuis `localStorage` avant le démarrage de
     .NET, pour éviter un flash de mauvaises couleurs.
-- [ ] `manifest.webmanifest` : nom « Œuf Frais », `short_name`, `lang`, `display: standalone`,
+- [x] `manifest.webmanifest` : nom « Œuf Frais », `short_name`, `lang`, `display: standalone`,
       `start_url` et `scope` relatifs (`./`), `background_color` et `theme_color` (#FF6F59),
       icônes 192, 512 et 512 maskable générées depuis `Resources/AppIcon/*.svg`.
-- [ ] Mise en page : barre d'onglets en bas avec les icônes `icon_*.svg` existantes, marges
+- [x] Mise en page : barre d'onglets en bas avec les icônes `icon_*.svg` existantes, marges
       `env(safe-area-inset-*)` pour l'encoche et la barre d'accueil de l'iPhone.
-- [ ] `theme.css` : les 7 jetons (`--couleur-fond`, `--couleur-accent`, …) × 3 palettes ×
+- [x] `theme.css` : les 7 jetons (`--couleur-fond`, `--couleur-accent`, …) × 3 palettes ×
       clair/sombre, recopiés de `Palettes.cs`, choisis par `data-palette` / `data-theme` sur
       `<html>` ; mode « Système » via `@media (prefers-color-scheme: dark)`.
-- [ ] Workflows `ci.yml` et `pages.yml` (voir § 7) ; première version en ligne.
+- [x] Workflow `pwa.yml` (voir § 7) : tests, publication, tests de bout en bout, mise en ligne.
+      La première mise en ligne attend le passage du dépôt en public.
 
 ### Phase 3 — Portage des écrans (L)
 
-- [ ] **Fraîcheur** : puces Ponte / DCR, texte d'aide, `<input type="date">` avec les mêmes
+- [x] **Fraîcheur** : puces Ponte / DCR, texte d'aide, `<input type="date">` avec les mêmes
       bornes que `MainPage.AppliquerMode` (−120 j / aujourd'hui en mode ponte, −120 j / +60 j en
       mode DCR), date reformulée en toutes lettres en dessous, bouton Calculer, carte statut
       (couleur par classe CSS selon `Freshness`), dates clés, usages ✓ / ✕, test du verre d'eau
       si recommandé, avertissement.
-- [ ] **Code coquille** : la saisie devient le seul moyen d'entrer le code, elle doit être
+- [x] **Code coquille** : la saisie devient le seul moyen d'entrer le code, elle doit être
       confortable au pouce :
   - `autocapitalize="characters"`, `autocomplete="off"`, `autocorrect="off"`,
     `spellcheck="false"` (sinon le clavier « corrige » `3FRABC01`), `enterkeyhint="go"`,
     `maxlength="16"` ;
   - affichage en majuscules ; Entrée ou bouton = décoder ;
   - résultat ou carte d'erreur, encart « Bon à savoir ».
-- [ ] **Conserver** : règles, test du verre d'eau, DCR vs DLC, avertissement.
-- [ ] **Réglages** : langue (Système + 7), palette, thème ; changement de langue →
+- [x] **Conserver** : règles, test du verre d'eau, DCR vs DLC, avertissement.
+- [x] **Réglages** : langue (Système + 7), palette, thème ; changement de langue →
       `Loc.Definir(code)` puis `NavigationManager.NavigateTo(uri, forceLoad: true)`.
-- [ ] `<html lang>` suit la langue choisie (lecteurs d'écran, césure).
-- [ ] Poule qui marche : animation CSS reprenant le trajet actuel (aller-retour, dandinement,
+- [x] `<html lang>` suit la langue choisie (lecteurs d'écran, césure).
+- [x] Poule qui marche : animation CSS reprenant le trajet actuel (aller-retour, dandinement,
       pauses où elle regarde autour d'elle), arrêtée si `prefers-reduced-motion`.
 
 ### Phase 4 — Hors ligne et installation (M)
 
-- [ ] `service-worker.published.js` : compléter `offlineAssetsInclude` avec `.svg` et `.woff2`,
+- [x] `service-worker.published.js` : compléter `offlineAssetsInclude` avec `.svg` et `.woff2`,
       absents de la liste par défaut (ils ne seraient sinon jamais mis en cache). Vérifier dans
       `service-worker-assets.js` publié que les assemblies satellites des 6 langues y figurent.
-- [ ] Polices Open Sans converties en `.woff2` et auto-hébergées. Aucune ressource externe :
+- [x] Polices Open Sans converties en `.woff2` et auto-hébergées. Aucune ressource externe :
       ni Google Fonts, ni CDN.
-- [ ] Mises à jour : quand un nouveau service worker attend, bandeau « Nouvelle version
+- [x] Mises à jour : quand un nouveau service worker attend, bandeau « Nouvelle version
       disponible — Mettre à jour » → `skipWaiting` → rechargement. Vérification à chaque retour
       au premier plan (`visibilitychange`) : une PWA installée reste parfois des jours en
       mémoire, sur une ancienne version.
-- [ ] Indicateur « ✓ Prête hors ligne » dans Réglages une fois le préchargement terminé :
+- [x] Indicateur « ✓ Prête hors ligne » dans Réglages une fois le préchargement terminé :
       l'utilisateur sait quand il peut se passer du réseau.
-- [ ] `navigator.storage.persist()` pour limiter l'éviction du cache.
-- [ ] Installation :
+- [x] `navigator.storage.persist()` pour limiter l'éviction du cache.
+- [x] Installation :
   - Android, Chrome, Edge : intercepter `beforeinstallprompt` → bouton « Installer
     l'application » ;
   - iOS (pas d'invite automatique) : bandeau « Partager → Sur l'écran d'accueil », affiché
@@ -253,7 +292,7 @@ La mise en ligne arrive tôt exprès : un service worker n'est actif qu'en HTTPS
 
 ### Phase 5 — Recette, bascule et nettoyage (M)
 
-- [ ] Test Playwright « hors ligne » : première visite, attente de l'activation du service
+- [x] Test Playwright « hors ligne » : première visite, attente de l'activation du service
       worker, `SetOfflineAsync(true)`, rechargement, parcours des 4 onglets, calcul en mode
       ponte et DCR, décodage d'un code valide et d'un code invalide, changement de langue et de
       thème.
@@ -261,7 +300,7 @@ La mise en ligne arrive tôt exprès : un service worker n'est actif qu'en HTTPS
       écrans, saisie de date et de code, changement de langue et de thème.
 - [ ] Recette sur **Android réel** : Chrome → Installer → mode avion → idem.
 - [ ] Supprimer `src/OeufFrais.Maui/` (l'application reste récupérable via le tag `v1-maui`).
-- [ ] Réécrire le README : URL de l'app, installation iOS et Android, développement local
+- [x] Réécrire le README : URL de l'app, installation iOS et Android, développement local
       (`dotnet watch` ; le service worker de développement ne met rien en cache, tester le hors
       ligne demande `dotnet publish` + un serveur statique sur `localhost`), déploiement.
 - [ ] Pull request de `claude/migration-pwa` vers `main`.
