@@ -1,0 +1,70 @@
+# Tests, publication et mise en ligne de la PWA sur GitHub Pages.
+#
+# Réglages à faire une fois dans GitHub (dépôt public obligatoire pour Pages gratuit) :
+#   - Settings > Pages > Source : GitHub Actions ;
+#   - pendant la migration seulement : Settings > Environments > github-pages >
+#     Deployment branches, ajouter claude/migration-pwa.
+name: PWA
+
+on:
+  push:
+    branches: [main, claude/migration-pwa]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pwa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  construire:
+    name: Tests et publication
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Tests du cœur métier
+        run: dotnet test tests/OeufFrais.Core.Tests -c Release
+
+      - name: Publication du site, dans le sous-dossier de GitHub Pages
+        run: scripts/publier-site.sh "/${{ github.event.repository.name }}/" artifacts/site
+
+      - name: Installation de Chromium pour les tests de bout en bout
+        run: |
+          dotnet build tests/OeufFrais.Web.E2E -c Release
+          pwsh tests/OeufFrais.Web.E2E/bin/Release/net10.0/playwright.ps1 install --with-deps chromium
+
+      - name: Tests de bout en bout, dont le fonctionnement hors ligne
+        run: dotnet test tests/OeufFrais.Web.E2E -c Release --no-build
+
+      - name: Envoi du site pour GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: artifacts/site
+
+  deployer:
+    name: Mise en ligne sur GitHub Pages
+    needs: construire
+    # GitHub Pages n'est gratuit que pour un dépôt public : rien n'est tenté tant qu'il est privé.
+    if: github.event_name != 'pull_request' && !github.event.repository.private
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - id: deploiement
+        uses: actions/deploy-pages@v4
