@@ -1,0 +1,66 @@
+@page "/code"
+
+<PageTitle>@T("Shell_TabCode") · @T("Shell_Title")</PageTitle>
+
+<header class="entete">
+    <span class="pastille pastille-accent">@T("Code_Badge")</span>
+    <h1 class="titre">@T("Code_Titre")</h1>
+</header>
+
+<section class="carte">
+    <form class="formulaire" @onsubmit="Decoder" @onsubmit:preventDefault>
+        <label class="titre-section" for="code">@T("Code_SectionSaisir")</label>
+        @* Le clavier ne doit ni corriger ni compléter : « 3FRABC01 » n'est pas un mot. *@
+        <input id="code"
+               class="champ-texte"
+               type="text"
+               placeholder="@T("Code_Placeholder")"
+               maxlength="16"
+               autocomplete="off"
+               autocapitalize="characters"
+               autocorrect="off"
+               spellcheck="false"
+               enterkeyhint="go"
+               @bind="_saisie"
+               @bind:event="oninput" />
+        <button type="submit" class="bouton-principal">@T("Code_BoutonDecoder")</button>
+    </form>
+</section>
+
+<div aria-live="polite">
+    @if (_resultat is { Valide: false } erreur)
+    {
+        <section class="carte">
+            <p class="erreur">@erreur.Erreur</p>
+        </section>
+    }
+    else if (_resultat is { } r)
+    {
+        <section class="carte">
+            <p class="code-normalise">@r.CodeNormalise</p>
+            <hr class="filet" />
+            <dl class="dates">
+                <dt>@T("Code_LabelMode")</dt>
+                <dd class="fort">@r.ModeElevage</dd>
+                <dt>@T("Code_LabelPays")</dt>
+                <dd class="fort">@r.Pays</dd>
+            </dl>
+            <p class="doux petit">@r.ModeElevageDetail</p>
+            <p class="doux petit">@r.IdentifiantElevageTexte</p>
+        </section>
+    }
+</div>
+
+<section class="carte" aria-labelledby="titre-savoir">
+    <h2 class="titre-section" id="titre-savoir">@T("Code_SectionSavoir")</h2>
+    <p class="paragraphe">@T("Code_Savoir1")</p>
+    <p class="paragraphe">@T("Code_Savoir2")</p>
+    <p class="paragraphe">@T("Code_Savoir3")</p>
+</section>
+
+@code {
+    private string? _saisie;
+    private ShellCode? _resultat;
+
+    private void Decoder() => _resultat = ShellCodeParser.Parse(_saisie);
+}

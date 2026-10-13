@@ -1,0 +1,117 @@
+@page "/reglages"
+@inherits ComposantPwa
+@inject ThemeWeb Theme
+@inject NavigationManager Navigation
+
+<PageTitle>@T("Shell_TabReglages") · @T("Shell_Title")</PageTitle>
+
+<header class="entete">
+    <span class="pastille pastille-accent">@T("Settings_Badge")</span>
+    <h1 class="titre">@T("Settings_Titre")</h1>
+</header>
+
+<section class="carte" aria-labelledby="titre-langue">
+    <h2 class="titre-section" id="titre-langue">@T("Settings_SectionLangue")</h2>
+    <div class="liste-choix" role="group" aria-labelledby="titre-langue">
+        @foreach (var (langue, nom) in Langues)
+        {
+            var choisie = langue == LocalizationResourceManager.Instance.PreferenceExplicite;
+            <button type="button" class="choix" aria-pressed="@Aria(choisie)" lang="@langue" @onclick="() => ChoisirLangue(langue)">
+                <span>@(langue is null ? T("Settings_LangueSysteme") : nom)</span>
+                @if (choisie)
+                {
+                    <span aria-hidden="true">✓</span>
+                }
+            </button>
+        }
+    </div>
+</section>
+
+<section class="carte" aria-labelledby="titre-palette">
+    <h2 class="titre-section" id="titre-palette">@T("Settings_SectionPalette")</h2>
+    <div class="grille-3" role="group" aria-labelledby="titre-palette">
+        @foreach (var (palette, cle) in Palettes)
+        {
+            <button type="button" class="palette" aria-pressed="@Aria(palette == Theme.PaletteActuelle)"
+                    @onclick="() => Theme.Definir(palette, Theme.ModeActuel)">
+                <span class="rond" style="background: @ThemeWeb.Accent(palette)"></span>
+                <span>@T(cle)</span>
+            </button>
+        }
+    </div>
+</section>
+
+<section class="carte" aria-labelledby="titre-theme">
+    <h2 class="titre-section" id="titre-theme">@T("Settings_SectionTheme")</h2>
+    <div class="grille-3" role="group" aria-labelledby="titre-theme">
+        @foreach (var (mode, cle) in Modes)
+        {
+            <button type="button" class="choix" aria-pressed="@Aria(mode == Theme.ModeActuel)"
+                    @onclick="() => Theme.Definir(Theme.PaletteActuelle, mode)">@T(cle)</button>
+        }
+    </div>
+</section>
+
+<section class="carte" aria-labelledby="titre-application">
+    <h2 class="titre-section" id="titre-application">@T("Settings_SectionApplication")</h2>
+    <p class="etat-hors-ligne" role="status">
+        @switch (Pwa.HorsLigne)
+        {
+            case EtatHorsLigne.Prete:
+                <span aria-hidden="true">✓</span><span>@T("Pwa_PreteHorsLigne")</span>
+                break;
+            case EtatHorsLigne.Preparation:
+                <span aria-hidden="true">⏳</span><span>@T("Pwa_PreparationHorsLigne")</span>
+                break;
+            default:
+                <span aria-hidden="true">✕</span><span>@T("Pwa_HorsLigneIndisponible")</span>
+                break;
+        }
+    </p>
+    @if (Pwa.Installable)
+    {
+        <button type="button" class="bouton-secondaire" @onclick="Pwa.Installer">@T("Pwa_Installer")</button>
+    }
+    else if (Pwa.AideIos)
+    {
+        <p class="doux petit">@T("Pwa_InstallerIos")</p>
+    }
+</section>
+
+@code {
+    // Noms natifs : volontairement non traduits, une langue s'appelle pareil dans toutes les langues.
+    private static readonly (string? Code, string Nom)[] Langues =
+    {
+        (null, "__systeme__"),
+        ("fr", "Français"),
+        ("en", "English"),
+        ("de", "Deutsch"),
+        ("es", "Español"),
+        ("it", "Italiano"),
+        ("pt", "Português"),
+        ("nl", "Nederlands"),
+    };
+
+    private static readonly (Palette Valeur, string Cle)[] Palettes =
+    {
+        (Palette.Miel, "Settings_PaletteMiel"),
+        (Palette.Lagon, "Settings_PaletteLagon"),
+        (Palette.Corail, "Settings_PaletteCorail"),
+    };
+
+    private static readonly (ModePreference Valeur, string Cle)[] Modes =
+    {
+        (ModePreference.Systeme, "Settings_ThemeSysteme"),
+        (ModePreference.Clair, "Settings_ThemeClair"),
+        (ModePreference.Sombre, "Settings_ThemeSombre"),
+    };
+
+    // Les traductions d'une langue arrivent avec ses assemblies satellites, chargées au démarrage :
+    // on mémorise le choix puis on recharge la page (servie par le cache, hors ligne compris).
+    private void ChoisirLangue(string? code)
+    {
+        if (code == LocalizationResourceManager.Instance.PreferenceExplicite) return;
+        LocalizationResourceManager.Instance.Definir(code);
+        Navigation.Refresh(forceReload: true);
+    }
+}

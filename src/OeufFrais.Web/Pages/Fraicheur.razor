@@ -1,0 +1,144 @@
+@page "/"
+
+<PageTitle>@T("Shell_TabFraicheur") · @T("Shell_Title")</PageTitle>
+
+<header class="entete">
+    <span class="pastille pastille-accent">@T("Main_Badge")</span>
+    <h1 class="titre">@T("Main_Titre")</h1>
+</header>
+
+<section class="carte" aria-labelledby="titre-saisie">
+    <h2 class="titre-section" id="titre-saisie">@T("Main_SectionConnais")</h2>
+
+    <div class="puces">
+        <button type="button" class="puce" aria-pressed="@Aria(_modePonte)" @onclick="() => ChangerMode(true)">@T("Main_ChipPonte")</button>
+        <button type="button" class="puce" aria-pressed="@Aria(!_modePonte)" @onclick="() => ChangerMode(false)">@T("Main_ChipDcr")</button>
+    </div>
+
+    <p class="doux petit">@T(_modePonte ? "Main_Aide_Ponte" : "Main_Aide_Dcr")</p>
+
+    <div class="champ-date">
+        <span aria-hidden="true">📅</span>
+        <span class="texte" aria-hidden="true">@_date.ToString("dddd d MMMM yyyy", CultureApp)</span>
+        <span class="fleche" aria-hidden="true">▾</span>
+        <input type="date"
+               aria-label="@T(_modePonte ? "Main_ChipPonte" : "Main_ChipDcr")"
+               min="@_min.ToString("yyyy-MM-dd")"
+               max="@_max.ToString("yyyy-MM-dd")"
+               @bind="_date"
+               @bind:after="BornerDate"
+               onclick="oeufFrais.ouvrirCalendrier(this)" />
+    </div>
+
+    <button type="button" class="bouton-principal" @onclick="Calculer">@T("Common_Calculer")</button>
+</section>
+
+<PouleQuiMarche />
+
+<div aria-live="polite">
+    @if (_resultat is { } r)
+    {
+        <div class="resultats">
+            <section class="carte">
+                <span class="pastille statut" style="background: @Pale(r.CouleurHex); color: @r.CouleurHex">@r.Titre</span>
+                <p>@r.Resume</p>
+            </section>
+
+            <section class="carte" aria-labelledby="titre-dates">
+                <h2 class="titre-section" id="titre-dates">@T("Main_SectionDates")</h2>
+                <dl class="dates">
+                    <dt>@T("Main_LabelPonte")</dt>
+                    <dd class="fort">@r.PonteTexte</dd>
+                    <dt>@T("Main_LabelAge")</dt>
+                    <dd class="fort">@r.AgeTexte</dd>
+                    <dt class="apres-filet">@T("Main_LabelFinExtraFrais")</dt>
+                    <dd class="apres-filet">@r.ExtraFraisTexte</dd>
+                    <dt>@T("Main_LabelDcr")</dt>
+                    <dd class="fort">@r.DcrTexte</dd>
+                    <dt>@T("Main_LabelPrudence")</dt>
+                    <dd>@r.PrudenceTexte</dd>
+                </dl>
+            </section>
+
+            @if (r.Conseils.Count > 0)
+            {
+                <section class="carte" aria-labelledby="titre-usages">
+                    <h2 class="titre-section" id="titre-usages">@T("Main_SectionUsages")</h2>
+                    <ul class="usages">
+                        @foreach (var conseil in r.Conseils)
+                        {
+                            <li>
+                                <span class="icone" style="background: @Pale(conseil.CouleurHex); color: @conseil.CouleurHex">@conseil.Icone</span>
+                                <span>
+                                    <span class="usage">@conseil.Usage</span>
+                                    <span class="detail">@conseil.Detail</span>
+                                </span>
+                            </li>
+                        }
+                    </ul>
+                </section>
+            }
+
+            @if (r.TestVerreDEauRecommande)
+            {
+                <section class="carte" aria-labelledby="titre-verre">
+                    <h2 class="titre-section" id="titre-verre">@T("Common_SectionTestVerre")</h2>
+                    <ul class="liste-puces">
+                        @foreach (var etape in EggCalculator.TestVerreDEau)
+                        {
+                            <li>@etape</li>
+                        }
+                    </ul>
+                </section>
+            }
+
+            <p class="avertissement">@T("Main_Disclaimer")</p>
+        </div>
+    }
+</div>
+
+@code {
+    private bool _modePonte = true;
+    private DateTime _date;
+    private DateTime _min;
+    private DateTime _max;
+    private EggAssessment? _resultat;
+
+    protected override void OnInitialized() => AppliquerMode();
+
+    private void ChangerMode(bool modePonte)
+    {
+        if (_modePonte == modePonte) return;
+        _modePonte = modePonte;
+        AppliquerMode();
+        _resultat = null;
+    }
+
+    // Mêmes bornes et mêmes dates proposées que MainPage.AppliquerMode (MAUI).
+    private void AppliquerMode()
+    {
+        var aujourdhui = DateTime.Today;
+        _min = aujourdhui.AddDays(-120);
+
+        if (_modePonte)
+        {
+            _max = aujourdhui;
+            _date = aujourdhui;
+        }
+        else
+        {
+            _max = aujourdhui.AddDays(60);
+            _date = aujourdhui.AddDays(14);
+        }
+    }
+
+    // Le calendrier respecte min et max, mais une date tapée au clavier (sur ordinateur) peut en sortir.
+    private void BornerDate()
+    {
+        if (_date < _min) _date = _min;
+        if (_date > _max) _date = _max;
+    }
+
+    private void Calculer()
+        => _resultat = _modePonte ? EggCalculator.DepuisPonte(_date) : EggCalculator.DepuisDcr(_date);
+}

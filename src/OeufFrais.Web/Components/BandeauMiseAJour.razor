@@ -1,0 +1,9 @@
+@inherits ComposantPwa
+
+@if (Pwa.MiseAJourDisponible)
+{
+    <div class="bandeau" role="status">
+        <p>@T("Pwa_MiseAJourDisponible")</p>
+        <button type="button" class="bouton-secondaire" @onclick="Pwa.MettreAJour">@T("Pwa_MettreAJour")</button>
+    </div>
+}

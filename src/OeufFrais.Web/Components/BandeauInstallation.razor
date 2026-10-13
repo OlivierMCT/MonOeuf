@@ -1,0 +1,18 @@
+@inherits ComposantPwa
+
+@* Rappel discret, masquable une fois pour toutes. L'onglet Réglages garde le bouton d'installation. *@
+@if (!Pwa.BandeauMasque && (Pwa.Installable || Pwa.AideIos))
+{
+    <div class="bandeau">
+        @if (Pwa.Installable)
+        {
+            <p>@T("Pwa_InstallerAide")</p>
+            <button type="button" class="bouton-secondaire" @onclick="Pwa.Installer">@T("Pwa_Installer")</button>
+        }
+        else
+        {
+            <p>@T("Pwa_InstallerIos")</p>
+        }
+        <button type="button" class="fermer" aria-label="@T("Pwa_Masquer")" title="@T("Pwa_Masquer")" @onclick="Pwa.MasquerBandeau">✕</button>
+    </div>
+}

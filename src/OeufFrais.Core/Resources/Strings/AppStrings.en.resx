@@ -150,4 +150,18 @@
   <data name="Settings_ThemeSysteme" xml:space="preserve"><value>System</value></data>
   <data name="Settings_ThemeClair" xml:space="preserve"><value>Light</value></data>
   <data name="Settings_ThemeSombre" xml:space="preserve"><value>Dark</value></data>
+
+  <!-- Application web (PWA) -->
+  <data name="Pwa_Installer" xml:space="preserve"><value>Install the app</value></data>
+  <data name="Pwa_InstallerAide" xml:space="preserve"><value>Install Œuf Frais to open it from your home screen, even offline.</value></data>
+  <data name="Pwa_InstallerIos" xml:space="preserve"><value>To install Œuf Frais, tap the Share button, then “Add to Home Screen”.</value></data>
+  <data name="Pwa_Masquer" xml:space="preserve"><value>Dismiss</value></data>
+  <data name="Pwa_MiseAJourDisponible" xml:space="preserve"><value>A new version is available.</value></data>
+  <data name="Pwa_MettreAJour" xml:space="preserve"><value>Update</value></data>
+  <data name="Pwa_PreteHorsLigne" xml:space="preserve"><value>Ready offline: the app works without a connection.</value></data>
+  <data name="Pwa_PreparationHorsLigne" xml:space="preserve"><value>Getting ready for offline use…</value></data>
+  <data name="Pwa_HorsLigneIndisponible" xml:space="preserve"><value>Offline use isn't available in this browser.</value></data>
+  <data name="Settings_SectionApplication" xml:space="preserve"><value>APP</value></data>
+  <data name="Pwa_PageIntrouvable" xml:space="preserve"><value>This page doesn't exist.</value></data>
+  <data name="Pwa_RetourAccueil" xml:space="preserve"><value>Back to home</value></data>
 </root>

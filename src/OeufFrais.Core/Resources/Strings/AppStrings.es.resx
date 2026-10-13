@@ -150,4 +150,18 @@
   <data name="Settings_ThemeSysteme" xml:space="preserve"><value>Sistema</value></data>
   <data name="Settings_ThemeClair" xml:space="preserve"><value>Claro</value></data>
   <data name="Settings_ThemeSombre" xml:space="preserve"><value>Oscuro</value></data>
+
+  <!-- Application web (PWA) -->
+  <data name="Pwa_Installer" xml:space="preserve"><value>Instalar la aplicación</value></data>
+  <data name="Pwa_InstallerAide" xml:space="preserve"><value>Instale Œuf Frais para abrirla desde la pantalla de inicio, incluso sin conexión.</value></data>
+  <data name="Pwa_InstallerIos" xml:space="preserve"><value>Para instalar Œuf Frais, toque el botón Compartir y luego «Añadir a pantalla de inicio».</value></data>
+  <data name="Pwa_Masquer" xml:space="preserve"><value>Ocultar</value></data>
+  <data name="Pwa_MiseAJourDisponible" xml:space="preserve"><value>Hay una nueva versión disponible.</value></data>
+  <data name="Pwa_MettreAJour" xml:space="preserve"><value>Actualizar</value></data>
+  <data name="Pwa_PreteHorsLigne" xml:space="preserve"><value>Lista sin conexión: la aplicación funciona sin internet.</value></data>
+  <data name="Pwa_PreparationHorsLigne" xml:space="preserve"><value>Preparando el uso sin conexión…</value></data>
+  <data name="Pwa_HorsLigneIndisponible" xml:space="preserve"><value>El uso sin conexión no está disponible en este navegador.</value></data>
+  <data name="Settings_SectionApplication" xml:space="preserve"><value>APLICACIÓN</value></data>
+  <data name="Pwa_PageIntrouvable" xml:space="preserve"><value>Esta página no existe.</value></data>
+  <data name="Pwa_RetourAccueil" xml:space="preserve"><value>Volver al inicio</value></data>
 </root>

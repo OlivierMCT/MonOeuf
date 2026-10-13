@@ -150,4 +150,18 @@
   <data name="Settings_ThemeSysteme" xml:space="preserve"><value>Systeem</value></data>
   <data name="Settings_ThemeClair" xml:space="preserve"><value>Licht</value></data>
   <data name="Settings_ThemeSombre" xml:space="preserve"><value>Donker</value></data>
+
+  <!-- Application web (PWA) -->
+  <data name="Pwa_Installer" xml:space="preserve"><value>App installeren</value></data>
+  <data name="Pwa_InstallerAide" xml:space="preserve"><value>Installeer Œuf Frais om het vanaf je beginscherm te openen, ook zonder verbinding.</value></data>
+  <data name="Pwa_InstallerIos" xml:space="preserve"><value>Tik op de knop Deel en daarna op ‘Zet op beginscherm’ om Œuf Frais te installeren.</value></data>
+  <data name="Pwa_Masquer" xml:space="preserve"><value>Verbergen</value></data>
+  <data name="Pwa_MiseAJourDisponible" xml:space="preserve"><value>Er is een nieuwe versie beschikbaar.</value></data>
+  <data name="Pwa_MettreAJour" xml:space="preserve"><value>Bijwerken</value></data>
+  <data name="Pwa_PreteHorsLigne" xml:space="preserve"><value>Offline klaar: de app werkt zonder verbinding.</value></data>
+  <data name="Pwa_PreparationHorsLigne" xml:space="preserve"><value>Offline gebruik wordt voorbereid…</value></data>
+  <data name="Pwa_HorsLigneIndisponible" xml:space="preserve"><value>Offline gebruik is niet beschikbaar in deze browser.</value></data>
+  <data name="Settings_SectionApplication" xml:space="preserve"><value>APP</value></data>
+  <data name="Pwa_PageIntrouvable" xml:space="preserve"><value>Deze pagina bestaat niet.</value></data>
+  <data name="Pwa_RetourAccueil" xml:space="preserve"><value>Terug naar start</value></data>
 </root>

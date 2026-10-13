@@ -1,0 +1,618 @@
+/* Mise en page et composants. Mesures reprises de l'app MAUI (App.xaml, pages XAML). */
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/open-sans-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/open-sans-semibold.woff2") format("woff2");
+    font-weight: 600 700;
+    font-display: swap;
+}
+
+:root {
+    --hauteur-onglets: 58px;
+    --ombre-carte: 0 6px 14px color-mix(in srgb, var(--couleur-accent-fonce) 10%, transparent);
+    --ombre-bouton: 0 5px 10px color-mix(in srgb, var(--couleur-accent-fonce) 35%, transparent);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--couleur-fond);
+    color: var(--couleur-texte);
+    font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
+    line-height: 1.35;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button, input {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+h1:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 3px solid var(--couleur-accent-fonce);
+    outline-offset: 2px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+p {
+    margin: 0;
+}
+
+/* ===== Écran de chargement (avant le démarrage de .NET) ===== */
+
+.chargement {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: var(--couleur-fond);
+}
+
+.chargement img {
+    width: 96px;
+    height: 96px;
+    animation: respire 1.1s ease-in-out infinite alternate;
+}
+
+@keyframes respire {
+    from { transform: scale(0.9); opacity: 0.75; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ===== Structure ===== */
+
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding:
+        calc(14px + env(safe-area-inset-top))
+        max(18px, env(safe-area-inset-right))
+        calc(40px + var(--hauteur-onglets) + env(safe-area-inset-bottom))
+        max(18px, env(safe-area-inset-left));
+}
+
+.onglets {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    background: var(--couleur-carte);
+    border-top: 1px solid var(--couleur-bordure);
+}
+
+.onglet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    height: var(--hauteur-onglets);
+    padding: 0 4px;
+    color: var(--couleur-texte-douce);
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.15;
+}
+
+.onglet svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+.onglet.active {
+    color: var(--couleur-accent-fonce);
+    font-weight: 600;
+}
+
+/* ===== En-tête de page ===== */
+
+.entete {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.pastille {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.pastille-accent {
+    background: var(--couleur-accent);
+    color: var(--couleur-sur-accent);
+}
+
+.titre {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* ===== Cartes ===== */
+
+.carte {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+    background: var(--couleur-carte);
+    border: 1.5px solid var(--couleur-bordure);
+    border-radius: 20px;
+    box-shadow: var(--ombre-carte);
+}
+
+.titre-section {
+    margin: 0;
+    color: var(--couleur-accent-fonce);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.doux {
+    color: var(--couleur-texte-douce);
+}
+
+.petit {
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+.avertissement {
+    color: var(--couleur-texte-douce);
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+/* ===== Boutons ===== */
+
+.bouton-principal {
+    width: 100%;
+    min-height: 54px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 16px;
+    background: var(--couleur-accent);
+    color: var(--couleur-sur-accent);
+    font-size: 17px;
+    font-weight: 700;
+    box-shadow: var(--ombre-bouton);
+}
+
+.bouton-secondaire {
+    min-height: 48px;
+    padding: 0 16px;
+    border: 1.5px solid var(--couleur-accent);
+    border-radius: 16px;
+    background: transparent;
+    color: var(--couleur-accent-fonce);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+a.bouton-secondaire {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.bouton-principal:active,
+.bouton-secondaire:active,
+.choix:active,
+.puce:active {
+    transform: scale(0.98);
+}
+
+/* ===== Choix (puces, langues, thèmes) ===== */
+
+.puces {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.puce,
+.choix {
+    padding: 12px 10px;
+    border: 1.5px solid var(--couleur-bordure);
+    border-radius: 14px;
+    background: var(--couleur-carte);
+    color: var(--couleur-texte-douce);
+    font-size: 14px;
+    text-align: center;
+}
+
+.puce {
+    font-weight: 700;
+}
+
+.puce[aria-pressed="true"],
+.choix[aria-pressed="true"] {
+    background: var(--couleur-accent);
+    border-color: var(--couleur-accent);
+    color: var(--couleur-sur-accent);
+    font-weight: 700;
+}
+
+.liste-choix {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.liste-choix .choix {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.grille-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.palette {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+    border: none;
+    background: none;
+    color: var(--couleur-texte);
+    font-size: 12px;
+}
+
+.palette .rond {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.palette[aria-pressed="true"] {
+    font-weight: 700;
+}
+
+.palette[aria-pressed="true"] .rond {
+    box-shadow: inset 0 0 0 3px var(--couleur-texte);
+}
+
+/* ===== Saisie ===== */
+
+/* La date s'affiche dans la langue de l'app ; le vrai champ date, transparent, est posé
+   par-dessus et ouvre le calendrier natif du téléphone. */
+.champ-date {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+    min-height: 50px;
+    padding: 10px 14px;
+    background: var(--couleur-fond);
+    border: 1.5px solid var(--couleur-accent);
+    border-radius: 14px;
+}
+
+.champ-date:focus-within {
+    outline: 3px solid var(--couleur-accent-fonce);
+    outline-offset: 2px;
+}
+
+.champ-date .texte {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.champ-date .fleche {
+    color: var(--couleur-accent-fonce);
+}
+
+.champ-date input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    font-size: 16px;   /* sous 16 px, Safari iOS zoome la page au toucher */
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.champ-texte {
+    width: 100%;
+    min-height: 50px;
+    padding: 10px 14px;
+    background: var(--couleur-fond);
+    border: 1.5px solid var(--couleur-accent);
+    border-radius: 14px;
+    color: var(--couleur-texte);
+    font-size: 19px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.champ-texte::placeholder {
+    color: var(--couleur-texte-douce);
+    letter-spacing: normal;
+    text-transform: none;
+    font-size: 16px;
+}
+
+/* ===== Poule ===== */
+
+.piste-poule {
+    position: relative;
+    height: 50px;
+    overflow: hidden;
+}
+
+.poule {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -0.6em;
+    font-size: 34px;
+    line-height: 1.2;
+    will-change: transform;
+    user-select: none;
+}
+
+/* ===== Résultats ===== */
+
+.resultats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.statut {
+    align-self: flex-start;
+    font-size: 15px;
+    letter-spacing: 0.4px;
+}
+
+.dates {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 9px 0;   /* pas d'espace entre colonnes : le filet doit être continu */
+    margin: 0;
+}
+
+.dates dt {
+    color: var(--couleur-texte-douce);
+}
+
+.dates dd {
+    margin: 0;
+    padding-left: 10px;
+    text-align: right;
+}
+
+.dates .fort {
+    font-weight: 700;
+}
+
+/* Filet entre l'âge et les échéances. */
+.dates .apres-filet {
+    padding-top: 9px;
+    border-top: 1px solid var(--couleur-bordure);
+}
+
+.filet {
+    height: 1px;
+    margin: 0;
+    border: none;
+    background: var(--couleur-bordure);
+}
+
+.paragraphe {
+    font-size: 14px;
+}
+
+.formulaire {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.usages {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.usages li {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 10px;
+}
+
+.usages .icone {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.usages .usage {
+    display: block;
+    font-weight: 700;
+}
+
+.usages .detail {
+    display: block;
+    margin-top: 3px;
+    color: var(--couleur-texte-douce);
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+.liste-puces {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    font-size: 14px;
+}
+
+.liste-puces li {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    gap: 8px;
+}
+
+.liste-puces li::before {
+    content: "•";
+    color: var(--couleur-accent-fonce);
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+/* ===== Code coquille ===== */
+
+.code-normalise {
+    margin: 0;
+    color: var(--couleur-accent-fonce);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.erreur {
+    color: var(--couleur-erreur);
+}
+
+/* ===== Application installable ===== */
+
+.bandeau {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 12px;
+    padding: 12px 14px;
+    background: var(--couleur-carte);
+    border: 1.5px solid var(--couleur-accent);
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+.bandeau p {
+    flex: 1 1 200px;
+}
+
+.bandeau .bouton-secondaire {
+    min-height: 40px;
+    font-size: 14px;
+}
+
+.bandeau .fermer {
+    width: 40px;
+    height: 40px;
+    margin: -6px -6px -6px 0;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    color: var(--couleur-texte-douce);
+    font-size: 16px;
+}
+
+.etat-hors-ligne {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+/* ===== Erreur inattendue (affichée par Blazor) ===== */
+
+#blazor-error-ui {
+    display: none;
+    position: fixed;
+    inset: auto 0 calc(var(--hauteur-onglets) + env(safe-area-inset-bottom)) 0;
+    z-index: 1000;
+    padding: 12px 48px 12px 18px;
+    background: var(--couleur-carte);
+    border-top: 2px solid var(--couleur-erreur);
+    color: var(--couleur-texte);
+    box-shadow: 0 -4px 14px rgb(0 0 0 / 0.15);
+}
+
+#blazor-error-ui .reload {
+    color: var(--couleur-accent-fonce);
+    font-weight: 700;
+}
+
+#blazor-error-ui .dismiss {
+    position: absolute;
+    top: 10px;
+    right: 18px;
+    cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chargement img {
+        animation: none;
+    }
+
+    .bouton-principal:active,
+    .bouton-secondaire:active,
+    .choix:active,
+    .puce:active {
+        transform: none;
+    }
+}

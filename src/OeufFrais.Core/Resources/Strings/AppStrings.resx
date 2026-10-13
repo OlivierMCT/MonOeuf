@@ -150,4 +150,18 @@
   <data name="Settings_ThemeSysteme" xml:space="preserve"><value>Système</value></data>
   <data name="Settings_ThemeClair" xml:space="preserve"><value>Clair</value></data>
   <data name="Settings_ThemeSombre" xml:space="preserve"><value>Sombre</value></data>
+
+  <!-- Application web (PWA) -->
+  <data name="Pwa_Installer" xml:space="preserve"><value>Installer l'application</value></data>
+  <data name="Pwa_InstallerAide" xml:space="preserve"><value>Installez Œuf Frais pour l'ouvrir depuis l'écran d'accueil, même sans connexion.</value></data>
+  <data name="Pwa_InstallerIos" xml:space="preserve"><value>Pour installer Œuf Frais, touchez le bouton Partager puis « Sur l'écran d'accueil ».</value></data>
+  <data name="Pwa_Masquer" xml:space="preserve"><value>Masquer</value></data>
+  <data name="Pwa_MiseAJourDisponible" xml:space="preserve"><value>Une nouvelle version est disponible.</value></data>
+  <data name="Pwa_MettreAJour" xml:space="preserve"><value>Mettre à jour</value></data>
+  <data name="Pwa_PreteHorsLigne" xml:space="preserve"><value>Prête hors ligne : l'application fonctionne sans connexion.</value></data>
+  <data name="Pwa_PreparationHorsLigne" xml:space="preserve"><value>Préparation de l'usage hors ligne…</value></data>
+  <data name="Pwa_HorsLigneIndisponible" xml:space="preserve"><value>Usage hors ligne indisponible dans ce navigateur.</value></data>
+  <data name="Settings_SectionApplication" xml:space="preserve"><value>APPLICATION</value></data>
+  <data name="Pwa_PageIntrouvable" xml:space="preserve"><value>Cette page n'existe pas.</value></data>
+  <data name="Pwa_RetourAccueil" xml:space="preserve"><value>Retour à l'accueil</value></data>
 </root>

@@ -1,0 +1,37 @@
+@page "/conserver"
+
+<PageTitle>@T("Shell_TabConserver") · @T("Shell_Title")</PageTitle>
+
+<header class="entete">
+    <span class="pastille pastille-accent">@T("Conseils_Badge")</span>
+    <h1 class="titre">@T("Conseils_Titre")</h1>
+</header>
+
+<section class="carte" aria-labelledby="titre-regles">
+    <h2 class="titre-section" id="titre-regles">@T("Conseils_SectionRegles")</h2>
+    <ul class="liste-puces">
+        @foreach (var regle in EggCalculator.Conservation)
+        {
+            <li>@regle</li>
+        }
+    </ul>
+</section>
+
+<section class="carte" aria-labelledby="titre-verre">
+    <h2 class="titre-section" id="titre-verre">@T("Common_SectionTestVerre")</h2>
+    <ul class="liste-puces">
+        @foreach (var etape in EggCalculator.TestVerreDEau)
+        {
+            <li>@etape</li>
+        }
+    </ul>
+</section>
+
+<section class="carte" aria-labelledby="titre-dcr">
+    <h2 class="titre-section" id="titre-dcr">@T("Conseils_SectionDcrDlc")</h2>
+    <p class="paragraphe">@T("Conseils_Dcr1")</p>
+    <p class="paragraphe">@T("Conseils_Dcr2")</p>
+    <p class="paragraphe">@T("Conseils_Dcr3")</p>
+</section>
+
+<p class="avertissement">@T("Conseils_Disclaimer")</p>

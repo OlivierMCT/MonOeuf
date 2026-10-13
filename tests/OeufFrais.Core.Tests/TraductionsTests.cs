@@ -27,7 +27,7 @@ public class TraductionsTests : TestsAvecLangue
     [Fact]
     public void Le_francais_est_complet()
     {
-        Assert.Equal(130, Neutre.Count);
+        Assert.Equal(142, Neutre.Count);
         Assert.All(Neutre, e => Assert.False(string.IsNullOrWhiteSpace(e.Value), e.Key));
     }
 

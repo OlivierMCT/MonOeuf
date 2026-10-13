@@ -1,0 +1,30 @@
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+
+@* La poule traverse l'écran en se dandinant, aller-retour, tant que la page est affichée.
+   L'animation elle-même est dans js/app.js (et s'efface si l'utilisateur limite les animations). *@
+<div class="piste-poule" aria-hidden="true">
+    <span class="poule" @ref="_poule">🐔</span>
+</div>
+
+@code {
+    private ElementReference _poule;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await JS.InvokeVoidAsync("oeufFrais.poule.demarrer", _poule);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("oeufFrais.poule.arreter", _poule);
+        }
+        catch (JSDisconnectedException)
+        {
+            // Page en cours de fermeture : rien à arrêter.
+        }
+    }
+}

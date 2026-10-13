@@ -1,0 +1,45 @@
+@* Équivalent de la TabBar du Shell MAUI, avec les mêmes icônes (Resources/Images/icon_*.svg). *@
+
+<nav class="onglets" aria-label="@T("Shell_Title")">
+    <NavLink class="onglet" href="" Match="NavLinkMatch.All">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12,2 C8.5,2 5.2,8.3 5.2,13.2 C5.2,17.6 8.2,21 12,21 C15.8,21 18.8,17.6 18.8,13.2 C18.8,8.3 15.5,2 12,2 Z" />
+        </svg>
+        <span>@T("Shell_TabFraicheur")</span>
+    </NavLink>
+    <NavLink class="onglet" href="code">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3,3 L3,9 L5,9 L5,5 L9,5 L9,3 Z" />
+            <path d="M15,3 L15,5 L19,5 L19,9 L21,9 L21,3 Z" />
+            <path d="M3,15 L3,21 L9,21 L9,19 L5,19 L5,15 Z" />
+            <path d="M19,15 L19,19 L15,19 L15,21 L21,21 L21,15 Z" />
+            <rect x="6.5" y="8" width="1.6" height="8" />
+            <rect x="9.5" y="8" width="1" height="8" />
+            <rect x="11.5" y="8" width="2" height="8" />
+            <rect x="14.5" y="8" width="1" height="8" />
+            <rect x="16.5" y="8" width="1.6" height="8" />
+        </svg>
+        <span>@T("Shell_TabCode")</span>
+    </NavLink>
+    <NavLink class="onglet" href="conserver">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12,1 L21,5.5 L21,12 C21,17 17,20.8 12,23 C7,20.8 3,17 3,12 L3,5.5 Z" />
+        </svg>
+        <span>@T("Shell_TabConserver")</span>
+    </NavLink>
+    <NavLink class="onglet" href="reglages">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M12,3 A9,9 0 0 1 12,21 A9,9 0 0 1 12,3 Z M12,8.8 A3.2,3.2 0 0 0 12,15.2 A3.2,3.2 0 0 0 12,8.8 Z" />
+            <rect x="10.7" y="0.5" width="2.6" height="4" />
+            <rect x="10.7" y="19.5" width="2.6" height="4" />
+            <rect x="10.7" y="0.5" width="2.6" height="4" transform="rotate(45 12 12)" />
+            <rect x="10.7" y="19.5" width="2.6" height="4" transform="rotate(45 12 12)" />
+            <rect x="10.7" y="0.5" width="2.6" height="4" transform="rotate(90 12 12)" />
+            <rect x="10.7" y="19.5" width="2.6" height="4" transform="rotate(90 12 12)" />
+            <rect x="10.7" y="0.5" width="2.6" height="4" transform="rotate(135 12 12)" />
+            <rect x="10.7" y="19.5" width="2.6" height="4" transform="rotate(135 12 12)" />
+        </svg>
+        <span>@T("Shell_TabReglages")</span>
+    </NavLink>
+</nav>

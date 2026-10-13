@@ -1,0 +1,111 @@
+/* Palettes de l'application : les 7 jetons sémantiques de l'app MAUI (Resources/Styles/Palettes.cs),
+   pour chaque palette en clair et en sombre. js/app.js pose data-palette (miel | lagon | corail) et
+   data-theme (clair | sombre, absent = suivre le système) sur <html>. */
+
+:root {
+    color-scheme: light;
+    --couleur-fond: #FFF3DC;
+    --couleur-accent: #FFC738;
+    --couleur-accent-fonce: #E8960B;
+    --couleur-texte: #2B2622;
+    --couleur-texte-douce: #6B625A;
+    --couleur-bordure: #F5DDA8;
+    --couleur-carte: #FFFFFF;
+    /* Texte posé sur l'accent (puces, boutons, pastilles) : sombre dans les deux modes, car
+       l'accent reste vif en sombre et le texte clair y deviendrait illisible. */
+    --couleur-sur-accent: var(--couleur-texte);
+    --couleur-erreur: #C0392B;
+}
+
+:root[data-palette="lagon"] {
+    --couleur-fond: #E7F7F4;
+    --couleur-accent: #21B8A6;
+    --couleur-accent-fonce: #0F8C7D;
+    --couleur-texte: #173330;
+    --couleur-texte-douce: #54706B;
+    --couleur-bordure: #BEE7DF;
+    --couleur-carte: #FFFFFF;
+}
+
+:root[data-palette="corail"] {
+    --couleur-fond: #FFEDE8;
+    --couleur-accent: #FF6F59;
+    --couleur-accent-fonce: #E24B33;
+    --couleur-texte: #3A2420;
+    --couleur-texte-douce: #7A5C55;
+    --couleur-bordure: #FFD3C6;
+    --couleur-carte: #FFFFFF;
+}
+
+/* Sombre choisi explicitement. */
+
+:root[data-theme="sombre"] {
+    color-scheme: dark;
+    --couleur-fond: #1F1A12;
+    --couleur-accent: #FFC738;
+    --couleur-accent-fonce: #FFD766;
+    --couleur-texte: #F5EFE6;
+    --couleur-texte-douce: #B8AC9B;
+    --couleur-bordure: #4A3D28;
+    --couleur-carte: #2A2319;
+    --couleur-sur-accent: var(--couleur-fond);
+    --couleur-erreur: #FF8F80;
+}
+
+:root[data-theme="sombre"][data-palette="lagon"] {
+    --couleur-fond: #0F1F1C;
+    --couleur-accent: #2DD9C4;
+    --couleur-accent-fonce: #21B8A6;
+    --couleur-texte: #E7F5F2;
+    --couleur-texte-douce: #9FC3BC;
+    --couleur-bordure: #1F4640;
+    --couleur-carte: #16302B;
+}
+
+:root[data-theme="sombre"][data-palette="corail"] {
+    --couleur-fond: #241512;
+    --couleur-accent: #FF8A73;
+    --couleur-accent-fonce: #FF6F59;
+    --couleur-texte: #FBEAE6;
+    --couleur-texte-douce: #D2ACA3;
+    --couleur-bordure: #4F2A22;
+    --couleur-carte: #2E1B17;
+}
+
+/* Mode « Système » : on suit le téléphone, sauf si l'utilisateur a forcé le clair.
+   Mêmes valeurs que ci-dessus : à modifier aux deux endroits. */
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="clair"]) {
+        color-scheme: dark;
+        --couleur-fond: #1F1A12;
+        --couleur-accent: #FFC738;
+        --couleur-accent-fonce: #FFD766;
+        --couleur-texte: #F5EFE6;
+        --couleur-texte-douce: #B8AC9B;
+        --couleur-bordure: #4A3D28;
+        --couleur-carte: #2A2319;
+        --couleur-sur-accent: var(--couleur-fond);
+        --couleur-erreur: #FF8F80;
+    }
+
+    :root:not([data-theme="clair"])[data-palette="lagon"] {
+        --couleur-fond: #0F1F1C;
+        --couleur-accent: #2DD9C4;
+        --couleur-accent-fonce: #21B8A6;
+        --couleur-texte: #E7F5F2;
+        --couleur-texte-douce: #9FC3BC;
+        --couleur-bordure: #1F4640;
+        --couleur-carte: #16302B;
+    }
+
+    :root:not([data-theme="clair"])[data-palette="corail"] {
+        --couleur-fond: #241512;
+        --couleur-accent: #FF8A73;
+        --couleur-accent-fonce: #FF6F59;
+        --couleur-texte: #FBEAE6;
+        --couleur-texte-douce: #D2ACA3;
+        --couleur-bordure: #4F2A22;
+        --couleur-carte: #2E1B17;
+    }
+}
