@@ -8,11 +8,11 @@
 - Distribuer l'application **sans compte Apple Developer (99 €/an) ni Google Play Console (25 $)** :
   une PWA qu'on installe depuis le navigateur, sur iPhone comme sur Android (et sur ordinateur).
 - **Toutes les fonctionnalités disponibles hors ligne** après la première visite : calcul de
-  fraîcheur, décodage du code coquille (saisi ou photographié), conseils, réglages, 7 langues.
+  fraîcheur, décodage du code coquille, conseils, réglages, 7 langues.
 - **Coût d'exploitation : 0 €.** Le dépôt devient public, il est donc hébergé sur GitHub Pages.
 - Aucune régression sur les règles métier (règlement (CE) n° 589/2008, ANSES) : la logique
   existante est réutilisée telle quelle, pas réécrite.
-- **Retiré du périmètre** : la lecture de la DCR sur la boîte avec l'appareil photo (voir § 4).
+- **Plus aucune photo** : la date et le code coquille se saisissent au clavier (voir § 4).
 
 ## 2. Choix technique : Blazor WebAssembly
 
@@ -21,10 +21,13 @@
 - La logique métier est déjà du C# pur (`EggCalculator`, `ShellCodeParser`,
   `LocalizationResourceManager`). Elle s'exécute telle quelle dans le navigateur : aucune règle
   réglementaire à réécrire, donc aucun risque de divergence.
-- Les 7 fichiers `.resx` (146 clés × 7 langues aujourd'hui) sont réutilisés sans conversion.
+- Les 7 fichiers `.resx` sont réutilisés sans conversion (130 clés une fois les textes liés aux
+  photos retirés).
 - Le modèle PWA de Blazor fournit un service worker qui précharge **tous** les fichiers publiés
   (assemblies, runtime .NET, données ICU, CSS, JS) avec contrôle d'intégrité : l'application
   entière tourne hors ligne dès que l'installation est terminée.
+- Sans photo ni reconnaissance de texte, l'app n'a besoin d'aucune bibliothèque JavaScript ni
+  d'aucune autorisation (caméra, fichiers) : tout est en C#, HTML et CSS.
 - Même langage, mêmes outils (Visual Studio / `dotnet`), pas de nouvel écosystème.
 
 Contrepartie : un premier téléchargement plus lourd qu'une application JavaScript (le runtime
@@ -36,17 +39,15 @@ lancement. C'est acceptable pour une application installée et en cache ; à mes
 | Fonction | Aujourd'hui (MAUI) | Demain (PWA) | Hors ligne |
 |---|---|---|---|
 | Calcul de fraîcheur (ponte / DCR) | `EggCalculator` | `EggCalculator` inchangé (projet Core) | ✅ |
-| Décodage du code coquille | `ShellCodeParser` | inchangé | ✅ |
+| Saisie de la date | `DatePicker` + forçage de la locale native | `<input type="date">` natif + date reformulée dans la langue de l'app | ✅ |
+| Décodage du code coquille | `ShellCodeParser.Parse` | inchangé | ✅ |
+| Saisie du code coquille | `Entry` | `<input>` adapté au code (voir phase 3) | ✅ |
 | Onglet Conserver | XAML + `EggCalculator.Conservation` | composant Razor | ✅ |
 | 7 langues | `.resx` + `LocalizationResourceManager`, changement en direct | mêmes `.resx` ; changement = enregistrement puis rechargement de la page (motif standard Blazor) | ✅ assemblies satellites en cache |
 | Palettes Miel / Lagon / Corail, clair / sombre / système | `ThemeService` → `DynamicResource` | variables CSS + `prefers-color-scheme` | ✅ |
 | Préférences | `Preferences` MAUI | `localStorage`, derrière une interface | ✅ |
 | Navigation 4 onglets | `Shell` + `TabBar` | barre d'onglets en bas, routes `/`, `/code`, `/conserver`, `/reglages` | ✅ |
-| Sélecteur de date | `DatePicker` + forçage de la locale native | `<input type="date">` natif + date reformulée dans la langue de l'app | ✅ |
-| Alertes | `DisplayAlertAsync` | `<dialog>` | ✅ |
 | Poule qui marche | animations MAUI en C# | animation CSS, coupée si `prefers-reduced-motion` | ✅ |
-| Photo du code coquille | `MediaPicker` | `<input type="file" accept="image/*" capture="environment">` : appareil photo direct sur iOS et Android, sélecteur de fichier sur PC | ✅ |
-| OCR du code coquille | `Plugin.Maui.OCR` (Vision / ML Kit / Windows.Media.Ocr) | **Tesseract.js** (WebAssembly) auto-hébergé, modèle `fra` en cache | ✅ |
 | Icône, écran de démarrage | `MauiIcon`, `MauiSplashScreen` | `manifest.webmanifest`, icônes PNG 192/512 + maskable, `apple-touch-icon` | ✅ |
 | Mises à jour | stores | automatiques, avec bandeau « Nouvelle version — Mettre à jour » | nécessite le réseau, par nature |
 
@@ -58,14 +59,30 @@ lancement. C'est acceptable pour une application installée et en cache ; à mes
   iOS 16.4+). Remplacement proposé : bouton « Ajouter au calendrier » qui génère un fichier
   `.ics` côté client (rappel à DCR − 2 jours). 100 % hors ligne, rappel géré par le calendrier
   du téléphone.
+- La piste « Scan photo du code coquille » du README actuel est abandonnée.
 
 ## 4. Ce qui est retiré
 
-| Élément | Raison | Ce qui part |
-|---|---|---|
-| Lecture de la DCR sur la boîte par photo | Décision produit | `DateOcrParser.cs` ; dans `MainPage` le bouton « Lire la date sur la boîte », la note sous le bouton, la feuille de choix entre plusieurs dates et `OnScannerBoite` ; 5 clés de traduction : `Main_BoutonScan`, `Main_ScanAucuneDate`, `Main_ScanQuelleDcr`, `Main_ScanDateLue`, `Common_Annuler` |
-| Forçage de la langue du calendrier natif | Impossible sur le web : `<input type="date">` suit la langue du téléphone | `MauiProgram` (mapper du `DatePicker`), `MainActivity.AttachBaseContext` ; la date choisie est reformulée en toutes lettres dans la langue de l'app juste en dessous |
-| Messages d'erreur propres à `MediaPicker` | Un `<input type="file">` ne demande pas de permission et existe partout | clés `Scan_PermissionRefusee` et `Scan_NonSupporte` |
+### Toute prise de photo et la reconnaissance de texte (décision produit)
+
+| Où | Ce qui part |
+|---|---|
+| Code | `Services/ScanService.cs`, `Services/DateOcrParser.cs` ; dans `ShellCodeParser`, `TrouverCode` et ce qui ne sert qu'à lui (`Candidat`, `PaysConnus`, `Evaluer`, `Decouper`) — `Parse` et `NomPays` restent |
+| Fraîcheur (`MainPage`) | bouton « Lire la date sur la boîte », sa note, la feuille de choix entre plusieurs dates, `OnScannerBoite`, `RebinderTexte`, `Message` |
+| Code coquille (`CodePage`) | bouton photo, sa note, `OnScannerCoquille`, `RebinderTexte`, `Message` |
+| Styles | `NoteScan` dans `App.xaml` |
+| Dépendances et plateformes | paquet `Plugin.Maui.OCR`, `.UseOcr()` dans `MauiProgram`, `NoWarn XA4301` du `.csproj`, permission `CAMERA`, `uses-feature camera` et méta-donnée ML Kit de l'`AndroidManifest`, `NSCameraUsageDescription` de l'`Info.plist` iOS |
+| Traductions (16 clés × 7 langues) | `Main_BoutonScan`, `Main_ScanAucuneDate`, `Main_ScanQuelleDcr`, `Main_ScanDateLue`, `Code_BoutonScan`, `Code_ScanIllisible`, `Code_ScanRelire`, `Common_LectureEnCours`, `Common_ScanImpossible`, `Common_Fermer`, `Common_Annuler`, `Scan_PermissionRefusee`, `Scan_NonSupporte`, `Scan_PhotoEchec`, `Scan_LectureEchec`, `Scan_OcrEchec` |
+
+Ces suppressions se font dans l'app MAUI dès la phase 1, pour qu'elle reste une référence
+fidèle de ce qu'on porte. Le tag `v1-maui` garde la version avec photos.
+
+### Forçage de la langue du calendrier natif (impossible sur le web)
+
+`<input type="date">` affiche son calendrier dans la langue du téléphone, sans moyen de la
+forcer. Le mapper du `DatePicker` dans `MauiProgram` et `MainActivity.AttachBaseContext`
+n'ont pas d'équivalent ; la date choisie est reformulée en toutes lettres dans la langue de
+l'app juste en dessous du champ.
 
 ## 5. Architecture cible
 
@@ -86,23 +103,20 @@ src/
     App.razor
     Layout/                    MainLayout, BarreOnglets
     Pages/                     Fraicheur, CodeCoquille, Conserver, Reglages
-    Components/                Carte, Dialogue, PouleQuiMarche, BandeauInstallation, BandeauMiseAJour
-    Services/                  PreferencesNavigateur, ScanCoquille
-    libman.json                fichiers Tesseract.js épinglés (pas de npm)
+    Components/                Carte, PouleQuiMarche, BandeauInstallation, BandeauMiseAJour
+    Services/                  PreferencesNavigateur
     wwwroot/
       index.html
       manifest.webmanifest
       service-worker.js        (développement : ne met rien en cache)
       service-worker.published.js
       css/app.css, css/theme.css
-      js/pwa.js, js/ocr.js
-      lib/tesseract/           restauré par LibMan : worker, cœurs WASM, fra.traineddata
+      js/pwa.js                installation, mises à jour, « prête hors ligne »
       icons/, fonts/
   OeufFrais.Maui/              application actuelle, gardée pendant la migration puis supprimée
 tests/
   OeufFrais.Core.Tests/        xUnit
   OeufFrais.Web.E2E/           Playwright (.NET), dont le scénario hors ligne
-  fixtures/                    photos de coquilles
 .github/workflows/
   ci.yml                       build + tests à chaque push et pull request
   pages.yml                    publication sur GitHub Pages
@@ -123,8 +137,8 @@ les tests. Taille indicative : **S** (≤ ½ jour), **M** (~1 jour), **L** (2–
 
 ### Phase 0 — Préparation et passage en public (S)
 
-- [ ] Taguer l'état actuel : `git tag v1-maui` sur `main` (point de retour garanti, avec la
-      lecture de date encore présente).
+- [ ] Taguer l'état actuel : `git tag v1-maui` sur `main` (point de retour garanti, avec les
+      photos encore présentes).
 - [ ] Avant de rendre le dépôt public :
   - [x] historique parcouru : aucun secret (clé, jeton, mot de passe) ;
   - [ ] retirer `.claude/settings.local.json` du suivi et l'ajouter au `.gitignore` (réglages
@@ -135,14 +149,13 @@ les tests. Taille indicative : **S** (≤ ½ jour), **M** (~1 jour), **L** (2–
       vérifier qu'il compile (`dotnet build -f net10.0-android`).
 - [ ] Ajouter `global.json`.
 
-### Phase 1 — Retirer la lecture de date, extraire le cœur métier et le tester (M)
+### Phase 1 — Retirer les photos, extraire le cœur métier et le tester (M)
 
-- [ ] Retirer la lecture de la DCR par photo (liste au § 4), dans l'app MAUI et dans les 7
+- [ ] Retirer tout ce qui touche aux photos (liste du § 4), dans l'app MAUI et dans les 7
       `.resx`.
 - [ ] Créer `OeufFrais.Core` (net10.0) et y déplacer `EggCalculator`, `ShellCodeParser`,
-      `LocalizationResourceManager` et les `.resx`. `TranslateExtension`, `ThemeService`,
-      `ScanService` et `Palettes` restent côté MAUI (ils dépendent de XAML, de
-      `Application.Current` ou du plugin OCR).
+      `LocalizationResourceManager` et les `.resx`. `TranslateExtension`, `ThemeService` et
+      `Palettes` restent côté MAUI (ils dépendent de XAML ou de `Application.Current`).
 - [ ] Retirer les dépendances MAUI du cœur :
   - `EggAssessment.CouleurStatut` / `CouleurStatutClaire` et `UsageConseil.Couleur` /
     `CouleurClaire` (type `Microsoft.Maui.Graphics.Color`) : le cœur expose `Statut`,
@@ -152,13 +165,13 @@ les tests. Taille indicative : **S** (≤ ½ jour), **M** (~1 jour), **L** (2–
 - [ ] MAUI référence `OeufFrais.Core`. Dans les XAML, `EggAssessment`, `UsageConseil` et
       `ShellCode` vivent désormais dans une autre assembly :
       `xmlns:core="clr-namespace:OeufFrais.Services;assembly=OeufFrais.Core"` pour les
-      `x:DataType`. L'application doit se comporter exactement comme avant (moins la lecture de
-      date) : c'est la preuve que l'extraction n'a rien cassé.
+      `x:DataType`. L'application doit se comporter exactement comme avant (moins les photos) :
+      c'est la preuve que l'extraction n'a rien cassé.
 - [ ] Créer `OeufFrais.Core.Tests` (le dépôt n'a aucun test aujourd'hui) :
   - bornes de `EggCalculator` : J0, J9/J10, J28/J29, J42/J43, date future, conversion
     DCR ↔ ponte ;
-  - `ShellCodeParser.Parse` : chiffres 0 à 3, espaces et tirets, formats invalides ;
-    `TrouverCode` : confusions OCR (O → 0, B → 3), code coupé en plusieurs mots, bruit rejeté ;
+  - `ShellCodeParser.Parse` : chiffres 0 à 3, minuscules, espaces et tirets, code trop court
+    ou trop long, chiffre de tête hors 0–3, pays connu et inconnu ;
   - traductions : chaque clé du `.resx` neutre existe dans les 6 autres langues, avec le même
     nombre d'arguments `{n}` ; une chaîne qui revient égale à sa clé fait échouer le test.
 
@@ -202,22 +215,25 @@ La mise en ligne arrive tôt exprès : un service worker n'est actif qu'en HTTPS
       mode DCR), date reformulée en toutes lettres en dessous, bouton Calculer, carte statut
       (couleur par classe CSS selon `Freshness`), dates clés, usages ✓ / ✕, test du verre d'eau
       si recommandé, avertissement.
-- [ ] **Code coquille** : saisie (Entrée = décoder), résultat ou carte d'erreur, encart
-      « Bon à savoir ». Le bouton photo arrive en phase 5.
+- [ ] **Code coquille** : la saisie devient le seul moyen d'entrer le code, elle doit être
+      confortable au pouce :
+  - `autocapitalize="characters"`, `autocomplete="off"`, `autocorrect="off"`,
+    `spellcheck="false"` (sinon le clavier « corrige » `3FRABC01`), `enterkeyhint="go"`,
+    `maxlength="16"` ;
+  - affichage en majuscules ; Entrée ou bouton = décoder ;
+  - résultat ou carte d'erreur, encart « Bon à savoir ».
 - [ ] **Conserver** : règles, test du verre d'eau, DCR vs DLC, avertissement.
 - [ ] **Réglages** : langue (Système + 7), palette, thème ; changement de langue →
       `Loc.Definir(code)` puis `NavigationManager.NavigateTo(uri, forceLoad: true)`.
 - [ ] `<html lang>` suit la langue choisie (lecteurs d'écran, césure).
 - [ ] Poule qui marche : animation CSS reprenant le trajet actuel (aller-retour, dandinement,
       pauses où elle regarde autour d'elle), arrêtée si `prefers-reduced-motion`.
-- [ ] Composant `Dialogue` (remplace `DisplayAlertAsync`).
 
 ### Phase 4 — Hors ligne et installation (M)
 
-- [ ] `service-worker.published.js` : compléter `offlineAssetsInclude` avec `.svg`, `.woff2` et
-      `.traineddata` / `.gz`, absents de la liste par défaut (ils ne seraient sinon jamais mis
-      en cache). Vérifier dans `service-worker-assets.js` publié que les assemblies satellites
-      des 6 langues y figurent.
+- [ ] `service-worker.published.js` : compléter `offlineAssetsInclude` avec `.svg` et `.woff2`,
+      absents de la liste par défaut (ils ne seraient sinon jamais mis en cache). Vérifier dans
+      `service-worker-assets.js` publié que les assemblies satellites des 6 langues y figurent.
 - [ ] Polices Open Sans converties en `.woff2` et auto-hébergées. Aucune ressource externe :
       ni Google Fonts, ni CDN.
 - [ ] Mises à jour : quand un nouveau service worker attend, bandeau « Nouvelle version
@@ -235,44 +251,16 @@ La mise en ligne arrive tôt exprès : un service worker n'est actif qu'en HTTPS
 - [ ] Mesurer le poids total préchargé et le temps de démarrage sur un téléphone d'entrée de
       gamme ; reporter les chiffres dans le README.
 
-### Phase 5 — Photo du code coquille (M)
-
-- [ ] `libman.json` (fournisseur jsDelivr, versions épinglées) : `tesseract.js` (script et
-      worker), **seulement les cœurs WASM LSTM** (variantes SIMD et non SIMD, choisies à
-      l'exécution ; le paquet `tesseract.js-core` complet pèse ~30 Mo) et `fra.traineddata`
-      du paquet `@tesseract.js-data/fra`. Restauration automatique au build
-      (`Microsoft.Web.LibraryManager.Build`), rien à versionner.
-- [ ] `js/ocr.js` : `createWorker('fra', …)` avec `workerPath`, `corePath` et `langPath` locaux
-      (aucun appel réseau) et le cache IndexedDB de Tesseract désactivé (le service worker s'en
-      charge déjà ; sinon le modèle serait stocké deux fois). Worker créé au premier scan, puis
-      gardé en mémoire.
-- [ ] Préparation de l'image dans un `<canvas>` : redimensionnement vers ~1600 px, niveaux de
-      gris, contraste, binarisation. L'image ne transite pas par l'interop .NET (inutilement
-      lourd) : le JS renvoie seulement le texte reconnu.
-- [ ] Liste blanche de caractères `0-9A-Z` pour limiter les confusions.
-- [ ] `ScanCoquille` reprend la logique de `ScanService.ScannerAsync` : première passe, puis
-      seconde passe avec un autre prétraitement / mode de segmentation si
-      `ShellCodeParser.TrouverCode` ne trouve rien ; le code trouvé est mis dans le champ de
-      saisie, à relire (messages `Code_ScanRelire` / `Code_ScanIllisible` existants).
-- [ ] Le bouton est un `<label>` lié à l'`<input type="file" capture>` : le geste de
-      l'utilisateur ouvre directement l'appareil photo, sans demande de permission caméra.
-- [ ] Tests Playwright sur quelques photos de coquilles dans `tests/fixtures/`.
-
-⚠️ À prévoir : Tesseract est moins bon que ML Kit ou Apple Vision, surtout sur l'impression
-jet d'encre d'une coquille courbe. Le résultat reste toujours proposé en saisie modifiable
-(c'est déjà le cas). Si la précision ne suffit pas, le levier le plus efficace est un viseur
-caméra (`getUserMedia`) avec un cadre de recadrage autour du code.
-
-### Phase 6 — Recette, bascule et nettoyage (M)
+### Phase 5 — Recette, bascule et nettoyage (M)
 
 - [ ] Test Playwright « hors ligne » : première visite, attente de l'activation du service
-      worker, `SetOfflineAsync(true)`, rechargement, parcours des 4 onglets, calcul, décodage
-      saisi et photographié, changement de langue et de thème.
+      worker, `SetOfflineAsync(true)`, rechargement, parcours des 4 onglets, calcul en mode
+      ponte et DCR, décodage d'un code valide et d'un code invalide, changement de langue et de
+      thème.
 - [ ] Recette sur **iPhone réel** : Safari → Sur l'écran d'accueil → mode avion → tous les
-      écrans, photo de coquille, changement de langue et de thème.
+      écrans, saisie de date et de code, changement de langue et de thème.
 - [ ] Recette sur **Android réel** : Chrome → Installer → mode avion → idem.
-- [ ] Supprimer `src/OeufFrais.Maui/` et la dépendance `Plugin.Maui.OCR` (l'application reste
-      récupérable via le tag `v1-maui`).
+- [ ] Supprimer `src/OeufFrais.Maui/` (l'application reste récupérable via le tag `v1-maui`).
 - [ ] Réécrire le README : URL de l'app, installation iOS et Android, développement local
       (`dotnet watch` ; le service worker de développement ne met rien en cache, tester le hors
       ligne demande `dotnet publish` + un serveur statique sur `localhost`), déploiement.
@@ -311,11 +299,11 @@ Dépôt public → GitHub Pages et GitHub Actions sont gratuits. Adresse :
 
 | Risque | Impact | Parade |
 |---|---|---|
-| OCR moins précis qu'avec ML Kit / Vision | Photo de coquille parfois ratée | Prétraitement, liste blanche, double passe, résultat toujours modifiable ; viseur avec recadrage si besoin |
-| Premier téléchargement lourd (runtime .NET + Tesseract) | Installation lente sur un réseau mobile faible | Préchargement en arrière-plan sans bloquer l'affichage, cœurs LSTM seuls, indicateur « Prête hors ligne », mesure en phase 4 |
+| Premier téléchargement plus lourd (runtime .NET) | Installation un peu lente sur un réseau mobile faible | Préchargement en arrière-plan sans bloquer l'affichage, indicateur « Prête hors ligne », mesure en phase 4 |
 | Service worker qui ne s'installe pas | App inutilisable hors ligne | Ne jamais modifier un fichier après `dotnet publish` ; test Playwright hors ligne dans la CI |
 | Version obsolète servie par le cache | Corrections qui n'arrivent pas | Bandeau de mise à jour, vérification au retour au premier plan |
 | iOS : pas d'invite d'installation, purge possible du stockage | Utilisateurs qui n'installent pas ; préférences perdues | Bandeau d'aide iOS ; les web apps ajoutées à l'écran d'accueil échappent à la purge des 7 jours de Safari ; `storage.persist()` ; seules des préférences sont stockées |
+| Erreurs de frappe dans le code coquille | Code refusé | Clavier sans correction automatique, majuscules forcées, espaces et tirets tolérés (déjà le cas dans `Parse`), message d'erreur explicite |
 | Sélecteur de date dans la langue du téléphone | Petite incohérence visuelle | Date reformulée en toutes lettres dans la langue de l'app |
 | Changement de langue = rechargement | Environ une seconde d'attente | Acceptable, et fonctionne hors ligne |
 | Politique d'Apple envers les PWA | Faible (le retrait envisagé dans l'UE en 2024 a été annulé) | Aucun code spécifique à Apple ; l'app reste utilisable dans Safari même non installée |
@@ -326,11 +314,9 @@ Validées :
 
 1. **Stack** : Blazor WebAssembly, pour réutiliser le C# et les `.resx`.
 2. **Hébergement** : GitHub Pages, le dépôt passe public.
-3. **Lecture de la DCR par photo** : retirée.
+3. **Photos** : plus aucune ; date et code coquille saisis au clavier.
 
 Par défaut (à contester si besoin) :
 
 4. **Application MAUI** : supprimée en fin de migration, conservée dans le tag `v1-maui`.
-5. **Photo du code coquille** : conservée, avec Tesseract.js et le seul modèle français (les
-   codes n'utilisent que des chiffres et des lettres latines).
-6. **Adresse** : `oliviermct.github.io/OeufFrais`, domaine personnalisé possible plus tard.
+5. **Adresse** : `oliviermct.github.io/OeufFrais`, domaine personnalisé possible plus tard.
