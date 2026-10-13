@@ -26,6 +26,10 @@ ouverte une première fois.
   (bandeau en haut de l'app, onglet Réglages, ou menu ⋮ de Chrome).
 - **Ordinateur** : Chrome ou Edge affichent une icône d'installation dans la barre d'adresse.
 
+Compatibilité : iOS 16.4 ou plus récent (iPhone 8 et suivants), Chrome à jour sur Android,
+navigateurs récents sur ordinateur. Sur un navigateur plus ancien, l'app l'explique au lieu de
+démarrer.
+
 L'onglet **Réglages** indique « Prête hors ligne » quand tout est en cache : l'app marche
 alors sans réseau. Quand une nouvelle version est publiée, un bandeau propose de la charger.
 

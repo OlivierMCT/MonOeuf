@@ -35,6 +35,20 @@
     appliquerTheme(lire('theme_palette'), lire('theme_mode'));
     matchMedia('(prefers-color-scheme: dark)').addEventListener('change', majCouleurBarre);
 
+    // ===== Navigateur trop ancien =====
+    // .NET 10 exige WebAssembly SIMD (Safari 16.4 et plus, soit iPhone 8 et suivants). Sans lui,
+    // l'écran de chargement tournerait indéfiniment : on l'explique plutôt.
+    const simd = typeof WebAssembly === 'object' && WebAssembly.validate(new Uint8Array(
+        [0, 97, 115, 109, 1, 0, 0, 0, 1, 5, 1, 96, 0, 1, 123, 3, 2, 1, 0, 10, 10, 1, 8, 0, 65, 0, 253, 15, 253, 98, 11]));
+    if (!simd) {
+        addEventListener('DOMContentLoaded', () => {
+            document.getElementById('app').innerHTML =
+                '<div class="page"><section class="carte"><h1 class="titre">🥚 Œuf Frais</h1>' +
+                '<p>Ce navigateur est trop ancien pour Œuf Frais. Mettez à jour votre téléphone ' +
+                '(iOS 16.4 ou plus récent) ou votre navigateur.</p></section></div>';
+        });
+    }
+
     // ===== Application installable =====
 
     const etat = {

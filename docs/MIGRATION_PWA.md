@@ -40,6 +40,11 @@ Reste à faire, de votre côté :
 - **12 nouveaux textes** traduits dans les 7 langues (installation, mise à jour, hors ligne,
   page introuvable).
 - **Poids mesuré** : 8,5 Mo préchargés (2,5 Mo en brotli ; GitHub Pages compresse en gzip).
+- **Compatibilité iOS : 16.4 minimum** (iPhone 8 et suivants), contre iOS 15 pour l'app MAUI.
+  .NET 10 active d'office WebAssembly SIMD, que Safari ne gère que depuis la 16.4. Un
+  navigateur trop ancien affiche un message au lieu d'un chargement sans fin. Pour viser
+  iOS 15 (iPhone 6s, 7, SE de 1re génération), il faudrait désactiver SIMD
+  (`WasmEnableSIMD=false`), ce qui demande le workload `wasm-tools` dans le workflow.
 
 ## 1. Objectif et contraintes
 
