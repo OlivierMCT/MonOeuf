@@ -15,7 +15,16 @@
     <!-- N'embarque que les traductions des 7 langues de l'app (y compris celles des
          bibliothèques .NET), pour alléger le préchargement hors ligne. -->
     <SatelliteResourceLanguages>fr;en;de;es;it;pt;nl</SatelliteResourceLanguages>
+
+    <!-- Version affichée en bas des Réglages : date de construction et commit, fourni par
+         scripts/publier-site.sh (-p:VersionCommit=…). -->
+    <VersionCommit Condition="'$(VersionCommit)' == ''">dev</VersionCommit>
   </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyMetadata Include="VersionCommit" Value="$(VersionCommit)" />
+    <AssemblyMetadata Include="VersionDate" Value="$([System.DateTime]::UtcNow.ToString('o'))" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.12" />

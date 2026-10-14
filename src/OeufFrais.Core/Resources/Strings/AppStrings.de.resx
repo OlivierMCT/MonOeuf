@@ -162,6 +162,7 @@
   <data name="Pwa_PreparationHorsLigne" xml:space="preserve"><value>Offline-Nutzung wird vorbereitet …</value></data>
   <data name="Pwa_HorsLigneIndisponible" xml:space="preserve"><value>Offline-Nutzung ist in diesem Browser nicht verfügbar.</value></data>
   <data name="Settings_SectionApplication" xml:space="preserve"><value>APP</value></data>
+  <data name="Settings_Version" xml:space="preserve"><value>Version vom {0}</value></data>
   <data name="Pwa_PageIntrouvable" xml:space="preserve"><value>Diese Seite existiert nicht.</value></data>
   <data name="Pwa_RetourAccueil" xml:space="preserve"><value>Zurück zur Startseite</value></data>
 </root>

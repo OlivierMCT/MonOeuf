@@ -32,6 +32,7 @@ démarrer.
 
 L'onglet **Réglages** indique « Prête hors ligne » quand tout est en cache : l'app marche
 alors sans réseau. Quand une nouvelle version est publiée, un bandeau propose de la charger.
+La version installée (date de publication et commit) est indiquée en bas de ce même onglet.
 
 ---
 

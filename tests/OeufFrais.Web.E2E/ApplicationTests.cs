@@ -213,6 +213,16 @@ public sealed class ApplicationTests(SiteFixture site) : IAsyncLifetime
     }
 
     [Fact]
+    public async Task La_version_publiee_est_affichee_dans_les_reglages()
+    {
+        await OuvrirAsync(_page, "reglages");
+
+        // « Version du 14/10/2026 15:10 · 46287d4 » : date de publication et commit.
+        await Expect(_page.Locator(".version")).ToHaveTextAsync(
+            new System.Text.RegularExpressions.Regex(@"^Version du \d{2}/\d{2}/\d{4} \d{2}:\d{2} · [0-9a-f]{7,}$"));
+    }
+
+    [Fact]
     public async Task Le_manifeste_et_ses_icones_sont_servis()
     {
         var reponse = await _contexte.APIRequest.GetAsync(site.Url + "manifest.webmanifest");

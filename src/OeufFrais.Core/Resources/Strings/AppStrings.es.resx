@@ -162,6 +162,7 @@
   <data name="Pwa_PreparationHorsLigne" xml:space="preserve"><value>Preparando el uso sin conexión…</value></data>
   <data name="Pwa_HorsLigneIndisponible" xml:space="preserve"><value>El uso sin conexión no está disponible en este navegador.</value></data>
   <data name="Settings_SectionApplication" xml:space="preserve"><value>APLICACIÓN</value></data>
+  <data name="Settings_Version" xml:space="preserve"><value>Versión del {0}</value></data>
   <data name="Pwa_PageIntrouvable" xml:space="preserve"><value>Esta página no existe.</value></data>
   <data name="Pwa_RetourAccueil" xml:space="preserve"><value>Volver al inicio</value></data>
 </root>

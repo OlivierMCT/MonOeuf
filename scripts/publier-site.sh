@@ -21,7 +21,8 @@ sed -i "s|<base href=\"/\" />|<base href=\"$BASE\" />|" "$INDEX"
 grep -q "<base href=\"$BASE\" />" "$INDEX" || { echo "Balise <base> introuvable dans $INDEX" >&2; exit 1; }
 
 rm -rf artifacts/publish "$SORTIE"
-dotnet publish src/OeufFrais.Web -c Release -o artifacts/publish
+COMMIT="$(git rev-parse --short HEAD 2>/dev/null || echo local)"
+dotnet publish src/OeufFrais.Web -c Release -o artifacts/publish -p:VersionCommit="$COMMIT"
 mkdir -p "$(dirname "$SORTIE")"
 cp -r artifacts/publish/wwwroot "$SORTIE"
 

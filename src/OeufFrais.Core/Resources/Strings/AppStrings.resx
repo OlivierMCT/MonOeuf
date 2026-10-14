@@ -162,6 +162,7 @@
   <data name="Pwa_PreparationHorsLigne" xml:space="preserve"><value>Préparation de l'usage hors ligne…</value></data>
   <data name="Pwa_HorsLigneIndisponible" xml:space="preserve"><value>Usage hors ligne indisponible dans ce navigateur.</value></data>
   <data name="Settings_SectionApplication" xml:space="preserve"><value>APPLICATION</value></data>
+  <data name="Settings_Version" xml:space="preserve"><value>Version du {0}</value></data>
   <data name="Pwa_PageIntrouvable" xml:space="preserve"><value>Cette page n'existe pas.</value></data>
   <data name="Pwa_RetourAccueil" xml:space="preserve"><value>Retour à l'accueil</value></data>
 </root>
