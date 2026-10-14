@@ -17,7 +17,7 @@ const cacheName = `${cacheNamePrefix}${self.assetsManifest.version}`;
 const offlineAssetsInclude = [ /\.dll$/, /\.wasm/, /\.html/, /\.js$/, /\.json$/, /\.css$/, /\.woff2?$/, /\.png$/, /\.svg$/, /\.ico$/, /\.blat$/, /\.dat$/, /\.webmanifest$/ ];
 const offlineAssetsExclude = [ /^service-worker\.js$/ ];
 
-// Dossier du service worker : « / » en local, « /OeufFrais/ » sur GitHub Pages.
+// Dossier du service worker : « / » en local, « /MonOeuf/ » sur GitHub Pages.
 const baseUrl = new URL('./', self.location);
 const manifestUrlList = self.assetsManifest.assets.map(asset => new URL(asset.url, baseUrl).href);
 

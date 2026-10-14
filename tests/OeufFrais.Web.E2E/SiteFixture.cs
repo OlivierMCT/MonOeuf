@@ -15,7 +15,7 @@ namespace OeufFrais.Web.E2E;
 ///
 /// Le dossier publié vient de la variable OEUFFRAIS_SITE (par défaut artifacts/site à la racine
 /// du dépôt, là où le workflow le dépose). Le sous-dossier est lu dans la balise &lt;base&gt; de
-/// index.html : « /OeufFrais/ » pour un site préparé pour GitHub Pages.
+/// index.html : « /MonOeuf/ » pour un site préparé pour GitHub Pages.
 /// Comme GitHub Pages, une adresse inconnue reçoit 404.html avec le code 404.
 /// </summary>
 public sealed class SiteFixture : IAsyncLifetime
@@ -37,7 +37,7 @@ public sealed class SiteFixture : IAsyncLifetime
             ?? Path.Combine(RacineDuDepot(), "artifacts", "site"));
         if (!File.Exists(Path.Combine(source, "index.html")))
             throw new InvalidOperationException(
-                $"Site publié introuvable dans {source}. Lancez d'abord scripts/publier-site.sh /OeufFrais/ artifacts/site " +
+                $"Site publié introuvable dans {source}. Lancez d'abord scripts/publier-site.sh /MonOeuf/ artifacts/site " +
                 "(ou définissez OEUFFRAIS_SITE).");
 
         var dossier = Dossier = Path.Combine(Path.GetTempPath(), "oeuffrais-e2e-" + Guid.NewGuid().ToString("N"));

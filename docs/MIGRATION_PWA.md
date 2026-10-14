@@ -1,7 +1,7 @@
 # Plan de migration : Œuf Frais en PWA Blazor WebAssembly, 100 % hors ligne
 
-> Branche de travail : `claude/migration-pwa` · Point de départ : `main` @ `4746061`
-> (application .NET MAUI 10 : Android, iOS, Windows)
+> Dépôt public : `OlivierMCT/MonOeuf` · Branche de travail : `claude/migration-pwa`
+> Point de départ : `main` @ `13d389e` (application .NET MAUI 10 : Android, iOS, Windows)
 
 ## Avancement
 
@@ -10,11 +10,16 @@
 coupé (rechargement, lien profond, calcul, décodage, changement de langue) et l'arrivée d'une
 nouvelle version.
 
+Fait aussi : l'historique a été réécrit pour masquer les adresses e-mail des commits (toutes
+sont désormais des adresses `noreply`, contenu des fichiers inchangé) et publié dans ce nouveau
+dépôt public, `MonOeuf`. L'ancien dépôt `OeufFrais`, qui garde l'historique d'origine, reste
+privé ; il peut être supprimé une fois la migration terminée.
+
 Reste à faire, de votre côté :
 
-1. Créer le tag `v1-maui` (l'environnement de travail n'a pu pousser que la branche) :
-   `git tag -a v1-maui 4746061 -m "Dernière version MAUI" && git push origin v1-maui`.
-2. Vérifier les adresses e-mail des commits et choisir une licence, puis rendre le dépôt public.
+1. Créer le tag `v1-maui` (l'environnement de travail ne peut pousser que des branches) :
+   *Releases → Create a new release*, tag `v1-maui`, cible `main` (encore l'app MAUI).
+2. Choisir une licence (sans fichier `LICENSE`, le code est visible mais pas réutilisable).
 3. *Settings → Pages → Source : GitHub Actions*, et autoriser la branche `claude/migration-pwa`
    dans *Settings → Environments → github-pages* pour la tester sur téléphone avant la fusion.
 4. Recette sur iPhone et Android réels (phase 5), mesure du démarrage sur un téléphone modeste.
@@ -29,7 +34,7 @@ Reste à faire, de votre côté :
   13 octobre 2026 »), comme sous MAUI ; le champ date natif, transparent, est posé par-dessus
   et ouvre le calendrier du téléphone. Seul ce calendrier reste dans la langue du téléphone.
 - **Un seul workflow** (`pwa.yml`) au lieu de `ci.yml` + `pages.yml` ; la mise en ligne est
-  sautée tant que le dépôt est privé. Le site est préparé par `scripts/publier-site.sh`,
+  sautée si le dépôt est privé. Le site est préparé par `scripts/publier-site.sh`,
   utilisé aussi pour les tests de bout en bout.
 - **Langue « Système »** : corrigée. Revenir sur « Système » après un choix explicite gardait
   ce choix jusqu'au redémarrage ; et une langue de téléphone non traduite (japonais…) donne
@@ -313,11 +318,11 @@ La mise en ligne arrive tôt exprès : un service worker n'est actif qu'en HTTPS
 ## 7. Hébergement : GitHub Pages
 
 Dépôt public → GitHub Pages et GitHub Actions sont gratuits. Adresse :
-**`https://oliviermct.github.io/OeufFrais/`**.
+**`https://oliviermct.github.io/MonOeuf/`**.
 
 - Réglage unique : *Settings → Pages → Source : GitHub Actions*.
 - `pages.yml` : .NET 10, `dotnet test`, puis :
-  1. remplacer `<base href="/" />` par `<base href="/OeufFrais/" />` dans `wwwroot/index.html`
+  1. remplacer `<base href="/" />` par `<base href="/MonOeuf/" />` dans `wwwroot/index.html`
      **avant** `dotnet publish`. Le manifeste du service worker contient l'empreinte SHA-256 de
      chaque fichier : modifier `index.html` après publication ferait échouer l'installation du
      service worker, et l'app ne marcherait plus hors ligne ;
@@ -325,7 +330,7 @@ Dépôt public → GitHub Pages et GitHub Actions sont gratuits. Adresse :
   3. copier le `index.html` publié en `404.html` et ajouter un fichier `.nojekyll` ;
   4. `actions/upload-pages-artifact` (dossier `wwwroot` publié) + `actions/deploy-pages`.
 - **Liens profonds** : GitHub Pages ne sait pas réécrire les URL. Le `404.html` fait servir
-  l'application pour `/OeufFrais/code` ou `/OeufFrais/reglages` à la première visite ; ensuite
+  l'application pour `/MonOeuf/code` ou `/MonOeuf/reglages` à la première visite ; ensuite
   le service worker répond lui-même à toutes les navigations, en ligne comme hors ligne.
 - **Cache HTTP** : GitHub Pages impose 10 minutes et ne permet pas d'en-têtes personnalisés.
   Sans conséquence : le modèle Blazor enregistre le service worker avec
@@ -363,4 +368,4 @@ Validées :
 Par défaut (à contester si besoin) :
 
 4. **Application MAUI** : supprimée en fin de migration, conservée dans le tag `v1-maui`.
-5. **Adresse** : `oliviermct.github.io/OeufFrais`, domaine personnalisé possible plus tard.
+5. **Adresse** : `oliviermct.github.io/MonOeuf`, domaine personnalisé possible plus tard.

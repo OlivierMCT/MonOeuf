@@ -7,7 +7,7 @@ Application web installable (PWA) : elle s'installe depuis le navigateur sur iPh
 ou ordinateur, sans passer par les stores, et **fonctionne entièrement hors ligne** une fois
 ouverte une première fois.
 
-**Adresse : <https://oliviermct.github.io/OeufFrais/>**
+**Adresse : <https://oliviermct.github.io/MonOeuf/>**
 
 | Onglet | Contenu |
 |---|---|
@@ -77,7 +77,7 @@ En développement, le service worker ne met rien en cache : l'indicateur « Prê
 n'y veut rien dire. Pour tester le vrai comportement hors ligne, il faut le site publié :
 
 ```bash
-scripts/publier-site.sh /OeufFrais/ artifacts/site              # comme sur GitHub Pages
+scripts/publier-site.sh /MonOeuf/ artifacts/site                # comme sur GitHub Pages
 dotnet build tests/OeufFrais.Web.E2E
 pwsh tests/OeufFrais.Web.E2E/bin/Debug/net10.0/playwright.ps1 install chromium   # une seule fois
 dotnet test tests/OeufFrais.Web.E2E
@@ -92,12 +92,10 @@ Les textes de l'interface sont dans `src/OeufFrais.Core/Resources/Strings/AppStr
 ## Mettre en ligne
 
 Le workflow `.github/workflows/pwa.yml` lance les tests à chaque push et publie `main` sur
-GitHub Pages. Réglages à faire une fois :
+GitHub Pages. Réglage à faire une fois : *Settings → Pages → Source* : **GitHub Actions**
+(le dépôt doit rester public : GitHub Pages est payant pour un dépôt privé).
 
-1. rendre le dépôt public (GitHub Pages est payant pour un dépôt privé) ;
-2. *Settings → Pages → Source* : **GitHub Actions**.
-
-Le site est servi sous `/OeufFrais/` : `scripts/publier-site.sh` écrit ce chemin dans la balise
+Le site est servi sous `/MonOeuf/` (le nom du dépôt) : `scripts/publier-site.sh` écrit ce chemin dans la balise
 `<base>` **avant** la publication. Ne jamais modifier un fichier du site après coup : le service
 worker vérifie l'empreinte de chaque fichier et refuserait de s'installer.
 

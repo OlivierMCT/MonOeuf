@@ -2,7 +2,7 @@
 # Prépare le site statique tel qu'il est déployé sur GitHub Pages.
 #
 #   scripts/publier-site.sh [chemin de base] [dossier de sortie]
-#   scripts/publier-site.sh /OeufFrais/ artifacts/site
+#   scripts/publier-site.sh /MonOeuf/ artifacts/site
 #
 # Le chemin de base est écrit dans <base href> AVANT la publication : le service worker vérifie
 # l'empreinte de chaque fichier, et un index.html modifié après coup l'empêcherait de s'installer
@@ -28,7 +28,7 @@ cp -r artifacts/publish/wwwroot "$SORTIE"
 # GitHub Pages compresse lui-même : les versions .br et .gz ne servent qu'à alourdir le site.
 find "$SORTIE" \( -name '*.br' -o -name '*.gz' \) -delete
 
-# GitHub Pages ne sait pas réécrire les adresses : pour /OeufFrais/code, il sert 404.html,
+# GitHub Pages ne sait pas réécrire les adresses : pour /MonOeuf/code, il sert 404.html,
 # qui démarre l'app comme index.html. (Absent du manifeste du service worker, c'est voulu.)
 cp "$SORTIE/index.html" "$SORTIE/404.html"
 touch "$SORTIE/.nojekyll"
