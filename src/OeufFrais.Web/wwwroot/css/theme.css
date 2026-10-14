@@ -1,4 +1,4 @@
-/* Palettes de l'application : les 7 jetons sémantiques de l'app MAUI (Resources/Styles/Palettes.cs),
+/* Palettes de l'application : les 7 jetons sémantiques de l'ancienne app MAUI,
    pour chaque palette en clair et en sombre. js/app.js pose data-palette (miel | lagon | corail) et
    data-theme (clair | sombre, absent = suivre le système) sur <html>. */
 

@@ -11,7 +11,7 @@ public enum ModePreference { Systeme, Clair, Sombre }
 /// Palette et mode clair/sombre choisis par l'utilisateur. Les couleurs elles-mêmes vivent dans
 /// css/theme.css ; ce service mémorise le choix et pose les attributs data-palette / data-theme
 /// sur &lt;html&gt; (js/app.js les applique aussi avant le démarrage de .NET, sans flash).
-/// Les clés et valeurs stockées sont celles de l'app MAUI.
+/// Les clés et valeurs stockées sont celles de l'ancienne app MAUI.
 /// </summary>
 public sealed class ThemeWeb(IPreferences preferences, IJSRuntime js)
 {

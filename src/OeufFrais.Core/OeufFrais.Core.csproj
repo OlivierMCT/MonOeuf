@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<!-- Règles métier et traductions, sans aucune dépendance d'interface : partagées par
-	     l'application MAUI (tant qu'elle existe) et par la PWA Blazor WebAssembly.
+	<!-- Règles métier et traductions, sans aucune dépendance d'interface : utilisées par la
+	     PWA Blazor WebAssembly et testées seules (tests/OeufFrais.Core.Tests).
 	     RootNamespace = OeufFrais pour que les .resx de Resources/Strings gardent leur nom de
 	     ressource historique (OeufFrais.Resources.Strings.AppStrings). -->
 	<PropertyGroup>

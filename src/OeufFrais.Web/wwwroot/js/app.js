@@ -13,7 +13,7 @@
     const ecrire = (cle, valeur) => { try { localStorage.setItem(cle, valeur); } catch { /* rien à faire */ } };
 
     // ===== Thème =====
-    // Mêmes clés et valeurs que l'app MAUI (theme_palette = Miel|Lagon|Corail, theme_mode = Systeme|Clair|Sombre).
+    // Mêmes clés et valeurs que l'ancienne app MAUI (theme_palette = Miel|Lagon|Corail, theme_mode = Systeme|Clair|Sombre).
 
     const palettes = { Miel: 'miel', Lagon: 'lagon', Corail: 'corail' };
     const modes = { Clair: 'clair', Sombre: 'sombre' };
@@ -173,7 +173,7 @@
     }
 
     // ===== La poule qui traverse l'écran =====
-    // Port fidèle de MainPage.BouclerAnimationPouleAsync (MAUI) : petits pas dandinés, regroupés
+    // Port fidèle de l'animation de l'ancienne app MAUI : petits pas dandinés, regroupés
     // en tronçons, avec une pause où elle regarde autour d'elle, puis demi-tour.
 
     const poules = new WeakMap();

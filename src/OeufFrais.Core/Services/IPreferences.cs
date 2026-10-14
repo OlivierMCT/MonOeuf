@@ -2,7 +2,7 @@ namespace OeufFrais.Services;
 
 /// <summary>
 /// Stockage clé/valeur des réglages de l'utilisateur (langue, palette, thème). Chaque plateforme
-/// fournit le sien : Preferences sous MAUI, localStorage dans le navigateur.
+/// fournit le sien : localStorage dans le navigateur, un dictionnaire en mémoire dans les tests.
 /// </summary>
 public interface IPreferences
 {

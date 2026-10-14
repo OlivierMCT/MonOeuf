@@ -55,7 +55,6 @@ La DCR étant toujours ponte + 28 jours, l'app convertit l'une en l'autre sans a
 ```
 src/OeufFrais.Core/        règles métier et traductions (.resx), sans interface : C# pur
 src/OeufFrais.Web/         la PWA, Blazor WebAssembly
-src/OeufFrais.Maui/        ancienne app .NET MAUI, retirée une fois la PWA validée sur téléphone
 tests/OeufFrais.Core.Tests tests unitaires des règles et des traductions (xUnit)
 tests/OeufFrais.Web.E2E    tests de bout en bout dans Chromium, dont le hors ligne (Playwright)
 scripts/publier-site.sh    prépare le site tel qu'il est mis en ligne

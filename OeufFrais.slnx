@@ -1,9 +1,6 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/OeufFrais.Core/OeufFrais.Core.csproj" />
-    <Project Path="src/OeufFrais.Maui/OeufFrais.Maui.csproj">
-      <Deploy Solution="Debug|*" />
-    </Project>
     <Project Path="src/OeufFrais.Web/OeufFrais.Web.csproj" />
   </Folder>
   <Folder Name="/tests/">

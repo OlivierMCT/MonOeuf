@@ -1,7 +1,8 @@
 # Plan de migration : Œuf Frais en PWA Blazor WebAssembly, 100 % hors ligne
 
-> Dépôt public : `OlivierMCT/MonOeuf` · Branche de travail : `claude/migration-pwa`
-> Point de départ : `main` @ `13d389e` (application .NET MAUI 10 : Android, iOS, Windows)
+> Dépôt public : `OlivierMCT/MonOeuf` · Migration terminée sur `main`.
+> Point de départ : `13d389e`, dernière version .NET MAUI 10, conservée dans la branche
+> `archive-maui`.
 
 ## Avancement
 
@@ -15,21 +16,22 @@ sont désormais des adresses `noreply`, contenu des fichiers inchangé) et publi
 dépôt public, `MonOeuf`. L'ancien dépôt `OeufFrais`, qui garde l'historique d'origine, reste
 privé ; il peut être supprimé une fois la migration terminée.
 
+L'app MAUI a été supprimée et la PWA versée directement dans `main` (pas de pull request :
+un seul développeur, et les tests tournent à chaque push). Sa dernière version reste
+disponible dans la branche `archive-maui`.
+
 Reste à faire, de votre côté :
 
-1. Créer le tag `v1-maui` (l'environnement de travail ne peut pousser que des branches) :
-   *Releases → Create a new release*, tag `v1-maui`, cible `main` (encore l'app MAUI).
-2. Choisir une licence (sans fichier `LICENSE`, le code est visible mais pas réutilisable).
-3. *Settings → Pages → Source : GitHub Actions*, et autoriser la branche `claude/migration-pwa`
-   dans *Settings → Environments → github-pages* pour la tester sur téléphone avant la fusion.
-4. Recette sur iPhone et Android réels (phase 5), mesure du démarrage sur un téléphone modeste.
-5. Ensuite : supprimer `src/OeufFrais.Maui/`, ouvrir la pull request vers `main`.
+1. *Settings → Pages → Source : GitHub Actions*, puis relancer le dernier workflow : l'app est
+   alors en ligne sur <https://oliviermct.github.io/MonOeuf/>.
+2. Recette sur iPhone et Android réels (phase 5), mesure du démarrage sur un téléphone modeste.
+3. Choisir une licence (sans fichier `LICENSE`, le code est visible mais pas réutilisable).
+4. Supprimer l'ancien dépôt privé `OeufFrais` quand tout vous convient.
 
 Écarts par rapport au plan ci-dessous :
 
-- **App MAUI** : modifiée comme prévu (photos retirées, branchée sur `OeufFrais.Core`), mais
-  compilée ici seulement pour son code C# et ses XAML, contre le paquet MAUI en `net10.0` :
-  le SDK Android n'était pas accessible. À compiler une fois sous Windows avant de s'y fier.
+- **App MAUI** : supprimée de `main` sans attendre la recette sur téléphone, à votre demande.
+  La branche `archive-maui` garde sa dernière version (avec photos).
 - **Saisie de la date** : mieux que prévu. La date s'affiche dans la langue de l'app (« mardi
   13 octobre 2026 »), comme sous MAUI ; le champ date natif, transparent, est posé par-dessus
   et ouvre le calendrier du téléphone. Seul ce calendrier reste dans la langue du téléphone.

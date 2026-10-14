@@ -1,14 +1,12 @@
 # Tests, publication et mise en ligne de la PWA sur GitHub Pages.
 #
-# Réglages à faire une fois dans GitHub (dépôt public obligatoire pour Pages gratuit) :
-#   - Settings > Pages > Source : GitHub Actions ;
-#   - pendant la migration seulement : Settings > Environments > github-pages >
-#     Deployment branches, ajouter claude/migration-pwa.
+# Réglage à faire une fois dans GitHub (dépôt public obligatoire pour Pages gratuit) :
+#   Settings > Pages > Source : GitHub Actions.
 name: PWA
 
 on:
   push:
-    branches: [main, claude/migration-pwa]
+    branches: [main]
   pull_request:
   workflow_dispatch:
 

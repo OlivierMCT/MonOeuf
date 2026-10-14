@@ -1,16 +1,14 @@
-using System.ComponentModel;
 using System.Globalization;
 using System.Resources;
 
 namespace OeufFrais.Services;
 
 /// <summary>
-/// Point d'accès unique aux chaînes traduites (Resources/Strings/AppStrings*.resx).
-/// Les vues XAML s'y lient via l'indexeur (voir TranslateExtension) : changer la culture
-/// déclenche PropertyChanged("Item[]"), ce qui rafraîchit tous les bindings existants
-/// sans reconstruire les pages.
+/// Point d'accès unique aux chaînes traduites (Resources/Strings/AppStrings*.resx) et à la
+/// langue choisie par l'utilisateur. Dans la PWA, changer de langue recharge la page : les
+/// traductions d'une langue arrivent avec ses assemblies satellites, chargées au démarrage.
 /// </summary>
-public sealed class LocalizationResourceManager : INotifyPropertyChanged
+public sealed class LocalizationResourceManager
 {
     public static LocalizationResourceManager Instance { get; } = new();
 
@@ -33,8 +31,6 @@ public sealed class LocalizationResourceManager : INotifyPropertyChanged
     private IPreferences? _preferences;
 
     private LocalizationResourceManager() { }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
 
     public CultureInfo Culture => _culture;
 
@@ -66,16 +62,15 @@ public sealed class LocalizationResourceManager : INotifyPropertyChanged
             ? new CultureInfo(_preferenceExplicite)
             : CultureDuSysteme();
 
-        // Pour que le formatage des dates (mois, jours de semaine) suive la même langue,
-        // même si l'utilisateur bascule sans redémarrer l'application. Doit être fait AVANT
-        // SetCulture : son PropertyChanged force certains contrôles natifs (DatePicker) à se
-        // reformater immédiatement, et ils lisent CultureInfo.CurrentCulture au passage.
+        // Le formatage des dates (mois, jours de semaine) suit la même langue que les textes.
+        // C'est aussi la culture courante au démarrage qui décide quelles assemblies satellites
+        // (les traductions) le runtime WebAssembly charge.
         CultureInfo.DefaultThreadCurrentCulture = culture;
         CultureInfo.DefaultThreadCurrentUICulture = culture;
         CultureInfo.CurrentCulture = culture;
         CultureInfo.CurrentUICulture = culture;
 
-        SetCulture(culture);
+        _culture = culture;
     }
 
     /// <summary>
@@ -87,17 +82,6 @@ public sealed class LocalizationResourceManager : INotifyPropertyChanged
         => LanguesSupportees.Contains(CultureSysteme.TwoLetterISOLanguageName)
             ? CultureSysteme
             : new CultureInfo("fr");
-
-    public void SetCulture(CultureInfo culture)
-    {
-        _culture = culture;
-        // string.Empty (plutôt que la convention WPF "Item[]") : c'est la valeur que le moteur
-        // de binding .NET MAUI reconnaît pour « toutes les propriétés ont changé », et donc pour
-        // rafraîchir en direct tous les bindings d'indexeur {loc:Translate} déjà posés en XAML.
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(string.Empty));
-    }
-
-    public string this[string key] => GetString(key);
 
     public string GetString(string key)
         => _resourceManager.GetString(key, _culture) ?? key;
